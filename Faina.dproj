@@ -111,6 +111,12 @@
             <Form>Login</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\Faina.Dados.pas">
+            <Form>Dados</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\Faina.Configuracoes.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -137,13 +143,13 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\Faina.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="bin\Faina.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Faina.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="bin\Faina.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\Faina.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Faina.exe</RemoteName>
                         <Overwrite>true</Overwrite>

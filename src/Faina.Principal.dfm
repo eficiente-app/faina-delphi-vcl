@@ -33,6 +33,6 @@ object Principal: TPrincipal
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 8
+    ExplicitTop = 23
   end
 end
