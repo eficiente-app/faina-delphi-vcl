@@ -18,12 +18,15 @@ uses
 
 type
   TLogin = class(TForm)
-    Panel1: TPanel;
+    pnlCentro: TPanel;
+    pnlTop: TPanel;
+    pnlBotoes: TPanel;
     btnConfirmar: TButton;
     btnCancelar: TButton;
-    pnlTop: TPanel;
+    procedure btnConfirmarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   public
-    class function New: Boolean;
+    class procedure New(AParent: TWinControl);
   end;
 
 implementation
@@ -32,13 +35,23 @@ implementation
 
 { TLogin }
 
-class function TLogin.New: Boolean;
+procedure TLogin.btnCancelarClick(Sender: TObject);
 begin
-  with TLogin.Create(nil) do
-  try
-    Result := ShowModal = mrOk;
-  finally
-    Free;
+  Close;
+end;
+
+procedure TLogin.btnConfirmarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+class procedure TLogin.New(AParent: TWinControl);
+begin
+  with TLogin.Create(AParent) do
+  begin
+    Parent := AParent;
+    SetBounds(AParent.Left, AParent.Top, AParent.Width, AParent.Height);
+    Show;
   end;
 end;
 

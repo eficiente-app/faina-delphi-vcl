@@ -14,7 +14,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDados, Dados);
-  if TLogin.New then
-    Application.CreateForm(TPrincipal, Principal);
+  Application.CreateForm(TPrincipal, Principal);
   Application.Run;
 end.

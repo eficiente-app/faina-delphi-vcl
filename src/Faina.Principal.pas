@@ -13,12 +13,16 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls,
+  Vcl.ComCtrls,
+  Vcl.Buttons;
 
 type
   TPrincipal = class(TForm)
     pnlTop: TPanel;
-    pnlMenu: TPanel;
+    tvwMenu: TTreeView;
+    SpeedButton1: TSpeedButton;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +34,14 @@ var
 
 implementation
 
+uses
+  Faina.Login;
+
 {$R *.dfm}
+
+procedure TPrincipal.FormShow(Sender: TObject);
+begin
+  TLogin.New(Self);
+end;
 
 end.
