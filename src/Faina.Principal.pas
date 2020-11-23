@@ -63,9 +63,9 @@ type
     pnlTop: TPanel;
     tvwMenu: TTreeView;
     SpeedButton1: TSpeedButton;
-    cxScheduler1: TcxScheduler;
-    dxRibbon1: TdxRibbon;
-    dxBarManager1: TdxBarManager;
+    cxScheduler: TcxScheduler;
+    dxRibbon: TdxRibbon;
+    dxBarManager: TdxBarManager;
     ActionList1: TActionList;
     cxImageList1: TcxImageList;
     cxImageList2: TcxImageList;

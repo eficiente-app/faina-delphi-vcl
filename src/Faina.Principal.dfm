@@ -18,7 +18,7 @@ object Principal: TPrincipal
   TextHeight = 13
   object pnlTop: TPanel
     Left = 0
-    Top = 132
+    Top = 0
     Width = 1008
     Height = 30
     Align = alTop
@@ -26,6 +26,7 @@ object Principal: TPrincipal
     Color = 10495813
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 8
     object SpeedButton1: TSpeedButton
       Left = 976
       Top = 0
@@ -61,7 +62,7 @@ object Principal: TPrincipal
       0062006100260000000000000000000000FFFFFFFFFFFFFFFF00000000000000
       000000000001045400770069006700}
   end
-  object cxScheduler1: TcxScheduler
+  object cxScheduler: TcxScheduler
     Left = 177
     Top = 162
     Width = 831
@@ -77,24 +78,24 @@ object Principal: TPrincipal
     Font.Style = []
     Storage = cxSchedulerStorage
     TabOrder = 2
-    ExplicitLeft = 183
     ExplicitTop = 168
     Splitters = {
       AF0200007E0000003E03000083000000AA02000001000000AF02000036020000}
     StoredClientBounds = {01000000010000003E03000036020000}
   end
-  object dxRibbon1: TdxRibbon
+  object dxRibbon: TdxRibbon
     Left = 0
-    Top = 0
+    Top = 30
     Width = 1008
     Height = 132
-    BarManager = dxBarManager1
+    BarManager = dxBarManager
     Style = rs2019
     ColorSchemeAccent = rcsaBlue
     ColorSchemeName = 'Colorful'
     Contexts = <>
     TabOrder = 3
     TabStop = False
+    ExplicitTop = 36
     object dxRibbonTabHome: TdxRibbonTab
       Active = True
       Caption = 'Home'
@@ -140,7 +141,7 @@ object Principal: TPrincipal
       Index = 2
     end
   end
-  object dxBarManager1: TdxBarManager
+  object dxBarManager: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -12
@@ -463,7 +464,7 @@ object Principal: TPrincipal
     object dxBarLayout: TdxBar
       Caption = 'Layout'
       CaptionButtons = <>
-      DockedLeft = 0
+      DockedLeft = 78
       DockedTop = 0
       FloatLeft = 1036
       FloatTop = 2
