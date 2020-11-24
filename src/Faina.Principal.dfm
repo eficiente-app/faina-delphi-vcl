@@ -26,7 +26,6 @@ object Principal: TPrincipal
     Color = 10495813
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
     object SpeedButton1: TSpeedButton
       Left = 976
       Top = 0
@@ -95,7 +94,6 @@ object Principal: TPrincipal
     Contexts = <>
     TabOrder = 3
     TabStop = False
-    ExplicitTop = 36
     object dxRibbonTabHome: TdxRibbonTab
       Active = True
       Caption = 'Home'
