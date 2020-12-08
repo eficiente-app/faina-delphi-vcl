@@ -23,16 +23,17 @@ object Principal: TPrincipal
     Height = 30
     Align = alTop
     BevelOuter = bvNone
-    Color = 10495813
+    Color = 3806736
     ParentBackground = False
     TabOrder = 0
-    object SpeedButton1: TSpeedButton
+    object sbtConfiguracao: TSpeedButton
       Left = 976
       Top = 0
       Width = 32
       Height = 30
       Align = alRight
       Flat = True
+      OnClick = sbtConfiguracaoClick
     end
   end
   object tvwMenu: TTreeView
@@ -77,7 +78,6 @@ object Principal: TPrincipal
     Font.Style = []
     Storage = cxSchedulerStorage
     TabOrder = 2
-    ExplicitTop = 168
     Splitters = {
       AF0200007E0000003E03000083000000AA02000001000000AF02000036020000}
     StoredClientBounds = {01000000010000003E03000036020000}

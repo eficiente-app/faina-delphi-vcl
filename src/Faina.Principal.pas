@@ -62,7 +62,7 @@ type
   TPrincipal = class(TForm)
     pnlTop: TPanel;
     tvwMenu: TTreeView;
-    SpeedButton1: TSpeedButton;
+    sbtConfiguracao: TSpeedButton;
     cxScheduler: TcxScheduler;
     dxRibbon: TdxRibbon;
     dxBarManager: TdxBarManager;
@@ -147,6 +147,7 @@ type
     cxSchedulerStorage: TcxSchedulerStorage;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure sbtConfiguracaoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -160,7 +161,8 @@ implementation
 
 uses
   Faina.Login,
-  Faina.Dados;
+  Faina.Dados,
+  Faina.Pasta.vw;
 
 {$R *.dfm}
 
@@ -192,6 +194,11 @@ begin
   end;
 
   evento1.TaskLinks.Add(evento2, TcxSchedulerEventRelation(0));
+end;
+
+procedure TPrincipal.sbtConfiguracaoClick(Sender: TObject);
+begin
+  TPasta.New;
 end;
 
 procedure TPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
