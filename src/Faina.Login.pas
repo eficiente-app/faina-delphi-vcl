@@ -23,8 +23,14 @@ type
     pnlBotoes: TPanel;
     btnConfirmar: TButton;
     btnCancelar: TButton;
+    estSenha: TEdit;
+    edtUsuario: TEdit;
+    imgLogo: TImage;
+    lbUsuario: TLabel;
+    lbSenha: TLabel;
     procedure btnConfirmarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   public
     class procedure New(AParent: TWinControl);
   end;
@@ -43,6 +49,11 @@ end;
 procedure TLogin.btnConfirmarClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TLogin.FormShow(Sender: TObject);
+begin
+  edtUsuario.SetFocus;
 end;
 
 class procedure TLogin.New(AParent: TWinControl);

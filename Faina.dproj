@@ -118,12 +118,12 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="src\Faina.Configuracoes.pas"/>
-        <DCCReference Include="src\pasta\Faina.Pasta.vw.pas">
-            <Form>Pasta</Form>
+        <DCCReference Include="src\pasta\Faina.Pasta.lst.vw.pas">
+            <Form>PastaListagem</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\pasta\Faina.Pasta.cl.pas">
-            <Form>DMPasta</Form>
+            <Form>PastaController</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -131,6 +131,14 @@
         <DCCReference Include="src\rest\REST.Table.pas"/>
         <DCCReference Include="src\rest\REST.Manager.pas"/>
         <DCCReference Include="src\rest\REST.Query.pas"/>
+        <DCCReference Include="src\pasta\Faina.Pasta.man.vw.pas">
+            <Form>PastaManutencao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\pesquisa\Faina.Pesquisa.pas">
+            <Form>Pesquisa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

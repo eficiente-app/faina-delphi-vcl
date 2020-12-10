@@ -34,6 +34,7 @@ object Principal: TPrincipal
       Align = alRight
       Flat = True
       OnClick = sbtConfiguracaoClick
+      ExplicitTop = -6
     end
   end
   object tvwMenu: TTreeView

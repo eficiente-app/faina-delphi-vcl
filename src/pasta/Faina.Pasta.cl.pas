@@ -19,7 +19,7 @@ uses
   REST.Manager;
 
 type
-  TDMPasta = class(TDataModule)
+  TPastaController = class(TDataModule)
     tblPasta: TFDMemTable;
     tblPastaid: TIntegerField;
     tblPastatipo: TIntegerField;
@@ -32,11 +32,23 @@ type
     tblPastaalterado_em: TDateTimeField;
     tblPastaexcluido_id: TIntegerField;
     tblPastaexcluido_em: TDateTimeField;
+    tblTipo: TFDMemTable;
+    tblPastatipo_descricao: TStringField;
+    tblPastaprojeto_descricao: TStringField;
+    tblTipoid: TIntegerField;
+    tblTipodescricao: TStringField;
+    tblTipoincluido_id: TIntegerField;
+    tblTipoincluido_em: TDateTimeField;
+    tblTipoalterado_id: TIntegerField;
+    tblTipoalterado_em: TDateTimeField;
+    tblTipoexcluido_id: TIntegerField;
+    tblTipoexcluido_em: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
   public
     Pasta: TRESTManager;
+    Tipo: TRESTManager;
   end;
 
 implementation
@@ -45,14 +57,16 @@ implementation
 
 {$R *.dfm}
 
-procedure TDMPasta.DataModuleCreate(Sender: TObject);
+procedure TPastaController.DataModuleCreate(Sender: TObject);
 begin
   Pasta := TRESTManager.Create('http://18.230.153.64:3000/api/pasta', tblPasta);
+  Tipo  := TRESTManager.Create('http://18.230.153.64:3000/api/pasta/tipo', tblTipo);
 end;
 
-procedure TDMPasta.DataModuleDestroy(Sender: TObject);
+procedure TPastaController.DataModuleDestroy(Sender: TObject);
 begin
   FreeAndNil(Pasta);
+  FreeAndNil(Tipo);
 end;
 
 end.

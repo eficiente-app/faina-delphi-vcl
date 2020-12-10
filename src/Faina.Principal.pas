@@ -162,48 +162,48 @@ implementation
 uses
   Faina.Login,
   Faina.Dados,
-  Faina.Pasta.vw;
+  Faina.Pasta.lst.vw;
 
 {$R *.dfm}
 
 procedure TPrincipal.FormShow(Sender: TObject);
-var
-  evento1, evento2: TcxSchedulerEvent;
+//var
+//  evento1, evento2: TcxSchedulerEvent;
 begin
-//  TLogin.New(Self);
+  TLogin.New(Self);
 
-//  if FileExists('Scheduler.data') then
-//    cxSchedulerStorage.LoadFromFile('Scheduler.data');
+  if FileExists('Scheduler.data') then
+    cxSchedulerStorage.LoadFromFile('Scheduler.data');
 
-  evento1 := cxSchedulerStorage.createEvent;
-  with evento1 do
-  begin
-    Start    := EncodeDate(2020, 11, 23) + EncodeTime(21, 0, 0, 0);
-    Finish   := EncodeDate(2020, 11, 23) + EncodeTime(22, 0, 0, 0);
-    Caption  := 'Teste evento';
-    Post;
-  end;
-
-  evento2 := cxSchedulerStorage.createEvent;
-  with evento2 do
-  begin
-    Start    := EncodeDate(2020, 11, 23) + EncodeTime(22, 0, 0, 0);
-    Finish   := EncodeDate(2020, 11, 23) + EncodeTime(23, 0, 0, 0);;
-    Caption  := 'Teste evento';
-    Post;
-  end;
-
-  evento1.TaskLinks.Add(evento2, TcxSchedulerEventRelation(0));
+//  evento1 := cxSchedulerStorage.createEvent;
+//  with evento1 do
+//  begin
+//    Start    := EncodeDate(2020, 11, 23) + EncodeTime(21, 0, 0, 0);
+//    Finish   := EncodeDate(2020, 11, 23) + EncodeTime(22, 0, 0, 0);
+//    Caption  := 'Teste evento';
+//    Post;
+//  end;
+//
+//  evento2 := cxSchedulerStorage.createEvent;
+//  with evento2 do
+//  begin
+//    Start    := EncodeDate(2020, 11, 23) + EncodeTime(22, 0, 0, 0);
+//    Finish   := EncodeDate(2020, 11, 23) + EncodeTime(23, 0, 0, 0);;
+//    Caption  := 'Teste evento';
+//    Post;
+//  end;
+//
+//  evento1.TaskLinks.Add(evento2, TcxSchedulerEventRelation(0));
 end;
 
 procedure TPrincipal.sbtConfiguracaoClick(Sender: TObject);
 begin
-  TPasta.New;
+  TPastaListagem.New;
 end;
 
 procedure TPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-//  cxSchedulerStorage.SaveToFile('Scheduler.data');
+  cxSchedulerStorage.SaveToFile('Scheduler.data');
 end;
 
 end.
