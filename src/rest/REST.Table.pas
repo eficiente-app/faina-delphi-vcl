@@ -120,95 +120,98 @@ begin
 
   // Executa chamada e obtem o retorno
   aJSONTBL := FMethodGet;
-
-  // Remove eventos do dataset
-  RBeforePost  := FTable.BeforePost;
-  ROnNewRecord := FTable.OnNewRecord;
-  ROnPosError  := FTable.OnPostError;
-  FTable.BeforePost  := nil;
-  FTable.OnNewRecord := nil;
-  FTable.OnPostError := nil;
   try
-    // Cria arrays para armazenar os eventos dos fields
-    SetLength(aOnChange,   FTable.FieldCount);
-    SetLength(aOnSetText,  FTable.FieldCount);
-    SetLength(aOnValidate, FTable.FieldCount);
-
-    // Sobrescreve eventos dos fields
-    for I := 0 to Pred(FTable.FieldCount) do
-    begin
-      DField            := FTable.Fields[I];
-      aOnChange[I]      := DField.OnChange;
-      aOnSetText[I]     := DField.OnSetText;
-      aOnValidate[I]    := DField.OnValidate;
-      DField.OnChange   := nil;
-      DField.OnSetText  := nil;
-      DField.OnValidate := nil;
-    end;
-
-    // Desativa os controles para não executar os eventos do DataSource
-    FTable.DisableControls;
+    // Remove eventos do dataset
+    RBeforePost  := FTable.BeforePost;
+    ROnNewRecord := FTable.OnNewRecord;
+    ROnPosError  := FTable.OnPostError;
+    FTable.BeforePost  := nil;
+    FTable.OnNewRecord := nil;
+    FTable.OnPostError := nil;
     try
-      // Passar por todas as linhas da tabela
-      for I := 0 to Pred(aJSONTBL.Count) do
-      begin
-        // Insere no dataset
-        FTable.Append;
+      // Cria arrays para armazenar os eventos dos fields
+      SetLength(aOnChange,   FTable.FieldCount);
+      SetLength(aOnSetText,  FTable.FieldCount);
+      SetLength(aOnValidate, FTable.FieldCount);
 
-        // Obtem a linha
-        oJSONROW := TJSONObject(aJSONTBL.Items[I]);
-
-        // Passa por todas as colunas
-        for J := 0 to Pred(oJSONROW.Count) do
-        begin
-          // Obtem a célula
-          oJSONCEL := oJSONROW.Pairs[J];
-
-          // Obtem o field do dataset correspondente ao nome do par JSON
-          DField := FTable.FindField(oJSONCEL.JsonString.Value);
-
-          // Se existe o field
-          if DField <> nil then
-          begin
-            // Veifica se não é nulo
-            if not (oJSONCEL.JsonValue is TJSONNull) then
-            begin
-              // Formata o valor de acordo com o tipo do field
-              if DField is TNumericField then
-                DField.AsFloat := StrToFloat(oJSONCEL.JsonValue.Value)
-              else
-              if not(DField is TTimeField) and
-                ((DField is TDateTimeField) or (DField is TSQLTimeStampField)) then
-                DField.Value := ISO8601ToDate(oJSONCEL.JsonValue.Value)
-              else
-                DField.AsString := oJSONCEL.JsonValue.Value;
-            end;
-          end;
-        end;
-        // Posta os dados inseridos
-        FTable.Post;
-      end;
-    finally
-      // Reinsere evento original dos fields
+      // Sobrescreve eventos dos fields
       for I := 0 to Pred(FTable.FieldCount) do
       begin
         DField            := FTable.Fields[I];
-        DField.OnChange   := aOnChange[I];
-        DField.OnSetText  := aOnSetText[I];
-        DField.OnValidate := aOnValidate[I];
+        aOnChange[I]      := DField.OnChange;
+        aOnSetText[I]     := DField.OnSetText;
+        aOnValidate[I]    := DField.OnValidate;
+        DField.OnChange   := nil;
+        DField.OnSetText  := nil;
+        DField.OnValidate := nil;
       end;
 
-      // Ativa os controles
-      FTable.EnableControls;
+      // Desativa os controles para não executar os eventos do DataSource
+      FTable.DisableControls;
+      try
+        // Passar por todas as linhas da tabela
+        for I := 0 to Pred(aJSONTBL.Count) do
+        begin
+          // Insere no dataset
+          FTable.Append;
 
-      // Passa pelo StateChange do DataSource
-      FTable.First;
+          // Obtem a linha
+          oJSONROW := TJSONObject(aJSONTBL.Items[I]);
+
+          // Passa por todas as colunas
+          for J := 0 to Pred(oJSONROW.Count) do
+          begin
+            // Obtem a célula
+            oJSONCEL := oJSONROW.Pairs[J];
+
+            // Obtem o field do dataset correspondente ao nome do par JSON
+            DField := FTable.FindField(oJSONCEL.JsonString.Value);
+
+            // Se existe o field
+            if DField <> nil then
+            begin
+              // Veifica se não é nulo
+              if not (oJSONCEL.JsonValue is TJSONNull) then
+              begin
+                // Formata o valor de acordo com o tipo do field
+                if DField is TNumericField then
+                  DField.AsFloat := StrToFloat(oJSONCEL.JsonValue.Value)
+                else
+                if not(DField is TTimeField) and
+                  ((DField is TDateTimeField) or (DField is TSQLTimeStampField)) then
+                  DField.Value := ISO8601ToDate(oJSONCEL.JsonValue.Value)
+                else
+                  DField.AsString := oJSONCEL.JsonValue.Value;
+              end;
+            end;
+          end;
+          // Posta os dados inseridos
+          FTable.Post;
+        end;
+      finally
+        // Reinsere evento original dos fields
+        for I := 0 to Pred(FTable.FieldCount) do
+        begin
+          DField            := FTable.Fields[I];
+          DField.OnChange   := aOnChange[I];
+          DField.OnSetText  := aOnSetText[I];
+          DField.OnValidate := aOnValidate[I];
+        end;
+
+        // Ativa os controles
+        FTable.EnableControls;
+
+        // Passa pelo StateChange do DataSource
+        FTable.First;
+      end;
+    finally
+      // Reatribui eventos do dataset
+      FTable.BeforePost  := RBeforePost;
+      FTable.OnNewRecord := ROnNewRecord;
+      FTable.OnPostError := ROnPosError;
     end;
   finally
-    // Reatribui eventos do dataset
-    FTable.BeforePost  := RBeforePost;
-    FTable.OnNewRecord := ROnNewRecord;
-    FTable.OnPostError := ROnPosError;
+    FreeAndNil(aJSONTBL);
   end;
 
   // Informa que os dados no dataset estão iguais ao servidor

@@ -10,12 +10,10 @@ uses
 type
   TRESTConnection = class
   private
-    FResponse: TJSONValue;
     NetHTTPClient: TNetHTTPClient;
   public
     constructor Create;
     destructor Destroy; override;
-    property Response: TJSONValue read FResponse;
     function Execute(sMetodo, sURL: String; jvParams: TJSONValue = nil): TJSONValue;
   end;
 
@@ -35,8 +33,6 @@ end;
 
 destructor TRESTConnection.Destroy;
 begin
-  if Assigned(FResponse) then
-    FreeAndNil(FResponse);
   FreeAndNil(NetHTTPClient);
 end;
 
@@ -50,12 +46,7 @@ begin
   ssOut := TStringStream.Create;
   try
     NetHTTPClient.Execute(sMetodo, TURI.Create(sURL), ssIn, ssOut, [TNameValuePair.Create('Content-Type', 'application/json')]);
-
-    if Assigned(FResponse) then
-      FreeAndNil(FResponse);
-
-    FResponse := TJSONObject.ParseJSONValue(ssOut.DataString);
-    Result := FResponse;
+    Result := TJSONObject.ParseJSONValue(ssOut.DataString);
   finally
     FreeAndNil(ssIn);
     FreeAndNil(ssOut);

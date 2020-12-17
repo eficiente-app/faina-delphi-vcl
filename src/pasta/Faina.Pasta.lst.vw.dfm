@@ -66,7 +66,6 @@ object PastaListagem: TPastaListagem
     BevelKind = bkTile
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 852
     object btnIncluir: TButton
       Left = 0
       Top = 0
@@ -76,8 +75,6 @@ object PastaListagem: TPastaListagem
       Caption = 'Incluir'
       TabOrder = 0
       OnClick = btnIncluirClick
-      ExplicitLeft = -6
-      ExplicitTop = -1
     end
     object btnAlterar: TButton
       Left = 75
@@ -88,8 +85,6 @@ object PastaListagem: TPastaListagem
       Caption = 'Alterar'
       TabOrder = 1
       OnClick = btnAlterarClick
-      ExplicitLeft = 69
-      ExplicitTop = -1
     end
     object btnVisualizar: TButton
       Left = 150
@@ -110,7 +105,6 @@ object PastaListagem: TPastaListagem
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitWidth = 852
     object pnlPesquisar: TPanel
       AlignWithMargins = True
       Left = 380

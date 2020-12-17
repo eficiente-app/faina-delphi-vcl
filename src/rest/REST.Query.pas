@@ -16,6 +16,7 @@ type
     function Add(sParam, sValor: String): TRESTQuery; overload;
     function Add(sParam: String;  bValor: Boolean): TRESTQuery; overload;
     function Add(sParam: String; dValor: Extended): TRESTQuery; overload;
+    function Clear: TRESTQuery;
     function Text: String;
   end;
 
@@ -33,7 +34,15 @@ begin
   Result := Self;
 end;
 
+function TRESTQuery.Clear: TRESTQuery;
+begin
+  Finalize(FParams);
+  Result := Self;
+end;
+
 function TRESTQuery.Add(sParam, sValor: String): TRESTQuery;
+var
+  I: Integer;
 begin
   Result := Self;
 
@@ -46,6 +55,15 @@ begin
   // Não adiciona parâmetro nem valor vazio
   if sParam.Trim.IsEmpty or sValor.Trim.IsEmpty then
     Exit;
+
+  for I := 0 to Pred(Length(FParams)) do
+  begin
+    if FParams[I].Key = sParam then
+    begin
+      FParams[I].Value := sValor;
+      Exit;
+    end;
+  end;
 
   // Adiciona parâmetros a lista
   SetLength(FParams, Succ(Length(FParams)));
