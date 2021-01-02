@@ -47,7 +47,7 @@ begin
     begin
       vJSON := FConnection.Execute(sHTTPMethodGet, FURL + FQuery.Text);
       try
-        Result := TJSONArray(vJSON.GetValue<TJSONArray>('sql').Clone);
+        Result := TJSONArray(vJSON.Clone);
       finally
         FreeAndNil(vJSON);
       end;
@@ -57,14 +57,22 @@ begin
   FTable.RESTPut(
     procedure(Data: TJSONArray)
     begin
-      FConnection.Execute(sHTTPMethodPut, FURL, Data).Free;
+      try
+        FConnection.Execute(sHTTPMethodPut, FURL, Data).Free;
+      finally
+        Data.Free;
+      end;
     end
   );
 
   FTable.RESTPost(
     procedure(Data: TJSONArray)
     begin
-      FConnection.Execute(sHTTPMethodPost, FURL, Data).Free;
+      try
+        FConnection.Execute(sHTTPMethodPost, FURL, Data).Free;
+      finally
+        Data.Free;
+      end;
     end
   );
 
@@ -74,24 +82,28 @@ begin
       vItem: TJSONValue;
       oResult: TJSONObject;
     begin
-      for vItem in Data do
-      begin
-        if Assigned(vItem.FindValue('id')) then
+      try
+        for vItem in Data do
         begin
-          oResult := TJSONObject(FConnection.Execute(sHTTPMethodDelete, FURL +'/'+ vItem.GetValue<String>('id')));
-          try
-            if Assigned(oResult) and Assigned(oResult.FindValue('sucesso')) and not oResult.GetValue<Boolean>('sucesso') then
-            begin
-              if Assigned(oResult.FindValue('mensagem')) then
-                raise Exception.Create(oResult.GetValue<String>('mensagem'))
-              else
-                raise Exception.Create(oResult.ToJSON);
+          if Assigned(vItem.FindValue('id')) then
+          begin
+            oResult := TJSONObject(FConnection.Execute(sHTTPMethodDelete, FURL +'/'+ vItem.GetValue<String>('id')));
+            try
+              if Assigned(oResult) and Assigned(oResult.FindValue('sucesso')) and not oResult.GetValue<Boolean>('sucesso') then
+              begin
+                if Assigned(oResult.FindValue('mensagem')) then
+                  raise Exception.Create(oResult.GetValue<String>('mensagem'))
+                else
+                  raise Exception.Create(oResult.ToJSON);
+              end;
+            finally
+              if Assigned(oResult) then
+                FreeAndNil(oResult);
             end;
-          finally
-            if Assigned(oResult) then
-              FreeAndNil(oResult);
           end;
         end;
+      finally
+        Data.Free;
       end;
     end
   );

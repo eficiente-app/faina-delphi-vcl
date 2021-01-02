@@ -95,6 +95,8 @@ object PastaListagem: TPastaListagem
       Caption = 'Visualizar'
       TabOrder = 2
       OnClick = btnVisualizarClick
+      ExplicitLeft = 156
+      ExplicitTop = -1
     end
   end
   object pnlPesquisa: TPanel

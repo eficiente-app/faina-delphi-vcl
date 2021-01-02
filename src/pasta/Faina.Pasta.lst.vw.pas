@@ -69,23 +69,23 @@ end;
 
 procedure TPastaListagem.btnAlterarClick(Sender: TObject);
 begin
-  TPastaManutencao.New(Self, DM);
+  TPastaManutencao.New(Self, DM, Alterar);
 end;
 
 procedure TPastaListagem.btnIncluirClick(Sender: TObject);
 begin
-  TPastaManutencao.New(Self, DM);
+  TPastaManutencao.New(Self, DM, Incluir);
+end;
+
+procedure TPastaListagem.btnVisualizarClick(Sender: TObject);
+begin
+  TPastaManutencao.New(Self, DM, Visualizar);
 end;
 
 procedure TPastaListagem.btnPesquisarClick(Sender: TObject);
 begin
   DM.Pasta.Query.Add('id', 1);
   DM.Pasta.Table.Read;
-end;
-
-procedure TPastaListagem.btnVisualizarClick(Sender: TObject);
-begin
-  TPastaManutencao.New(Self, DM);
 end;
 
 end.

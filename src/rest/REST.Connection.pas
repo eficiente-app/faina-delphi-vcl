@@ -47,6 +47,12 @@ begin
   try
     NetHTTPClient.Execute(sMetodo, TURI.Create(sURL), ssIn, ssOut, [TNameValuePair.Create('Content-Type', 'application/json')]);
     Result := TJSONObject.ParseJSONValue(ssOut.DataString);
+    if Assigned(Result) and Assigned(Result.FindValue('sucesso')) and not Result.GetValue<Boolean>('sucesso') then
+    try
+      raise Exception.Create(Result.GetValue<String>('mensagem'));
+    finally
+      Result.Free;
+    end;
   finally
     FreeAndNil(ssIn);
     FreeAndNil(ssOut);

@@ -2,8 +2,8 @@ object PastaManutencao: TPastaManutencao
   Left = 0
   Top = 0
   Caption = 'Pasta'
-  ClientHeight = 410
-  ClientWidth = 852
+  ClientHeight = 165
+  ClientWidth = 515
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -169,12 +169,13 @@ object PastaManutencao: TPastaManutencao
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 852
+    Width = 515
     Height = 30
     Align = alTop
     BevelKind = bkTile
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 852
     object btnGravar: TButton
       Left = 0
       Top = 0
@@ -194,6 +195,8 @@ object PastaManutencao: TPastaManutencao
       Caption = 'Cancelar'
       TabOrder = 1
       OnClick = btnCancelarClick
+      ExplicitLeft = 69
+      ExplicitTop = 2
     end
     object btnExcluir: TButton
       Left = 150
@@ -214,6 +217,8 @@ object PastaManutencao: TPastaManutencao
       Caption = 'Fechar'
       TabOrder = 3
       OnClick = btnFecharClick
+      ExplicitLeft = 231
+      ExplicitTop = 2
     end
   end
   object dbedttipo: TDBEdit
@@ -278,7 +283,7 @@ object PastaManutencao: TPastaManutencao
   end
   object srcPasta: TDataSource
     DataSet = PastaController.tblPasta
-    Left = 488
+    Left = 448
     Top = 1
   end
 end

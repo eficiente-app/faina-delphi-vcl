@@ -24,6 +24,8 @@ uses
   Faina.Pesquisa;
 
 type
+  TAcaoManutencao = (Incluir, Alterar, Visualizar);
+
   TPastaManutencao = class(TForm)
     dbedtid: TDBEdit;
     lbid: TLabel;
@@ -56,14 +58,14 @@ type
   private
     DM: TPastaController;
   public
-    class procedure New(AParent: TWinControl; ADM: TPastaController);
+    class procedure New(AParent: TWinControl; ADM: TPastaController; Tipo: TAcaoManutencao);
   end;
 
 implementation
 
 {$R *.dfm}
 
-class procedure TPastaManutencao.New(AParent: TWinControl; ADM: TPastaController);
+class procedure TPastaManutencao.New(AParent: TWinControl; ADM: TPastaController; Tipo: TAcaoManutencao);
 begin
   with TPastaManutencao.Create(AParent) do
   begin
@@ -74,6 +76,12 @@ begin
 
     DM := ADM;
     srcPasta.DataSet := DM.tblPasta;
+
+    btnGravar.Visible   := Tipo in [Incluir, Alterar];
+    btnCancelar.Visible := Tipo in [Incluir, Alterar];
+    btnExcluir.Visible  := Tipo = Alterar;
+    btnFechar.Visible   := Tipo = Visualizar;
+
     Show;
   end;
 end;
