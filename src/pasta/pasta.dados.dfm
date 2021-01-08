@@ -1,4 +1,4 @@
-object PastaController: TPastaController
+object PastaDados: TPastaDados
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
@@ -18,23 +18,13 @@ object PastaController: TPastaController
       DisplayLabel = 'C'#243'digo'
       FieldName = 'id'
     end
-    object tblPastatipo: TIntegerField
+    object tblPastatipo_id: TIntegerField
       DisplayLabel = 'Tipo'
-      FieldName = 'tipo'
-    end
-    object tblPastatipo_descricao: TStringField
-      FieldName = 'tipo_descricao'
-      ProviderFlags = []
-      Size = 500
+      FieldName = 'tipo_id'
     end
     object tblPastaprojeto_id: TIntegerField
       DisplayLabel = 'Projeto'
       FieldName = 'projeto_id'
-    end
-    object tblPastaprojeto_descricao: TStringField
-      FieldName = 'projeto_descricao'
-      ProviderFlags = []
-      Size = 500
     end
     object tblPastanome: TStringField
       DisplayLabel = 'Nome'
@@ -45,24 +35,6 @@ object PastaController: TPastaController
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'descricao'
       Size = 1000
-    end
-    object tblPastaincluido_id: TIntegerField
-      FieldName = 'incluido_id'
-    end
-    object tblPastaincluido_em: TDateTimeField
-      FieldName = 'incluido_em'
-    end
-    object tblPastaalterado_id: TIntegerField
-      FieldName = 'alterado_id'
-    end
-    object tblPastaalterado_em: TDateTimeField
-      FieldName = 'alterado_em'
-    end
-    object tblPastaexcluido_id: TIntegerField
-      FieldName = 'excluido_id'
-    end
-    object tblPastaexcluido_em: TDateTimeField
-      FieldName = 'excluido_em'
     end
   end
   object tblTipo: TFDMemTable
@@ -83,24 +55,6 @@ object PastaController: TPastaController
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'descricao'
       Size = 1000
-    end
-    object tblTipoincluido_id: TIntegerField
-      FieldName = 'incluido_id'
-    end
-    object tblTipoincluido_em: TDateTimeField
-      FieldName = 'incluido_em'
-    end
-    object tblTipoalterado_id: TIntegerField
-      FieldName = 'alterado_id'
-    end
-    object tblTipoalterado_em: TDateTimeField
-      FieldName = 'alterado_em'
-    end
-    object tblTipoexcluido_id: TIntegerField
-      FieldName = 'excluido_id'
-    end
-    object tblTipoexcluido_em: TDateTimeField
-      FieldName = 'excluido_em'
     end
   end
 end

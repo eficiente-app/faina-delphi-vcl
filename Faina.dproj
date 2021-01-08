@@ -112,18 +112,13 @@
             <Form>Login</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Faina.Dados.pas">
-            <Form>Dados</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="src\Faina.Configuracoes.pas"/>
-        <DCCReference Include="src\pasta\Faina.Pasta.lst.vw.pas">
+        <DCCReference Include="src\pasta\pasta.listagem.pas">
             <Form>PastaListagem</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\pasta\Faina.Pasta.cl.pas">
-            <Form>PastaController</Form>
+        <DCCReference Include="src\pasta\pasta.dados.pas">
+            <Form>PastaDados</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -131,12 +126,25 @@
         <DCCReference Include="src\rest\REST.Table.pas"/>
         <DCCReference Include="src\rest\REST.Manager.pas"/>
         <DCCReference Include="src\rest\REST.Query.pas"/>
-        <DCCReference Include="src\pasta\Faina.Pasta.man.vw.pas">
+        <DCCReference Include="src\pasta\pasta.manutencao.pas">
             <Form>PastaManutencao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\pesquisa\Faina.Pesquisa.pas">
             <Form>Pesquisa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\pasta_tipo\pasta_tipo.dados.pas">
+            <Form>PastaTipoDados</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\pasta_tipo\pasta_tipo.manutencao.pas">
+            <Form>PastaTipoManutencao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\pasta_tipo\pasta_tipo.listagem.pas">
+            <Form>PastaTipoListagem</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

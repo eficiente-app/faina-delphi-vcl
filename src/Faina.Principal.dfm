@@ -13,6 +13,8 @@ object Principal: TPrincipal
   OldCreateOrder = False
   Position = poOwnerFormCenter
   OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

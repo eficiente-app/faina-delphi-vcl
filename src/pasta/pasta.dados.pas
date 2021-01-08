@@ -1,5 +1,5 @@
 ﻿// Eduardo - 06/12/2020
-unit Faina.Pasta.cl;
+unit pasta.dados;
 
 interface
 
@@ -19,30 +19,16 @@ uses
   REST.Manager;
 
 type
-  TPastaController = class(TDataModule)
+  TPastaDados = class(TDataModule)
     tblPasta: TFDMemTable;
     tblPastaid: TIntegerField;
-    tblPastatipo: TIntegerField;
+    tblPastatipo_id: TIntegerField;
     tblPastaprojeto_id: TIntegerField;
     tblPastanome: TStringField;
     tblPastadescricao: TStringField;
-    tblPastaincluido_id: TIntegerField;
-    tblPastaincluido_em: TDateTimeField;
-    tblPastaalterado_id: TIntegerField;
-    tblPastaalterado_em: TDateTimeField;
-    tblPastaexcluido_id: TIntegerField;
-    tblPastaexcluido_em: TDateTimeField;
     tblTipo: TFDMemTable;
-    tblPastatipo_descricao: TStringField;
-    tblPastaprojeto_descricao: TStringField;
     tblTipoid: TIntegerField;
     tblTipodescricao: TStringField;
-    tblTipoincluido_id: TIntegerField;
-    tblTipoincluido_em: TDateTimeField;
-    tblTipoalterado_id: TIntegerField;
-    tblTipoalterado_em: TDateTimeField;
-    tblTipoexcluido_id: TIntegerField;
-    tblTipoexcluido_em: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -57,13 +43,13 @@ implementation
 
 {$R *.dfm}
 
-procedure TPastaController.DataModuleCreate(Sender: TObject);
+procedure TPastaDados.DataModuleCreate(Sender: TObject);
 begin
   Pasta := TRESTManager.Create('http://18.230.153.64:3000/api/pasta', tblPasta);
   Tipo  := TRESTManager.Create('http://18.230.153.64:3000/api/pasta/tipo', tblTipo);
 end;
 
-procedure TPastaController.DataModuleDestroy(Sender: TObject);
+procedure TPastaDados.DataModuleDestroy(Sender: TObject);
 begin
   FreeAndNil(Pasta);
   FreeAndNil(Tipo);

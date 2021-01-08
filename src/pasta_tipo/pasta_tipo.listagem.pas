@@ -1,5 +1,5 @@
 ﻿// Eduardo - 05/12/2020
-unit Faina.Pasta.lst.vw;
+unit pasta_tipo.listagem;
 
 interface
 
@@ -18,14 +18,14 @@ uses
   Vcl.Grids,
   Vcl.DBGrids,
   Vcl.StdCtrls,
-  Faina.Pasta.cl,
-  Faina.Pasta.man.vw;
+  pasta_tipo.dados,
+  pasta_tipo.manutencao;
 
 type
-  TPastaListagem = class(TForm)
+  TPastaTipoListagem = class(TForm)
     dbgridPasta: TDBGrid;
-    srcPasta: TDataSource;
-    Panel1: TPanel;
+    srcPastaTipo: TDataSource;
+    pnlTopo: TPanel;
     btnIncluir: TButton;
     btnAlterar: TButton;
     btnVisualizar: TButton;
@@ -40,7 +40,7 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
   private
-    DM: TPastaController;
+    PTD: TPastaTipoDados;
   public
     class procedure New;
   end;
@@ -51,9 +51,9 @@ implementation
 
 { TPasta }
 
-class procedure TPastaListagem.New;
+class procedure TPastaTipoListagem.New;
 begin
-  with TPastaListagem.Create(nil) do
+  with TPastaTipoListagem.Create(nil) do
   try
     ShowModal;
   finally
@@ -61,31 +61,31 @@ begin
   end;
 end;
 
-procedure TPastaListagem.FormCreate(Sender: TObject);
+procedure TPastaTipoListagem.FormCreate(Sender: TObject);
 begin
-  DM := TPastaController.Create(Self);
-  srcPasta.DataSet := DM.tblPasta;
+  PTD := TPastaTipoDados.Create(Self);
+  srcPastaTipo.DataSet := PTD.tblPastaTipo;
 end;
 
-procedure TPastaListagem.btnAlterarClick(Sender: TObject);
+procedure TPastaTipoListagem.btnAlterarClick(Sender: TObject);
 begin
-  TPastaManutencao.New(Self, DM, Alterar);
+  TPastaTipoManutencao.New(Self, PTD, Alterar);
 end;
 
-procedure TPastaListagem.btnIncluirClick(Sender: TObject);
+procedure TPastaTipoListagem.btnIncluirClick(Sender: TObject);
 begin
-  TPastaManutencao.New(Self, DM, Incluir);
+  TPastaTipoManutencao.New(Self, PTD, Incluir);
 end;
 
-procedure TPastaListagem.btnVisualizarClick(Sender: TObject);
+procedure TPastaTipoListagem.btnVisualizarClick(Sender: TObject);
 begin
-  TPastaManutencao.New(Self, DM, Visualizar);
+  TPastaTipoManutencao.New(Self, PTD, Visualizar);
 end;
 
-procedure TPastaListagem.btnPesquisarClick(Sender: TObject);
+procedure TPastaTipoListagem.btnPesquisarClick(Sender: TObject);
 begin
-  DM.Pasta.Query.Add('id', 1);
-  DM.Pasta.Table.Read;
+  PTD.PastaTipo.Query.Add('id', 1);
+  PTD.PastaTipo.Table.Read;
 end;
 
 end.

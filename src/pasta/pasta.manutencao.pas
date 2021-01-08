@@ -1,5 +1,5 @@
 ﻿// Eduardo - 08/12/2020
-unit Faina.Pasta.man.vw;
+unit pasta.manutencao;
 
 interface
 
@@ -20,7 +20,7 @@ uses
   Vcl.DBCtrls,
   Vcl.ImgList,
   Vcl.Buttons,
-  Faina.Pasta.cl,
+  pasta.dados,
   Faina.Pesquisa;
 
 type
@@ -56,16 +56,16 @@ type
     procedure sbttipoClick(Sender: TObject);
     procedure sbtprojeto_idClick(Sender: TObject);
   private
-    DM: TPastaController;
+    PD: TPastaDados;
   public
-    class procedure New(AParent: TWinControl; ADM: TPastaController; Tipo: TAcaoManutencao);
+    class procedure New(AParent: TWinControl; ADM: TPastaDados; Tipo: TAcaoManutencao);
   end;
 
 implementation
 
 {$R *.dfm}
 
-class procedure TPastaManutencao.New(AParent: TWinControl; ADM: TPastaController; Tipo: TAcaoManutencao);
+class procedure TPastaManutencao.New(AParent: TWinControl; ADM: TPastaDados; Tipo: TAcaoManutencao);
 begin
   with TPastaManutencao.Create(AParent) do
   begin
@@ -74,8 +74,13 @@ begin
     Anchors := [akLeft,akTop,akRight,akBottom];
     SetBounds(AParent.Left, AParent.Top, AParent.Width, AParent.Height);
 
-    DM := ADM;
-    srcPasta.DataSet := DM.tblPasta;
+    PD := ADM;
+    srcPasta.DataSet := PD.tblPasta;
+
+    case Tipo of
+      Incluir: PD.tblPasta.Append;
+      Alterar: PD.tblPasta.Edit;
+    end;
 
     btnGravar.Visible   := Tipo in [Incluir, Alterar];
     btnCancelar.Visible := Tipo in [Incluir, Alterar];
@@ -89,17 +94,17 @@ end;
 procedure TPastaManutencao.sbttipoClick(Sender: TObject);
 begin
   // Só exemplo
-  TPesquisa.New(DM.tblPasta);
-  DM.tblPasta.FieldByName('tipo').AsString := DM.tblPasta.FieldByName('id').AsString;
-  DM.tblPasta.FieldByName('tipo_descricao').AsString := DM.tblPasta.FieldByName('descricao').AsString;
+  TPesquisa.New(PD.tblPasta);
+  PD.tblPasta.FieldByName('tipo').AsString := PD.tblPasta.FieldByName('id').AsString;
+  PD.tblPasta.FieldByName('tipo_descricao').AsString := PD.tblPasta.FieldByName('descricao').AsString;
 end;
 
 procedure TPastaManutencao.sbtprojeto_idClick(Sender: TObject);
 begin
   // Só exemplo
-  TPesquisa.New(DM.tblPasta);
-  DM.tblPasta.FieldByName('projeto_id').AsString := DM.tblPasta.FieldByName('id').AsString;
-  DM.tblPasta.FieldByName('projeto_descricao').AsString := DM.tblPasta.FieldByName('descricao').AsString;
+  TPesquisa.New(PD.tblPasta);
+  PD.tblPasta.FieldByName('projeto_id').AsString := PD.tblPasta.FieldByName('id').AsString;
+  PD.tblPasta.FieldByName('projeto_descricao').AsString := PD.tblPasta.FieldByName('descricao').AsString;
 end;
 
 procedure TPastaManutencao.btnFecharClick(Sender: TObject);
@@ -109,7 +114,7 @@ end;
 
 procedure TPastaManutencao.btnCancelarClick(Sender: TObject);
 begin
-  DM.tblPasta.Cancel;
+  PD.tblPasta.Cancel;
   Close;
 end;
 
@@ -117,16 +122,16 @@ procedure TPastaManutencao.btnExcluirClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
     Exit;
-  DM.tblPasta.Delete;
-  DM.Pasta.Table.Write;
+  PD.tblPasta.Delete;
+  PD.Pasta.Table.Write;
   Close;
 end;
 
 procedure TPastaManutencao.btnGravarClick(Sender: TObject);
 begin
-  if DM.tblPasta.State in dsEditModes then
-    DM.tblPasta.Post;
-  DM.Pasta.Table.Write;
+  if PD.tblPasta.State in dsEditModes then
+    PD.tblPasta.Post;
+  PD.Pasta.Table.Write;
   Close;
 end;
 

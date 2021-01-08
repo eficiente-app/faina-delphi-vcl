@@ -1,9 +1,9 @@
-object PastaListagem: TPastaListagem
+object PastaTipoListagem: TPastaTipoListagem
   Left = 0
   Top = 0
-  Caption = 'Pasta'
-  ClientHeight = 452
-  ClientWidth = 727
+  Caption = 'Pasta Tipo'
+  ClientHeight = 588
+  ClientWidth = 544
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,10 +18,10 @@ object PastaListagem: TPastaListagem
   object dbgridPasta: TDBGrid
     Left = 0
     Top = 145
-    Width = 727
-    Height = 307
+    Width = 544
+    Height = 443
     Align = alClient
-    DataSource = srcPasta
+    DataSource = srcPastaTipo
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -36,31 +36,21 @@ object PastaListagem: TPastaListagem
       end
       item
         Expanded = False
-        FieldName = 'tipo'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'projeto_id'
-        Visible = True
-      end
-      item
-        Expanded = False
         FieldName = 'nome'
-        Width = 250
+        Width = 150
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'descricao'
-        Width = 250
+        Width = 294
         Visible = True
       end>
   end
-  object Panel1: TPanel
+  object pnlTopo: TPanel
     Left = 0
     Top = 0
-    Width = 727
+    Width = 544
     Height = 30
     Align = alTop
     BevelKind = bkTile
@@ -95,14 +85,12 @@ object PastaListagem: TPastaListagem
       Caption = 'Visualizar'
       TabOrder = 2
       OnClick = btnVisualizarClick
-      ExplicitLeft = 156
-      ExplicitTop = -1
     end
   end
   object pnlPesquisa: TPanel
     Left = 0
     Top = 30
-    Width = 727
+    Width = 544
     Height = 115
     Align = alTop
     BevelOuter = bvNone
@@ -153,10 +141,10 @@ object PastaListagem: TPastaListagem
       TabOrder = 1
     end
   end
-  object srcPasta: TDataSource
+  object srcPastaTipo: TDataSource
     AutoEdit = False
-    DataSet = PastaController.tblPasta
-    Left = 536
+    DataSet = PastaTipoDados.tblPastaTipo
+    Left = 360
     Top = 1
   end
 end

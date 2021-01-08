@@ -22,6 +22,7 @@ uses
   Vcl.ImgList,
   System.Actions,
   Vcl.ActnList,
+  Faina.Configuracoes,
 
   cxGraphics,
   cxControls,
@@ -148,8 +149,10 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure sbtConfiguracaoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
-    { Private declarations }
+    Configuracoes: TConfiguracoes;
   public
     { Public declarations }
   end;
@@ -161,10 +164,20 @@ implementation
 
 uses
   Faina.Login,
-  Faina.Dados,
-  Faina.Pasta.lst.vw;
+  pasta.listagem,
+  pasta_tipo.listagem;
 
 {$R *.dfm}
+
+procedure TPrincipal.FormCreate(Sender: TObject);
+begin
+  Configuracoes := TConfiguracoes.Create;
+end;
+
+procedure TPrincipal.FormDestroy(Sender: TObject);
+begin
+  FreeAndNil(Configuracoes);
+end;
 
 procedure TPrincipal.FormShow(Sender: TObject);
 //var
@@ -198,7 +211,8 @@ end;
 
 procedure TPrincipal.sbtConfiguracaoClick(Sender: TObject);
 begin
-  TPastaListagem.New;
+//  TPastaListagem.New;
+  TPastaTipoListagem.New;
 end;
 
 procedure TPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);

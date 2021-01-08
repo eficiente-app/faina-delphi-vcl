@@ -175,7 +175,6 @@ object PastaManutencao: TPastaManutencao
     BevelKind = bkTile
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 852
     object btnGravar: TButton
       Left = 0
       Top = 0
@@ -195,8 +194,6 @@ object PastaManutencao: TPastaManutencao
       Caption = 'Cancelar'
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 69
-      ExplicitTop = 2
     end
     object btnExcluir: TButton
       Left = 150
@@ -217,8 +214,6 @@ object PastaManutencao: TPastaManutencao
       Caption = 'Fechar'
       TabOrder = 3
       OnClick = btnFecharClick
-      ExplicitLeft = 231
-      ExplicitTop = 2
     end
   end
   object dbedttipo: TDBEdit
@@ -226,7 +221,7 @@ object PastaManutencao: TPastaManutencao
     Top = 52
     Width = 40
     Height = 21
-    DataField = 'tipo'
+    DataField = 'tipo_id'
     DataSource = srcPasta
     TabOrder = 2
   end
@@ -264,25 +259,23 @@ object PastaManutencao: TPastaManutencao
     Height = 21
     TabStop = False
     Color = clCream
-    DataField = 'tipo_descricao'
     DataSource = srcPasta
     ReadOnly = True
     TabOrder = 6
   end
   object dbedtprojeto_descricao: TDBEdit
-    Left = 350
+    Left = 352
     Top = 52
     Width = 155
     Height = 21
     TabStop = False
     Color = clCream
-    DataField = 'projeto_descricao'
-    DataSource = srcPasta
     ReadOnly = True
     TabOrder = 7
   end
   object srcPasta: TDataSource
-    DataSet = PastaController.tblPasta
+    AutoEdit = False
+    DataSet = PastaDados.tblPasta
     Left = 448
     Top = 1
   end
