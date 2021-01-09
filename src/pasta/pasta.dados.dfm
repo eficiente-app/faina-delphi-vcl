@@ -36,6 +36,24 @@ object PastaDados: TPastaDados
       FieldName = 'descricao'
       Size = 1000
     end
+    object tblPastaincluido_id: TIntegerField
+      FieldName = 'incluido_id'
+    end
+    object tblPastaincluido_em: TDateTimeField
+      FieldName = 'incluido_em'
+    end
+    object tblPastaalterado_id: TIntegerField
+      FieldName = 'alterado_id'
+    end
+    object tblPastaalterado_em: TDateTimeField
+      FieldName = 'alterado_em'
+    end
+    object tblPastaexcluido_id: TIntegerField
+      FieldName = 'excluido_id'
+    end
+    object tblPastaexcluido_em: TDateTimeField
+      FieldName = 'excluido_em'
+    end
   end
   object tblTipo: TFDMemTable
     FetchOptions.AssignedValues = [evMode]

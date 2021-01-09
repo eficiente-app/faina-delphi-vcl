@@ -1,4 +1,4 @@
-﻿// Eduardo - 06/12/2020
+﻿// Eduardo - 07/01/2021
 unit pasta_tipo.dados;
 
 interface
@@ -24,6 +24,12 @@ type
     tblPastaTipoid: TIntegerField;
     tblPastaTipodescricao: TStringField;
     tblPastaTiponome: TStringField;
+    tblPastaTipoincluido_id: TIntegerField;
+    tblPastaTipoincluido_em: TDateTimeField;
+    tblPastaTipoalterado_id: TIntegerField;
+    tblPastaTipoalterado_em: TDateTimeField;
+    tblPastaTipoexcluido_id: TIntegerField;
+    tblPastaTipoexcluido_em: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   public

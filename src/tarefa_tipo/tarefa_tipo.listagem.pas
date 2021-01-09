@@ -1,5 +1,5 @@
-﻿// Eduardo - 07/01/2021
-unit pasta_tipo.listagem;
+﻿// Eduardo - 08/01/2021
+unit tarefa_tipo.listagem;
 
 interface
 
@@ -18,13 +18,13 @@ uses
   Vcl.Grids,
   Vcl.DBGrids,
   Vcl.StdCtrls,
-  pasta_tipo.dados,
-  pasta_tipo.manutencao;
+  tarefa_tipo.dados,
+  tarefa_tipo.manutencao;
 
 type
-  TPastaTipoListagem = class(TForm)
+  TTarefaTipoListagem = class(TForm)
     dbgridPasta: TDBGrid;
-    srcPastaTipo: TDataSource;
+    srcTarefaTipo: TDataSource;
     pnlTopo: TPanel;
     btnIncluir: TButton;
     btnAlterar: TButton;
@@ -40,7 +40,7 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
   private
-    PTD: TPastaTipoDados;
+    TTD: TTarefaTipoDados;
   public
     class procedure New;
   end;
@@ -51,9 +51,9 @@ implementation
 
 { TPasta }
 
-class procedure TPastaTipoListagem.New;
+class procedure TTarefaTipoListagem.New;
 begin
-  with TPastaTipoListagem.Create(nil) do
+  with TTarefaTipoListagem.Create(nil) do
   try
     ShowModal;
   finally
@@ -61,31 +61,31 @@ begin
   end;
 end;
 
-procedure TPastaTipoListagem.FormCreate(Sender: TObject);
+procedure TTarefaTipoListagem.FormCreate(Sender: TObject);
 begin
-  PTD := TPastaTipoDados.Create(Self);
-  srcPastaTipo.DataSet := PTD.tblPastaTipo;
+  TTD := TTarefaTipoDados.Create(Self);
+  srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
 end;
 
-procedure TPastaTipoListagem.btnAlterarClick(Sender: TObject);
+procedure TTarefaTipoListagem.btnAlterarClick(Sender: TObject);
 begin
-  TPastaTipoManutencao.New(Self, PTD, Alterar);
+  TTarefaTipoManutencao.New(Self, TTD, Alterar);
 end;
 
-procedure TPastaTipoListagem.btnIncluirClick(Sender: TObject);
+procedure TTarefaTipoListagem.btnIncluirClick(Sender: TObject);
 begin
-  TPastaTipoManutencao.New(Self, PTD, Incluir);
+  TTarefaTipoManutencao.New(Self, TTD, Incluir);
 end;
 
-procedure TPastaTipoListagem.btnVisualizarClick(Sender: TObject);
+procedure TTarefaTipoListagem.btnVisualizarClick(Sender: TObject);
 begin
-  TPastaTipoManutencao.New(Self, PTD, Visualizar);
+  TTarefaTipoManutencao.New(Self, TTD, Visualizar);
 end;
 
-procedure TPastaTipoListagem.btnPesquisarClick(Sender: TObject);
+procedure TTarefaTipoListagem.btnPesquisarClick(Sender: TObject);
 begin
-  PTD.PastaTipo.Query.Add('id', 1);
-  PTD.PastaTipo.Table.Read;
+  TTD.TarefaTipo.Query.Add('id', 1);
+  TTD.TarefaTipo.Table.Read;
 end;
 
 end.

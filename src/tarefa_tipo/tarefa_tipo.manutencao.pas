@@ -1,5 +1,5 @@
-﻿// Eduardo - 07/01/2021
-unit pasta_tipo.manutencao;
+﻿// Eduardo - 08/01/2021
+unit tarefa_tipo.manutencao;
 
 interface
 
@@ -20,13 +20,13 @@ uses
   Vcl.DBCtrls,
   Vcl.ImgList,
   Vcl.Buttons,
-  pasta_tipo.dados,
+  tarefa_tipo.dados,
   Faina.Pesquisa;
 
 type
   TAcaoManutencao = (Incluir, Alterar, Visualizar);
 
-  TPastaTipoManutencao = class(TForm)
+  TTarefaTipoManutencao = class(TForm)
     dbedtid: TDBEdit;
     lbid: TLabel;
     pnlTop: TPanel;
@@ -35,7 +35,7 @@ type
     btnExcluir: TButton;
     btnFechar: TButton;
     lbdescricao: TLabel;
-    srcPastaTipo: TDataSource;
+    srcTarefaTipo: TDataSource;
     dbedtdescricao: TDBEdit;
     lbnome: TLabel;
     dbedtnome: TDBEdit;
@@ -44,30 +44,30 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
   private
-    PTD: TPastaTipoDados;
+    TTD: TTarefaTipoDados;
   public
-    class procedure New(AParent: TWinControl; APTD: TPastaTipoDados; Tipo: TAcaoManutencao);
+    class procedure New(AParent: TWinControl; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
   end;
 
 implementation
 
 {$R *.dfm}
 
-class procedure TPastaTipoManutencao.New(AParent: TWinControl; APTD: TPastaTipoDados; Tipo: TAcaoManutencao);
+class procedure TTarefaTipoManutencao.New(AParent: TWinControl; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
 begin
-  with TPastaTipoManutencao.Create(AParent) do
+  with TTarefaTipoManutencao.Create(AParent) do
   begin
     Parent := AParent;
     BorderStyle := bsNone;
     Anchors := [akLeft,akTop,akRight,akBottom];
     SetBounds(AParent.Left, AParent.Top, AParent.Width, AParent.Height);
 
-    PTD := APTD;
-    srcPastaTipo.DataSet := PTD.tblPastaTipo;
+    TTD := ATTD;
+    srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
 
     case Tipo of
-      Incluir: PTD.tblPastaTipo.Append;
-      Alterar: PTD.tblPastaTipo.Edit;
+      Incluir: TTD.tblTarefaTipo.Append;
+      Alterar: TTD.tblTarefaTipo.Edit;
     end;
 
     btnGravar.Visible   := Tipo in [Incluir, Alterar];
@@ -79,31 +79,31 @@ begin
   end;
 end;
 
-procedure TPastaTipoManutencao.btnFecharClick(Sender: TObject);
+procedure TTarefaTipoManutencao.btnFecharClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TPastaTipoManutencao.btnCancelarClick(Sender: TObject);
+procedure TTarefaTipoManutencao.btnCancelarClick(Sender: TObject);
 begin
-  PTD.tblPastaTipo.Cancel;
+  TTD.tblTarefaTipo.Cancel;
   Close;
 end;
 
-procedure TPastaTipoManutencao.btnExcluirClick(Sender: TObject);
+procedure TTarefaTipoManutencao.btnExcluirClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
     Exit;
-  PTD.tblPastaTipo.Delete;
-  PTD.PastaTipo.Table.Write;
+  TTD.tblTarefaTipo.Delete;
+  TTD.TarefaTipo.Table.Write;
   Close;
 end;
 
-procedure TPastaTipoManutencao.btnGravarClick(Sender: TObject);
+procedure TTarefaTipoManutencao.btnGravarClick(Sender: TObject);
 begin
-  if PTD.tblPastaTipo.State in dsEditModes then
-    PTD.tblPastaTipo.Post;
-  PTD.PastaTipo.Table.Write;
+  if TTD.tblTarefaTipo.State in dsEditModes then
+    TTD.tblTarefaTipo.Post;
+  TTD.TarefaTipo.Table.Write;
   Close;
 end;
 

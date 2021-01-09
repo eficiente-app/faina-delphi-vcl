@@ -29,6 +29,12 @@ type
     tblTipo: TFDMemTable;
     tblTipoid: TIntegerField;
     tblTipodescricao: TStringField;
+    tblPastaincluido_id: TIntegerField;
+    tblPastaincluido_em: TDateTimeField;
+    tblPastaalterado_id: TIntegerField;
+    tblPastaalterado_em: TDateTimeField;
+    tblPastaexcluido_id: TIntegerField;
+    tblPastaexcluido_em: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

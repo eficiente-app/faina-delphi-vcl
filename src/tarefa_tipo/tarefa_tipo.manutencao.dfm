@@ -1,7 +1,7 @@
-object PastaTipoManutencao: TPastaTipoManutencao
+object TarefaTipoManutencao: TTarefaTipoManutencao
   Left = 0
   Top = 0
-  Caption = 'Pasta Tipo'
+  Caption = 'Tarefa Tipo'
   ClientHeight = 124
   ClientWidth = 515
   Color = clWindow
@@ -50,7 +50,7 @@ object PastaTipoManutencao: TPastaTipoManutencao
     TabStop = False
     Color = clCream
     DataField = 'id'
-    DataSource = srcPastaTipo
+    DataSource = srcTarefaTipo
     ReadOnly = True
     TabOrder = 1
   end
@@ -110,7 +110,7 @@ object PastaTipoManutencao: TPastaTipoManutencao
     Width = 497
     Height = 21
     DataField = 'descricao'
-    DataSource = srcPastaTipo
+    DataSource = srcTarefaTipo
     TabOrder = 3
   end
   object dbedtnome: TDBEdit
@@ -119,12 +119,12 @@ object PastaTipoManutencao: TPastaTipoManutencao
     Width = 451
     Height = 21
     DataField = 'nome'
-    DataSource = srcPastaTipo
+    DataSource = srcTarefaTipo
     TabOrder = 2
   end
-  object srcPastaTipo: TDataSource
+  object srcTarefaTipo: TDataSource
     AutoEdit = False
-    DataSet = PastaTipoDados.tblPastaTipo
+    DataSet = TarefaTipoDados.tblTarefaTipo
     Left = 448
     Top = 1
   end

@@ -1,10 +1,10 @@
-object PastaTipoDados: TPastaTipoDados
+object TarefaTipoDados: TTarefaTipoDados
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 150
   Width = 215
-  object tblPastaTipo: TFDMemTable
+  object tblTarefaTipo: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -14,36 +14,36 @@ object PastaTipoDados: TPastaTipoDados
     UpdateOptions.AutoCommitUpdates = True
     Left = 32
     Top = 16
-    object tblPastaTipoid: TIntegerField
+    object tblTarefaTipoid: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'id'
     end
-    object tblPastaTiponome: TStringField
+    object tblTarefaTiponome: TStringField
       DisplayLabel = 'Nome'
       FieldName = 'nome'
       Size = 1000
     end
-    object tblPastaTipodescricao: TStringField
+    object tblTarefaTipodescricao: TStringField
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'descricao'
       Size = 1000
     end
-    object tblPastaTipoincluido_id: TIntegerField
+    object tblTarefaTipoincluido_id: TIntegerField
       FieldName = 'incluido_id'
     end
-    object tblPastaTipoincluido_em: TDateTimeField
+    object tblTarefaTipoincluido_em: TDateTimeField
       FieldName = 'incluido_em'
     end
-    object tblPastaTipoalterado_id: TIntegerField
+    object tblTarefaTipoalterado_id: TIntegerField
       FieldName = 'alterado_id'
     end
-    object tblPastaTipoalterado_em: TDateTimeField
+    object tblTarefaTipoalterado_em: TDateTimeField
       FieldName = 'alterado_em'
     end
-    object tblPastaTipoexcluido_id: TIntegerField
+    object tblTarefaTipoexcluido_id: TIntegerField
       FieldName = 'excluido_id'
     end
-    object tblPastaTipoexcluido_em: TDateTimeField
+    object tblTarefaTipoexcluido_em: TDateTimeField
       FieldName = 'excluido_em'
     end
   end

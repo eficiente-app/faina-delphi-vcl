@@ -165,7 +165,8 @@ implementation
 uses
   Faina.Login,
   pasta.listagem,
-  pasta_tipo.listagem;
+  pasta_tipo.listagem,
+  tarefa_tipo.listagem;
 
 {$R *.dfm}
 
@@ -212,7 +213,8 @@ end;
 procedure TPrincipal.sbtConfiguracaoClick(Sender: TObject);
 begin
 //  TPastaListagem.New;
-  TPastaTipoListagem.New;
+//  TPastaTipoListagem.New;
+  TTarefaTipoListagem.New;
 end;
 
 procedure TPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);

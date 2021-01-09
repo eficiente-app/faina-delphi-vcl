@@ -34,13 +34,13 @@ type
     btnCancelar: TButton;
     btnExcluir: TButton;
     btnFechar: TButton;
-    dbedttipo: TDBEdit;
-    lbtipo: TLabel;
+    dbedttipo_id: TDBEdit;
+    lbtipo_id: TLabel;
     lbprojeto_id: TLabel;
     dbedtprojeto_id: TDBEdit;
     lbnome: TLabel;
     lbdescricao: TLabel;
-    sbttipo: TSpeedButton;
+    sbttipo_id: TSpeedButton;
     sbtprojeto_id: TSpeedButton;
     srcPasta: TDataSource;
     dbedtnome: TDBEdit;
@@ -53,7 +53,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
-    procedure sbttipoClick(Sender: TObject);
+    procedure sbttipo_idClick(Sender: TObject);
     procedure sbtprojeto_idClick(Sender: TObject);
   private
     PD: TPastaDados;
@@ -91,11 +91,11 @@ begin
   end;
 end;
 
-procedure TPastaManutencao.sbttipoClick(Sender: TObject);
+procedure TPastaManutencao.sbttipo_idClick(Sender: TObject);
 begin
   // Só exemplo
   TPesquisa.New(PD.tblPasta);
-  PD.tblPasta.FieldByName('tipo').AsString := PD.tblPasta.FieldByName('id').AsString;
+  PD.tblPasta.FieldByName('tipo_id').AsString := PD.tblPasta.FieldByName('id').AsString;
   PD.tblPasta.FieldByName('tipo_descricao').AsString := PD.tblPasta.FieldByName('descricao').AsString;
 end;
 

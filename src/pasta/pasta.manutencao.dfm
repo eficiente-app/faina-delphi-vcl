@@ -20,7 +20,7 @@ object PastaManutencao: TPastaManutencao
     Height = 13
     Caption = 'C'#243'digo'
   end
-  object lbtipo: TLabel
+  object lbtipo_id: TLabel
     Left = 54
     Top = 36
     Width = 20
@@ -56,7 +56,7 @@ object PastaManutencao: TPastaManutencao
     Margins.Bottom = 2
     Caption = 'Descri'#231#227'o'
   end
-  object sbttipo: TSpeedButton
+  object sbttipo_id: TSpeedButton
     Left = 92
     Top = 51
     Width = 23
@@ -96,7 +96,7 @@ object PastaManutencao: TPastaManutencao
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFF0000}
-    OnClick = sbttipoClick
+    OnClick = sbttipo_idClick
   end
   object sbtprojeto_id: TSpeedButton
     Left = 321
@@ -164,7 +164,7 @@ object PastaManutencao: TPastaManutencao
     DataField = 'id'
     DataSource = srcPasta
     ReadOnly = True
-    TabOrder = 0
+    TabOrder = 1
   end
   object pnlTop: TPanel
     Left = 0
@@ -174,7 +174,7 @@ object PastaManutencao: TPastaManutencao
     Align = alTop
     BevelKind = bkTile
     BevelOuter = bvNone
-    TabOrder = 1
+    TabOrder = 0
     object btnGravar: TButton
       Left = 0
       Top = 0
@@ -216,7 +216,7 @@ object PastaManutencao: TPastaManutencao
       OnClick = btnFecharClick
     end
   end
-  object dbedttipo: TDBEdit
+  object dbedttipo_id: TDBEdit
     Left = 54
     Top = 52
     Width = 40
@@ -232,7 +232,7 @@ object PastaManutencao: TPastaManutencao
     Height = 21
     DataField = 'projeto_id'
     DataSource = srcPasta
-    TabOrder = 3
+    TabOrder = 4
   end
   object dbedtnome: TDBEdit
     Left = 8
@@ -241,7 +241,7 @@ object PastaManutencao: TPastaManutencao
     Height = 21
     DataField = 'nome'
     DataSource = srcPasta
-    TabOrder = 4
+    TabOrder = 6
   end
   object dbedtdescricao: TDBEdit
     Left = 8
@@ -250,7 +250,7 @@ object PastaManutencao: TPastaManutencao
     Height = 21
     DataField = 'descricao'
     DataSource = srcPasta
-    TabOrder = 5
+    TabOrder = 7
   end
   object dbedttipo_descricao: TDBEdit
     Left = 121
@@ -261,7 +261,7 @@ object PastaManutencao: TPastaManutencao
     Color = clCream
     DataSource = srcPasta
     ReadOnly = True
-    TabOrder = 6
+    TabOrder = 3
   end
   object dbedtprojeto_descricao: TDBEdit
     Left = 352
@@ -271,7 +271,7 @@ object PastaManutencao: TPastaManutencao
     TabStop = False
     Color = clCream
     ReadOnly = True
-    TabOrder = 7
+    TabOrder = 5
   end
   object srcPasta: TDataSource
     AutoEdit = False

@@ -147,6 +147,19 @@
             <Form>PastaTipoListagem</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\tarefa_tipo\tarefa_tipo.dados.pas">
+            <Form>TarefaTipoDados</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\tarefa_tipo\tarefa_tipo.listagem.pas">
+            <Form>TarefaTipoListagem</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\tarefa_tipo\tarefa_tipo.manutencao.pas">
+            <Form>TarefaTipoManutencao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
