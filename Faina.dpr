@@ -3,6 +3,7 @@
 uses
   Vcl.Forms,
   Faina.Principal in 'src\Faina.Principal.pas' {Principal},
+  Formulario.Base in 'src\base\Formulario.Base.pas' {FormularioBase},
   Faina.Login in 'src\Faina.Login.pas' {Login},
   Faina.Configuracoes in 'src\Faina.Configuracoes.pas',
   pasta.listagem in 'src\pasta\pasta.listagem.pas' {PastaListagem},
