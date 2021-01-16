@@ -108,6 +108,9 @@
             <Form>Principal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\base\Formulario.Base.pas">
+            <Form>FormularioBase</Form>
+        </DCCReference>
         <DCCReference Include="src\Faina.Login.pas">
             <Form>Login</Form>
             <FormType>dfm</FormType>
@@ -158,6 +161,10 @@
         </DCCReference>
         <DCCReference Include="src\tarefa_tipo\tarefa_tipo.manutencao.pas">
             <Form>TarefaTipoManutencao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Faina.Escuro.pas">
+            <Form>Escuro</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

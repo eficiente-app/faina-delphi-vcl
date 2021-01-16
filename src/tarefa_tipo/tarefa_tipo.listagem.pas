@@ -18,6 +18,7 @@ uses
   Vcl.Grids,
   Vcl.DBGrids,
   Vcl.StdCtrls,
+  Vcl.Buttons,
   tarefa_tipo.dados,
   tarefa_tipo.manutencao;
 
@@ -34,15 +35,16 @@ type
     btnPesquisar: TButton;
     btnLimpar: TButton;
     gbxPesquisa: TGroupBox;
+    sbtFechar: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
+    procedure sbtFecharClick(Sender: TObject);
   private
     TTD: TTarefaTipoDados;
   public
-    class procedure New;
   end;
 
 implementation
@@ -51,14 +53,9 @@ implementation
 
 { TPasta }
 
-class procedure TTarefaTipoListagem.New;
+procedure TTarefaTipoListagem.sbtFecharClick(Sender: TObject);
 begin
-  with TTarefaTipoListagem.Create(nil) do
-  try
-    ShowModal;
-  finally
-    Free;
-  end;
+  Close;
 end;
 
 procedure TTarefaTipoListagem.FormCreate(Sender: TObject);

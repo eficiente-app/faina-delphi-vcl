@@ -19,7 +19,8 @@ uses
   pasta_tipo.listagem in 'src\pasta_tipo\pasta_tipo.listagem.pas' {PastaTipoListagem},
   tarefa_tipo.dados in 'src\tarefa_tipo\tarefa_tipo.dados.pas' {TarefaTipoDados: TDataModule},
   tarefa_tipo.listagem in 'src\tarefa_tipo\tarefa_tipo.listagem.pas' {TarefaTipoListagem},
-  tarefa_tipo.manutencao in 'src\tarefa_tipo\tarefa_tipo.manutencao.pas' {TarefaTipoManutencao};
+  tarefa_tipo.manutencao in 'src\tarefa_tipo\tarefa_tipo.manutencao.pas' {TarefaTipoManutencao},
+  Faina.Escuro in 'src\Faina.Escuro.pas' {Escuro};
 
 {$R *.res}
 

@@ -164,6 +164,7 @@ implementation
 
 uses
   Faina.Login,
+  Faina.Escuro,
   pasta.listagem,
   pasta_tipo.listagem,
   tarefa_tipo.listagem;
@@ -214,7 +215,7 @@ procedure TPrincipal.sbtConfiguracaoClick(Sender: TObject);
 begin
 //  TPastaListagem.New;
 //  TPastaTipoListagem.New;
-  TTarefaTipoListagem.New;
+  TEscuro.Novo(Self, TTarefaTipoListagem);
 end;
 
 procedure TPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);

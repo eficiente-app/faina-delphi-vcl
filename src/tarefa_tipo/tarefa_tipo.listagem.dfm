@@ -2,14 +2,15 @@ object TarefaTipoListagem: TTarefaTipoListagem
   Left = 0
   Top = 0
   Caption = 'Tarefa Tipo'
-  ClientHeight = 588
-  ClientWidth = 544
+  ClientHeight = 605
+  ClientWidth = 583
   Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poOwnerFormCenter
   OnCreate = FormCreate
@@ -18,8 +19,8 @@ object TarefaTipoListagem: TTarefaTipoListagem
   object dbgridPasta: TDBGrid
     Left = 0
     Top = 145
-    Width = 544
-    Height = 443
+    Width = 583
+    Height = 460
     Align = alClient
     DataSource = srcTarefaTipo
     TabOrder = 0
@@ -28,73 +29,15 @@ object TarefaTipoListagem: TTarefaTipoListagem
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'id'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'nome'
-        Width = 150
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'descricao'
-        Width = 294
-        Visible = True
-      end>
-  end
-  object pnlTopo: TPanel
-    Left = 0
-    Top = 0
-    Width = 544
-    Height = 30
-    Align = alTop
-    BevelKind = bkTile
-    BevelOuter = bvNone
-    TabOrder = 1
-    object btnIncluir: TButton
-      Left = 0
-      Top = 0
-      Width = 75
-      Height = 26
-      Align = alLeft
-      Caption = 'Incluir'
-      TabOrder = 0
-      OnClick = btnIncluirClick
-    end
-    object btnAlterar: TButton
-      Left = 75
-      Top = 0
-      Width = 75
-      Height = 26
-      Align = alLeft
-      Caption = 'Alterar'
-      TabOrder = 1
-      OnClick = btnAlterarClick
-    end
-    object btnVisualizar: TButton
-      Left = 150
-      Top = 0
-      Width = 75
-      Height = 26
-      Align = alLeft
-      Caption = 'Visualizar'
-      TabOrder = 2
-      OnClick = btnVisualizarClick
-    end
   end
   object pnlPesquisa: TPanel
     Left = 0
     Top = 30
-    Width = 544
+    Width = 583
     Height = 115
     Align = alTop
     BevelOuter = bvNone
-    TabOrder = 2
+    TabOrder = 1
     object pnlPesquisar: TPanel
       AlignWithMargins = True
       Left = 380
@@ -139,6 +82,56 @@ object TarefaTipoListagem: TTarefaTipoListagem
       Align = alLeft
       Caption = ' Pesquisa '
       TabOrder = 1
+    end
+  end
+  object pnlTopo: TPanel
+    Left = 0
+    Top = 0
+    Width = 583
+    Height = 30
+    Align = alTop
+    BevelKind = bkTile
+    BevelOuter = bvNone
+    TabOrder = 2
+    object sbtFechar: TSpeedButton
+      Left = 556
+      Top = 0
+      Width = 23
+      Height = 26
+      Align = alRight
+      Caption = 'X'
+      OnClick = sbtFecharClick
+      ExplicitTop = -4
+    end
+    object btnIncluir: TButton
+      Left = 0
+      Top = 0
+      Width = 75
+      Height = 26
+      Align = alLeft
+      Caption = 'Incluir'
+      TabOrder = 0
+      OnClick = btnIncluirClick
+    end
+    object btnAlterar: TButton
+      Left = 75
+      Top = 0
+      Width = 75
+      Height = 26
+      Align = alLeft
+      Caption = 'Alterar'
+      TabOrder = 1
+      OnClick = btnAlterarClick
+    end
+    object btnVisualizar: TButton
+      Left = 150
+      Top = 0
+      Width = 75
+      Height = 26
+      Align = alLeft
+      Caption = 'Visualizar'
+      TabOrder = 2
+      OnClick = btnVisualizarClick
     end
   end
   object srcTarefaTipo: TDataSource
