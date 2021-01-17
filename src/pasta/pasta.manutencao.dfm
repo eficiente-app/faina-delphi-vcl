@@ -1,16 +1,10 @@
-object PastaManutencao: TPastaManutencao
-  Left = 0
-  Top = 0
+inherited PastaManutencao: TPastaManutencao
   Caption = 'Pasta'
   ClientHeight = 165
   ClientWidth = 515
   Color = clWindow
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
+  ExplicitWidth = 531
+  ExplicitHeight = 204
   PixelsPerInch = 96
   TextHeight = 13
   object lbid: TLabel

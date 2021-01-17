@@ -4,25 +4,26 @@ unit pasta.listagem;
 interface
 
 uses
-  Winapi.Windows,
   Winapi.Messages,
+  Winapi.Windows,
+  System.Classes,
   System.SysUtils,
   System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
   Data.DB,
-  Vcl.ExtCtrls,
-  Vcl.Grids,
+  Vcl.Controls,
   Vcl.DBGrids,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Grids,
   Vcl.StdCtrls,
+  Formulario.Base,
   pasta.dados,
   pasta.manutencao;
 
 type
-  TPastaListagem = class(TForm)
+  TPastaListagem = class(TFormularioBase)
     dbgridPasta: TDBGrid;
     srcPasta: TDataSource;
     pnlTopo: TPanel;

@@ -1,18 +1,12 @@
-object PastaListagem: TPastaListagem
-  Left = 0
-  Top = 0
+inherited PastaListagem: TPastaListagem
   Caption = 'Pasta'
   ClientHeight = 452
   ClientWidth = 727
   Color = clWindow
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
   Position = poOwnerFormCenter
   OnCreate = FormCreate
+  ExplicitWidth = 743
+  ExplicitHeight = 491
   PixelsPerInch = 96
   TextHeight = 13
   object dbgridPasta: TDBGrid

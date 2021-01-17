@@ -4,26 +4,27 @@ unit Faina.Pesquisa;
 interface
 
 uses
-  Winapi.Windows,
   Winapi.Messages,
+  Winapi.Windows,
+  System.Classes,
   System.SysUtils,
   System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
   Data.DB,
-  Vcl.Grids,
-  Vcl.DBGrids,
-  Vcl.ExtCtrls,
-  Vcl.StdCtrls,
-  Vcl.Mask,
+  Vcl.Controls,
   Vcl.DBCtrls,
+  Vcl.DBGrids,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Grids,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+  Formulario.Base,
   FireDAC.Comp.Client;
 
 type
-  TPesquisa = class(TForm)
+  TPesquisa = class(TFormularioBase)
     pnlPesquisa: TPanel;
     dbgrid: TDBGrid;
     src: TDataSource;

@@ -1,17 +1,11 @@
-object Pesquisa: TPesquisa
-  Left = 0
-  Top = 0
+inherited Pesquisa: TPesquisa
   Caption = 'Pesquisa'
   ClientHeight = 283
   ClientWidth = 430
   Color = clWindow
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
   OnShow = FormShow
+  ExplicitWidth = 446
+  ExplicitHeight = 322
   PixelsPerInch = 96
   TextHeight = 13
   object pnlPesquisa: TPanel

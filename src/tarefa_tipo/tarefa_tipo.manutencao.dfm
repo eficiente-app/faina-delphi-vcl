@@ -1,16 +1,10 @@
-object TarefaTipoManutencao: TTarefaTipoManutencao
-  Left = 0
-  Top = 0
+inherited TarefaTipoManutencao: TTarefaTipoManutencao
   Caption = 'Tarefa Tipo'
   ClientHeight = 124
   ClientWidth = 515
   Color = clWindow
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
+  ExplicitWidth = 531
+  ExplicitHeight = 163
   PixelsPerInch = 96
   TextHeight = 13
   object lbid: TLabel

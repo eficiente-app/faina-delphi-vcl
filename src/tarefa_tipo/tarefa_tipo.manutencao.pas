@@ -4,29 +4,30 @@ unit tarefa_tipo.manutencao;
 interface
 
 uses
-  Winapi.Windows,
   Winapi.Messages,
+  Winapi.Windows,
+  System.Classes,
   System.SysUtils,
   System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  Vcl.StdCtrls,
   Data.DB,
-  Vcl.ExtCtrls,
-  Vcl.Mask,
-  Vcl.DBCtrls,
-  Vcl.ImgList,
   Vcl.Buttons,
+  Vcl.Controls,
+  Vcl.DBCtrls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.ImgList,
+  Vcl.Mask,
+  Vcl.StdCtrls,
+  Formulario.Base,
   tarefa_tipo.dados,
   Faina.Pesquisa;
 
 type
   TAcaoManutencao = (Incluir, Alterar, Visualizar);
 
-  TTarefaTipoManutencao = class(TForm)
+  TTarefaTipoManutencao = class(TFormularioBase)
     dbedtid: TDBEdit;
     lbid: TLabel;
     pnlTop: TPanel;
