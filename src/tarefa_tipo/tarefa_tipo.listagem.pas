@@ -19,11 +19,12 @@ uses
   Vcl.DBGrids,
   Vcl.StdCtrls,
   Vcl.Buttons,
+  Formulario.Base,
   tarefa_tipo.dados,
   tarefa_tipo.manutencao;
 
 type
-  TTarefaTipoListagem = class(TForm)
+  TTarefaTipoListagem = class(TFormularioBase)
     dbgridPasta: TDBGrid;
     srcTarefaTipo: TDataSource;
     pnlTopo: TPanel;

@@ -2,7 +2,6 @@
 
 uses
   Vcl.Forms,
-  Faina.Principal in 'src\Faina.Principal.pas' {Principal},
   Formulario.Base in 'src\base\Formulario.Base.pas' {FormularioBase},
   Faina.Login in 'src\Faina.Login.pas' {Login},
   Faina.Configuracoes in 'src\Faina.Configuracoes.pas',
@@ -20,7 +19,8 @@ uses
   tarefa_tipo.dados in 'src\tarefa_tipo\tarefa_tipo.dados.pas' {TarefaTipoDados: TDataModule},
   tarefa_tipo.listagem in 'src\tarefa_tipo\tarefa_tipo.listagem.pas' {TarefaTipoListagem},
   tarefa_tipo.manutencao in 'src\tarefa_tipo\tarefa_tipo.manutencao.pas' {TarefaTipoManutencao},
-  Faina.Escuro in 'src\Faina.Escuro.pas' {Escuro};
+  Faina.Principal in 'src\Faina.Principal.pas' {Principal},
+  Faina.Escuro in 'src\Faina.Escuro.pas';
 
 {$R *.res}
 

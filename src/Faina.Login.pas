@@ -61,7 +61,7 @@ begin
   with TLogin.Create(AParent) do
   begin
     Parent := AParent;
-    SetBounds(AParent.Left, AParent.Top, AParent.Width, AParent.Height);
+    SetBounds(0, 0, AParent.Width, AParent.Height);
     Show;
   end;
 end;
