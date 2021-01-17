@@ -79,6 +79,8 @@ inherited PastaListagem: TPastaListagem
       Caption = 'Alterar'
       TabOrder = 1
       OnClick = btnAlterarClick
+      ExplicitLeft = 69
+      ExplicitTop = -1
     end
     object btnVisualizar: TButton
       Left = 150

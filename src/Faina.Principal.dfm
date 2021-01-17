@@ -18,6 +18,7 @@ inherited Principal: TPrincipal
     Color = 3806736
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = -6
     object pnlTitle: TPanel
       Left = 0
       Top = 0
@@ -26,8 +27,6 @@ inherited Principal: TPrincipal
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 9
-      ExplicitTop = -6
       object lblTitle: TLabel
         AlignWithMargins = True
         Left = 3
@@ -43,8 +42,8 @@ inherited Principal: TPrincipal
         Font.Style = []
         ParentFont = False
         Layout = tlCenter
-        ExplicitWidth = 57
-        ExplicitHeight = 37
+        ExplicitLeft = 6
+        ExplicitTop = 0
       end
     end
     object svgUserAvatar: TSVGIconImage

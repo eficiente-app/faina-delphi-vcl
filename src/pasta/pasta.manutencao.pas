@@ -59,22 +59,17 @@ type
   private
     PD: TPastaDados;
   public
-    class procedure New(AParent: TWinControl; ADM: TPastaDados; Tipo: TAcaoManutencao);
+    class procedure New(AParent: TForm; ADM: TPastaDados; Tipo: TAcaoManutencao);
   end;
 
 implementation
 
 {$R *.dfm}
 
-class procedure TPastaManutencao.New(AParent: TWinControl; ADM: TPastaDados; Tipo: TAcaoManutencao);
+class procedure TPastaManutencao.New(AParent: TForm; ADM: TPastaDados; Tipo: TAcaoManutencao);
 begin
   with TPastaManutencao.Create(AParent) do
   begin
-    Parent := AParent;
-    BorderStyle := bsNone;
-    Anchors := [akLeft,akTop,akRight,akBottom];
-    SetBounds(AParent.Left, AParent.Top, AParent.Width, AParent.Height);
-
     PD := ADM;
     srcPasta.DataSet := PD.tblPasta;
 
@@ -88,7 +83,7 @@ begin
     btnExcluir.Visible  := Tipo = Alterar;
     btnFechar.Visible   := Tipo = Visualizar;
 
-    Show;
+    ShowModal(AParent);
   end;
 end;
 

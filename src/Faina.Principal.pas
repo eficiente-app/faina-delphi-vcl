@@ -45,6 +45,7 @@ implementation
 
 uses
   Faina.Login,
+  Configuracoes.Principal,
   pasta.listagem,
   pasta_tipo.listagem,
   tarefa_tipo.listagem;
@@ -53,7 +54,7 @@ uses
 
 procedure TPrincipal.btnConfiguracoesClick(Sender: TObject);
 begin
-  TTarefaTipoListagem.Create(AreaTrabalho).ShowModal(Self);
+  TConfiguracoesPrincipal.Create(Self).ShowModal(Self);
 end;
 
 procedure TPrincipal.FormShow(Sender: TObject);

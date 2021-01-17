@@ -20,7 +20,8 @@ uses
   tarefa_tipo.listagem in 'src\tarefa_tipo\tarefa_tipo.listagem.pas' {TarefaTipoListagem},
   tarefa_tipo.manutencao in 'src\tarefa_tipo\tarefa_tipo.manutencao.pas' {TarefaTipoManutencao},
   Faina.Principal in 'src\Faina.Principal.pas' {Principal},
-  Faina.Escuro in 'src\Faina.Escuro.pas';
+  Faina.Escuro in 'src\Faina.Escuro.pas',
+  Configuracoes.Principal in 'src\configuracoes\Configuracoes.Principal.pas' {ConfiguracoesPrincipal};
 
 {$R *.res}
 
@@ -29,5 +30,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPrincipal, Principal);
+  Application.CreateForm(TConfiguracoesPrincipal, ConfiguracoesPrincipal);
   Application.Run;
 end.

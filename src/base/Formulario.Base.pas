@@ -26,7 +26,7 @@ type
     { Public declarations }
     destructor Destroy; override;
     procedure ShowModal(AParent: TForm); reintroduce; overload;
-    procedure ShowIn(AParent: TControl);
+    procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
 
     function Principal: TFormularioBase;
     function AreaTrabalho: TPanel;
@@ -61,12 +61,13 @@ begin
   Result := TPrincipal(Principal).pnlAreaTrabalho;
 end;
 
-procedure TFormularioBase.ShowIn(AParent: TControl);
+procedure TFormularioBase.ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
 begin
-  Parent      := TWinControl(AParent);
-  Anchors     := [];
-  BorderStyle := bsNone;
-  Position    := poDesigned;
+  Parent       := TWinControl(AParent);
+  Self.Align   := Align;
+  Self.Anchors := Anchors;
+  BorderStyle  := bsNone;
+  Position     := poDesigned;
   SetBounds((AParent.Width div 2) - (Width div 2), (AParent.Height div 2) - (Height div 2), Width, Height);
   Show;
 end;
