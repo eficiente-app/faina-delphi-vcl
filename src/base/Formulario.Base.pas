@@ -28,8 +28,8 @@ type
     procedure ShowModal(AParent: TForm); reintroduce; overload;
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
 
-    function Principal: TFormularioBase;
-    function AreaTrabalho: TPanel;
+    class function Principal: TFormularioBase;
+    class function AreaTrabalho: TPanel;
   end;
 
 var
@@ -44,21 +44,21 @@ uses
 
 { TFormularioBase }
 
+class function TFormularioBase.Principal: TFormularioBase;
+begin
+  Result := Faina.Principal.Principal;
+end;
+
+class function TFormularioBase.AreaTrabalho: TPanel;
+begin
+  Result := TPrincipal(Principal).pnlAreaTrabalho;
+end;
+
 destructor TFormularioBase.Destroy;
 begin
   if Assigned(FEscuro) then
     FreeAndNil(FEscuro);
   inherited;
-end;
-
-function TFormularioBase.Principal: TFormularioBase;
-begin
-  Result := Faina.Principal.Principal;
-end;
-
-function TFormularioBase.AreaTrabalho: TPanel;
-begin
-  Result := TPrincipal(Principal).pnlAreaTrabalho;
 end;
 
 procedure TFormularioBase.ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);

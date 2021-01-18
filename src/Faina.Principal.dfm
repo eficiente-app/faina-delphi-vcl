@@ -42,8 +42,8 @@ inherited Principal: TPrincipal
         Font.Style = []
         ParentFont = False
         Layout = tlCenter
-        ExplicitLeft = 6
-        ExplicitTop = 0
+        ExplicitWidth = 57
+        ExplicitHeight = 37
       end
     end
     object svgUserAvatar: TSVGIconImage
@@ -63,6 +63,8 @@ inherited Principal: TPrincipal
       FixedColor = clWhite
       Align = alRight
       OnClick = svgUserAvatarClick
+      ExplicitLeft = 954
+      ExplicitTop = 0
     end
   end
   object pnlClient: TPanel
@@ -94,15 +96,8 @@ inherited Principal: TPrincipal
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-    end
-  end
-  object pmUserAvatar: TPopupMenu
-    Alignment = paRight
-    Left = 800
-    Top = 64
-    object btnConfiguracoes: TMenuItem
-      Caption = 'Configura'#231#245'es'
-      OnClick = btnConfiguracoesClick
+      ExplicitLeft = 191
+      ExplicitTop = 3
     end
   end
 end

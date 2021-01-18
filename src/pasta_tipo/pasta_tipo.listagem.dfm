@@ -1,5 +1,5 @@
 inherited PastaTipoListagem: TPastaTipoListagem
-  Caption = 'Pasta Tipo'
+  Caption = 'Tipos de Pasta'
   ClientHeight = 588
   ClientWidth = 544
   Color = clWindow

@@ -28,6 +28,7 @@ type
     nbiPastas: TdxNavBarItem;
     lblTitle: TLabel;
     nbiTipoPasta: TdxNavBarItem;
+    lblSubTitle: TLabel;
     procedure nbiPastasClick(Sender: TObject);
     procedure nbiTipoPastaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -36,6 +37,7 @@ type
     FTelaAtiva: TFormularioBase;
     procedure AbrirTela(FormClass: TFormClass);
     procedure FercharTela;
+    procedure AtualizarSubTitulo;
   public
     { Public declarations }
   end;
@@ -63,6 +65,14 @@ begin
   FercharTela;
   FTelaAtiva := TFormularioBase(FormClass.Create(Self));
   FTelaAtiva.ShowIn(pnlAreaTrabalho, alClient);
+  AtualizarSubTitulo;
+end;
+
+procedure TConfiguracoesPrincipal.AtualizarSubTitulo;
+begin
+  lblSubTitle.Visible := Assigned(FTelaAtiva);
+  if Assigned(FTelaAtiva) then
+    lblSubTitle.Caption := '-> '+ FTelaAtiva.Caption;
 end;
 
 procedure TConfiguracoesPrincipal.FercharTela;

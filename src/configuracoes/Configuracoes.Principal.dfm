@@ -17,9 +17,9 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 846
+      Width = 121
       Height = 30
-      Align = alClient
+      Align = alLeft
       Caption = 'Configura'#231#245'es'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -29,8 +29,26 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
       Font.Quality = fqClearType
       ParentFont = False
       Layout = tlCenter
-      ExplicitWidth = 121
       ExplicitHeight = 28
+    end
+    object lblSubTitle: TLabel
+      AlignWithMargins = True
+      Left = 130
+      Top = 3
+      Width = 113
+      Height = 30
+      Align = alLeft
+      Caption = '-> (Caminho)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -20
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      Font.Quality = fqClearType
+      ParentFont = False
+      Layout = tlCenter
+      Visible = False
+      ExplicitTop = 0
     end
   end
   object pnlLateralEsquerda: TPanel
@@ -43,8 +61,6 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
     Color = 10495813
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 41
-    ExplicitHeight = 370
     object nbMenu: TdxNavBar
       Left = 0
       Top = 0
@@ -164,6 +180,5 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitTop = 39
   end
 end

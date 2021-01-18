@@ -21,7 +21,9 @@ uses
   tarefa_tipo.manutencao in 'src\tarefa_tipo\tarefa_tipo.manutencao.pas' {TarefaTipoManutencao},
   Faina.Principal in 'src\Faina.Principal.pas' {Principal},
   Faina.Escuro in 'src\Faina.Escuro.pas',
-  Configuracoes.Principal in 'src\configuracoes\Configuracoes.Principal.pas' {ConfiguracoesPrincipal};
+  Configuracoes.Principal in 'src\configuracoes\Configuracoes.Principal.pas' {ConfiguracoesPrincipal},
+  menu.usuario in 'src\principal\menu.usuario.pas' {MenuUsuario},
+  Formulario.DropDown.Base in 'src\base\Formulario.DropDown.Base.pas' {FormularioDropDownBase};
 
 {$R *.res}
 
@@ -30,6 +32,5 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPrincipal, Principal);
-  Application.CreateForm(TConfiguracoesPrincipal, ConfiguracoesPrincipal);
   Application.Run;
 end.

@@ -24,9 +24,7 @@ type
     pnlClient: TPanel;
     pnlTitle: TPanel;
     lblTitle: TLabel;
-    pmUserAvatar: TPopupMenu;
     svgUserAvatar: TSVGIconImage;
-    btnConfiguracoes: TMenuItem;
     pnlLateralEsquerda: TPanel;
     pnlAreaTrabalho: TPanel;
     procedure svgUserAvatarClick(Sender: TObject);
@@ -45,6 +43,7 @@ implementation
 
 uses
   Faina.Login,
+  Menu.Usuario,
   Configuracoes.Principal,
   pasta.listagem,
   pasta_tipo.listagem,
@@ -63,13 +62,8 @@ begin
 end;
 
 procedure TPrincipal.svgUserAvatarClick(Sender: TObject);
-var
-  pMenu: TPoint;
 begin
-  pMenu := pnlTop.ClientOrigin;
-  pMenu.X := pMenu.X + pnlTop.Width;
-  pMenu.Y := pMenu.Y + pnlTop.Height;
-  pmUserAvatar.Popup(pMenu.X, pMenu.Y);
+  TMenuUsuario.Exibir;
 end;
 
 end.
