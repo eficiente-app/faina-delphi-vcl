@@ -34,6 +34,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPrincipal, Principal);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TPastaTipoDados, pasta_tipo_dados);
   Application.Run;
 end.

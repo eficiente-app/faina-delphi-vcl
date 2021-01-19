@@ -18,7 +18,6 @@ inherited Principal: TPrincipal
     Color = 3806736
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = -6
     object pnlTitle: TPanel
       Left = 0
       Top = 0
@@ -63,8 +62,6 @@ inherited Principal: TPrincipal
       FixedColor = clWhite
       Align = alRight
       OnClick = svgUserAvatarClick
-      ExplicitLeft = 954
-      ExplicitTop = 0
     end
   end
   object pnlClient: TPanel
@@ -96,8 +93,6 @@ inherited Principal: TPrincipal
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 206
-      ExplicitTop = 3
     end
   end
 end

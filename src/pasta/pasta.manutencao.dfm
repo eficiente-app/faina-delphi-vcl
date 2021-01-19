@@ -134,7 +134,7 @@ inherited PastaManutencao: TPastaManutencao
       FFFFFFFFFFFFFFFF0000}
     OnClick = sbtprojeto_idClick
   end
-  object lbtipo_descricao: TLabel
+  object lbtipo_nome: TLabel
     Left = 121
     Top = 36
     Width = 46
@@ -246,13 +246,14 @@ inherited PastaManutencao: TPastaManutencao
     DataSource = srcPasta
     TabOrder = 7
   end
-  object dbedttipo_descricao: TDBEdit
+  object dbedttipo_nome: TDBEdit
     Left = 121
     Top = 52
     Width = 156
     Height = 21
     TabStop = False
     Color = clCream
+    DataField = 'tipo_nome'
     DataSource = srcPasta
     ReadOnly = True
     TabOrder = 3

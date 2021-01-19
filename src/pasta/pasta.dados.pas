@@ -26,21 +26,18 @@ type
     tblPastaprojeto_id: TIntegerField;
     tblPastanome: TStringField;
     tblPastadescricao: TStringField;
-    tblTipo: TFDMemTable;
-    tblTipoid: TIntegerField;
-    tblTipodescricao: TStringField;
     tblPastaincluido_id: TIntegerField;
     tblPastaincluido_em: TDateTimeField;
     tblPastaalterado_id: TIntegerField;
     tblPastaalterado_em: TDateTimeField;
     tblPastaexcluido_id: TIntegerField;
     tblPastaexcluido_em: TDateTimeField;
+    tblPastatipo_nome: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
   public
     Pasta: TRESTManager;
-    Tipo: TRESTManager;
   end;
 
 implementation
@@ -49,16 +46,19 @@ implementation
 
 {$R *.dfm}
 
+uses
+  pasta_tipo.dados;
+
 procedure TPastaDados.DataModuleCreate(Sender: TObject);
 begin
+
   Pasta := TRESTManager.Create('http://18.230.153.64:3000/api/pasta', tblPasta);
-  Tipo  := TRESTManager.Create('http://18.230.153.64:3000/api/pasta/tipo', tblTipo);
 end;
 
 procedure TPastaDados.DataModuleDestroy(Sender: TObject);
 begin
   FreeAndNil(Pasta);
-  FreeAndNil(Tipo);
+
 end;
 
 end.

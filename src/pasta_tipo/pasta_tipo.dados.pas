@@ -6,6 +6,7 @@ interface
 uses
   System.SysUtils,
   System.Classes,
+  Vcl.Forms,
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
   FireDAC.Stan.Param,
@@ -36,6 +37,9 @@ type
     PastaTipo: TRESTManager;
   end;
 
+var
+  pasta_tipo_dados: TPastaTipoDados;
+
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
@@ -45,6 +49,7 @@ implementation
 procedure TPastaTipoDados.DataModuleCreate(Sender: TObject);
 begin
   PastaTipo := TRESTManager.Create('http://18.230.153.64:3000/api/pasta/tipo', tblPastaTipo);
+  PastaTipo.Table.Read;
 end;
 
 procedure TPastaTipoDados.DataModuleDestroy(Sender: TObject);

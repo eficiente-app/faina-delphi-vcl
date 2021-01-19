@@ -46,8 +46,8 @@ type
     srcPasta: TDataSource;
     dbedtnome: TDBEdit;
     dbedtdescricao: TDBEdit;
-    dbedttipo_descricao: TDBEdit;
-    lbtipo_descricao: TLabel;
+    dbedttipo_nome: TDBEdit;
+    lbtipo_nome: TLabel;
     dbedtprojeto_descricao: TDBEdit;
     lbprojeto_descricao: TLabel;
     procedure btnGravarClick(Sender: TObject);
@@ -65,6 +65,9 @@ type
 implementation
 
 {$R *.dfm}
+
+uses
+  pasta_tipo.dados;
 
 class procedure TPastaManutencao.New(AParent: TForm; ADM: TPastaDados; Tipo: TAcaoManutencao);
 begin
@@ -90,15 +93,19 @@ end;
 procedure TPastaManutencao.sbttipo_idClick(Sender: TObject);
 begin
   // Só exemplo
-  TPesquisa.New(PD.tblPasta);
-  PD.tblPasta.FieldByName('tipo_id').AsString := PD.tblPasta.FieldByName('id').AsString;
-  PD.tblPasta.FieldByName('tipo_descricao').AsString := PD.tblPasta.FieldByName('descricao').AsString;
+  TPesquisa.New(TForm(Self.Parent), pasta_tipo_dados.tblPastaTipo).Selecao(
+    procedure
+    begin
+      PD.tblPasta.FieldByName('tipo_id').AsString := pasta_tipo_dados.tblPastaTipo.FieldByName('id').AsString;
+      PD.tblPasta.FieldByName('tipo_nome').AsString := pasta_tipo_dados.tblPastaTipo.FieldByName('nome').AsString;
+    end
+  );
 end;
 
 procedure TPastaManutencao.sbtprojeto_idClick(Sender: TObject);
 begin
   // Só exemplo
-  TPesquisa.New(PD.tblPasta);
+  TPesquisa.New(TForm(Self.Parent), PD.tblPasta);
   PD.tblPasta.FieldByName('projeto_id').AsString := PD.tblPasta.FieldByName('id').AsString;
   PD.tblPasta.FieldByName('projeto_descricao').AsString := PD.tblPasta.FieldByName('descricao').AsString;
 end;

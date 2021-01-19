@@ -87,6 +87,7 @@ inherited Pesquisa: TPesquisa
       Caption = 'Confirmar'
       ModalResult = 1
       TabOrder = 0
+      OnClick = btnConfirmarClick
     end
     object btnCancelar: TButton
       Left = 75
@@ -97,6 +98,7 @@ inherited Pesquisa: TPesquisa
       Caption = 'Cancelar'
       ModalResult = 2
       TabOrder = 1
+      OnClick = btnCancelarClick
     end
   end
   object src: TDataSource

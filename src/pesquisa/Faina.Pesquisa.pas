@@ -38,11 +38,15 @@ type
     btnCancelar: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
+    procedure btnConfirmarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   private
     FFiltro: String;
     FFiltrado: Boolean;
+    FSelecao: TProc;
   public
-    class procedure New(ATable: TFDMemTable);
+    class function New(AParent: TForm; ATable: TFDMemTable): TPesquisa;
+    procedure Selecao(Prc: TProc);
   end;
 
 implementation
@@ -54,24 +58,44 @@ uses
 
 { TPesquisa }
 
-class procedure TPesquisa.New(ATable: TFDMemTable);
+class function TPesquisa.New(AParent: TForm; ATable: TFDMemTable): TPesquisa;
 begin
-  with TPesquisa.Create(nil) do
+  Result := TPesquisa.Create(AParent);
+  with Result do
   try
     FFiltro   := ATable.Filter;
     FFiltrado := ATable.Filtered;
     try
       src.DataSet := ATable;
 
-      if ShowModal <> mrOk then
-        Abort;
+      ShowModal(AParent);
+
+//      if ShowModal <> mrOk then
+//        Abort;
     finally
-      ATable.Filter   := FFiltro;
-      ATable.Filtered := FFiltrado;
+//      ATable.Filter   := FFiltro;
+//      ATable.Filtered := FFiltrado;
     end;
   finally
-    Free;
+
   end;
+end;
+
+procedure TPesquisa.Selecao(Prc: TProc);
+begin
+  FSelecao := Prc;
+end;
+
+procedure TPesquisa.btnCancelarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TPesquisa.btnConfirmarClick(Sender: TObject);
+begin
+  if Assigned(FSelecao) then
+    FSelecao;
+  Close;
 end;
 
 procedure TPesquisa.btnPesquisarClick(Sender: TObject);
@@ -79,12 +103,15 @@ var
   sPesquisa: String;
   Field: TField;
 begin
+  if Trim(edtValor.Text).IsEmpty then
+    Exit;
+
   Field := TField(cbxCampo.Items.Objects[cbxCampo.ItemIndex]);
 
   sPesquisa := IfThen(FFiltrado and not FFiltro.IsEmpty, FFiltro +' and ') + Field.FieldName;
-  
+
   if Field.InheritsFrom(TNumericField) or Field.InheritsFrom(TDateField) then
-    sPesquisa := sPesquisa +' = '+ edtValor.Text
+    sPesquisa := sPesquisa +' = '+ Trim(edtValor.Text)
   else
     sPesquisa := sPesquisa +' LIKE '+ QuotedStr('%'+ ReplaceStr(Trim(edtValor.Text), ' ', '%') +'%');
 
