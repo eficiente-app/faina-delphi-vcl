@@ -20,26 +20,26 @@ uses
   Vcl.ImgList,
   Vcl.Mask,
   Vcl.StdCtrls,
-  Formulario.Base,
+  Formulario.Base.Visual,
   pasta_tipo.dados,
-  Faina.Pesquisa;
+  Faina.Pesquisa, Formulario.Base;
 
 type
   TAcaoManutencao = (Incluir, Alterar, Visualizar);
 
-  TPastaTipoManutencao = class(TFormularioBase)
-    dbedtid: TDBEdit;
+  TPastaTipoManutencao = class(TFormularioBaseVisual)
     lbid: TLabel;
+    lbdescricao: TLabel;
+    lbnome: TLabel;
+    dbedtid: TDBEdit;
     pnlTop: TPanel;
     btnGravar: TButton;
     btnCancelar: TButton;
     btnExcluir: TButton;
     btnFechar: TButton;
-    lbdescricao: TLabel;
-    srcPastaTipo: TDataSource;
     dbedtdescricao: TDBEdit;
-    lbnome: TLabel;
     dbedtnome: TDBEdit;
+    srcPastaTipo: TDataSource;
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);

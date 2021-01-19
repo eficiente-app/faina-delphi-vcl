@@ -39,7 +39,7 @@ type
 implementation
 
 uses
-  Faina.Principal,
+  area_trabalho,
   Configuracoes.Principal;
 
 {$R *.dfm}
@@ -54,7 +54,7 @@ procedure TMenuUsuario.Posicionar;
 var
   pMenu: TPoint;
 begin
-  with TPrincipal(Principal).pnlTop do
+  with TAreaTrabalho(AreaTrabalho).pnlTop do
   begin
     pMenu := ClientOrigin;
     pMenu.X := pMenu.X + Width;

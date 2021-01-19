@@ -114,6 +114,5 @@ inherited MenuUsuario: TMenuUsuario
     Caption = 'Configura'#231#245'es'
     TabOrder = 2
     OnClick = cxButton2Click
-    ExplicitTop = 91
   end
 end

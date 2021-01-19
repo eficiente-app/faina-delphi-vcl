@@ -22,12 +22,13 @@ uses
   Faina.Principal in 'src\Faina.Principal.pas' {Principal},
   Faina.Escuro in 'src\Faina.Escuro.pas',
   Configuracoes.Principal in 'src\configuracoes\Configuracoes.Principal.pas' {ConfiguracoesPrincipal},
-  menu.usuario in 'src\principal\menu.usuario.pas' {MenuUsuario},
   Formulario.DropDown.Base in 'src\base\Formulario.DropDown.Base.pas' {FormularioDropDownBase},
   exibicao.lista in 'src\exibicoes\exibicao.lista.pas' {Form1},
   Extend.DBGrids in 'src\extend\Extend.DBGrids.pas',
-  Formulario.Principal.Base in 'src\base\Formulario.Principal.Base.pas' {FormularioPrincipalBase},
-  SysButtons in 'src\componentes\TSysButtons\SysButtons.pas';
+  Formulario.Base.Visual in 'src\base\Formulario.Base.Visual.pas' {FormularioBaseVisual},
+  SysButtons in 'src\componentes\TSysButtons\SysButtons.pas',
+  menu.usuario in 'src\area_trabalho\menu.usuario.pas' {MenuUsuario},
+  area_trabalho in 'src\area_trabalho\area_trabalho.pas' {AreaTrabalho};
 
 {$R *.res}
 

@@ -15,24 +15,20 @@ uses
   Vcl.Graphics,
   Vcl.Menus,
   Vcl.StdCtrls,
-  Formulario.Principal.Base,
-  SVGIconImage;
+  SVGIconImage,
+  Formulario.Base.Visual,
+  area_trabalho;
 
 type
-  TPrincipal = class(TFormularioPrincipalBase)
-    pnlTop: TPanel;
-    pnlTitle: TPanel;
-    lblTitle: TLabel;
-    svgUserAvatar: TSVGIconImage;
-    pnlLateralEsquerda: TPanel;
-    pnlAreaTrabalho: TPanel;
-    procedure svgUserAvatarClick(Sender: TObject);
-    procedure btnConfiguracoesClick(Sender: TObject);
+  TPrincipal = class(TFormularioBaseVisual)
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FAreaTrabalho: TAreaTrabalho;
   public
     { Public declarations }
+    constructor Create(AOwner: TComponent); reintroduce; override;
+    property AreaDeTrabalho: TAreaTrabalho read FAreaTrabalho;
   end;
 
 var
@@ -42,7 +38,6 @@ implementation
 
 uses
   Faina.Login,
-  Menu.Usuario,
   Configuracoes.Principal,
   pasta.listagem,
   pasta_tipo.listagem,
@@ -50,19 +45,18 @@ uses
 
 {$R *.dfm}
 
-procedure TPrincipal.btnConfiguracoesClick(Sender: TObject);
+constructor TPrincipal.Create(AOwner: TComponent);
 begin
-  TConfiguracoesPrincipal.Create(TComponent(Self)).ShowModal(Self);
+  inherited;
+  SystemButtons.Visible := True;
+  pnlClientForm.AlignWithMargins := True;
 end;
 
 procedure TPrincipal.FormShow(Sender: TObject);
 begin
-  TLogin.New(Self);
-end;
-
-procedure TPrincipal.svgUserAvatarClick(Sender: TObject);
-begin
-  TMenuUsuario.Exibir;
+  FAreaTrabalho := TAreaTrabalho.Create(Self);
+  FAreaTrabalho.ShowIn(pnlClientArea, alClient);
+  TLogin.New(pnlClientArea);
 end;
 
 end.

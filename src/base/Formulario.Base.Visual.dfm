@@ -1,10 +1,10 @@
-object FormularioPrincipalBase: TFormularioPrincipalBase
+object FormularioBaseVisual: TFormularioBaseVisual
   Left = 0
   Top = 0
-  Caption = 'Formul'#225'rio Base'
+  Caption = 'Formul'#225'rio Base - Visual'
   ClientHeight = 411
   ClientWidth = 852
-  Color = clWhite
+  Color = 3806736
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -14,11 +14,10 @@ object FormularioPrincipalBase: TFormularioPrincipalBase
   PixelsPerInch = 96
   TextHeight = 13
   object pnlClientForm: TPanel
-    AlignWithMargins = True
-    Left = 1
-    Top = 1
-    Width = 850
-    Height = 409
+    Left = 0
+    Top = 0
+    Width = 852
+    Height = 411
     Margins.Left = 1
     Margins.Top = 1
     Margins.Right = 1
@@ -28,32 +27,48 @@ object FormularioPrincipalBase: TFormularioPrincipalBase
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 6
-    ExplicitTop = 6
     object pnlTitleBar: TPanel
       Left = 0
       Top = 0
-      Width = 850
+      Width = 852
       Height = 20
       Align = alTop
       BevelOuter = bvNone
       Color = 3806736
       ParentBackground = False
       TabOrder = 0
-      OnMouseDown = pnlTitleBarMouseDown
+      object lblTitleForm: TLabel
+        AlignWithMargins = True
+        Left = 8
+        Top = 0
+        Width = 109
+        Height = 20
+        Margins.Left = 8
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Align = alLeft
+        Caption = 'Formul'#225'rio Base - Visual'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'Segoe UI Light'
+        Font.Style = []
+        ParentFont = False
+        Layout = tlCenter
+        ExplicitHeight = 13
+      end
     end
     object pnlClientArea: TPanel
       Left = 0
       Top = 20
-      Width = 850
-      Height = 389
+      Width = 852
+      Height = 391
       Align = alClient
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 47
-      ExplicitHeight = 368
     end
   end
 end

@@ -1,4 +1,5 @@
-unit Formulario.Principal.Base;
+// Daniel Araujo - 18/01/2021
+unit Formulario.Base.Visual;
 
 interface
 
@@ -10,33 +11,32 @@ uses
   Vcl.Forms,
   Formulario.Base,
   SysButtons,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
 
-  TFormularioPrincipalBase = class(TFormularioBase)
+  TFormularioBaseVisual = class(TFormularioBase)
     pnlClientForm: TPanel;
     pnlTitleBar: TPanel;
     pnlClientArea: TPanel;
+    lblTitleForm: TLabel;
     procedure FormCreate(Sender: TObject);
-    procedure pnlTitleBarMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+    procedure pnlTitleBarMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   private type
     TBorda   = (bLeft, bTop, bRight, bBottom, bBottomLeft, bBottomRight);
   private
     FControleForm: Boolean;
-
     FMouseMove: TMouseMoveEvent;
     FMouseDown: TMouseEvent;
-
     function SetMouse(ABorda: TBorda): TCursor;
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   protected
-    FSystemMenu: TSysButtons;
+    FSystemButtons: TSysButtons;
     procedure WmNCCalcSize(var Msg: TWMNCCalcSize); message WM_NCCALCSIZE;
   public
     constructor Create(AOwner: TComponent); override;
+    property SystemButtons: TSysButtons read FSystemButtons;
     property ControleForm: Boolean read FControleForm write FControleForm;
   end;
 
@@ -46,9 +46,12 @@ implementation
 
 { TFormularioPrincipalBase }
 
-constructor TFormularioPrincipalBase.Create(AOwner: TComponent);
+constructor TFormularioBaseVisual.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
+
+  lblTitleForm.Caption := Self.Caption;
+
   FControleForm := True;
 
   FMouseMove := Self.OnMouseMove;
@@ -57,11 +60,12 @@ begin
   Self.OnMouseMove := FormMouseMove;
   Self.OnMouseDown := FormMouseDown;
 
-  FSystemMenu := TSysButtons.Create(pnlTitleBar);
-  FSystemMenu.Form := Self;
+  FSystemButtons := TSysButtons.Create(pnlTitleBar);
+  FSystemButtons.Form := Self;
+  FSystemButtons.Visible := False;
 end;
 
-function TFormularioPrincipalBase.SetMouse(ABorda: TBorda): TCursor;
+function TFormularioBaseVisual.SetMouse(ABorda: TBorda): TCursor;
 begin
   Result := crDefault;
   case ABorda of
@@ -72,19 +76,19 @@ begin
   end;
 end;
 
-procedure TFormularioPrincipalBase.WmNCCalcSize(var Msg: TWMNCCalcSize);
+procedure TFormularioBaseVisual.WmNCCalcSize(var Msg: TWMNCCalcSize);
 begin
   Msg.Result := 0;
 end;
 
-procedure TFormularioPrincipalBase.FormCreate(Sender: TObject);
+procedure TFormularioBaseVisual.FormCreate(Sender: TObject);
 begin
   BorderStyle := bsNone;
   SetWindowLong(Handle ,GWL_STYLE ,WS_CLIPCHILDREN or WS_OVERLAPPEDWINDOW);
   Self.BorderStyle := bsNone;
 end;
 
-procedure TFormularioPrincipalBase.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TFormularioBaseVisual.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   if Assigned(FMouseDown) then
     FMouseDown(Sender, Button, Shift, X, Y);
@@ -132,7 +136,7 @@ begin
   end;
 end;
 
-procedure TFormularioPrincipalBase.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+procedure TFormularioBaseVisual.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 begin
   if Assigned(FMouseMove) then
     FMouseMove(Sender, Shift, X, Y);
@@ -177,7 +181,7 @@ begin
   end;
 end;
 
-procedure TFormularioPrincipalBase.pnlTitleBarMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TFormularioBaseVisual.pnlTitleBarMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 const
   SC_DRAGMOVE = $F012;
 begin

@@ -157,10 +157,6 @@
             <Form>ConfiguracoesPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\principal\menu.usuario.pas">
-            <Form>MenuUsuario</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\base\Formulario.DropDown.Base.pas">
             <Form>FormularioDropDownBase</Form>
             <FormType>dfm</FormType>
@@ -170,6 +166,18 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\extend\Extend.DBGrids.pas"/>
+        <DCCReference Include="src\base\Formulario.Base.Visual.pas">
+            <Form>FormularioBaseVisual</Form>
+        </DCCReference>
+        <DCCReference Include="src\componentes\TSysButtons\SysButtons.pas"/>
+        <DCCReference Include="src\area_trabalho\menu.usuario.pas">
+            <Form>MenuUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\area_trabalho\area_trabalho.pas">
+            <Form>AreaTrabalho</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

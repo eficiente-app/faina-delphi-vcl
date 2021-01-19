@@ -18,23 +18,23 @@ uses
   Vcl.Graphics,
   Vcl.Grids,
   Vcl.StdCtrls,
-  Formulario.Base,
+  Formulario.Base.Visual,
   pasta.dados,
   pasta.manutencao;
 
 type
-  TPastaListagem = class(TFormularioBase)
+  TPastaListagem = class(TFormularioBaseVisual)
     dbgridPasta: TDBGrid;
-    srcPasta: TDataSource;
-    pnlTopo: TPanel;
-    btnIncluir: TButton;
-    btnAlterar: TButton;
-    btnVisualizar: TButton;
     pnlPesquisa: TPanel;
     pnlPesquisar: TPanel;
     btnPesquisar: TButton;
     btnLimpar: TButton;
     gbxPesquisa: TGroupBox;
+    pnlTopo: TPanel;
+    btnIncluir: TButton;
+    btnAlterar: TButton;
+    btnVisualizar: TButton;
+    srcPasta: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);

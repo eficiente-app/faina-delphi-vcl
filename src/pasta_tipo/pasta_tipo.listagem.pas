@@ -18,14 +18,13 @@ uses
   Vcl.Graphics,
   Vcl.Grids,
   Vcl.StdCtrls,
-  Formulario.Base,
+  Formulario.Base.Visual,
   pasta_tipo.dados,
   pasta_tipo.manutencao;
 
 type
-  TPastaTipoListagem = class(TFormularioBase)
+  TPastaTipoListagem = class(TFormularioBaseVisual)
     dbgridPasta: TDBGrid;
-    srcPastaTipo: TDataSource;
     pnlTopo: TPanel;
     btnIncluir: TButton;
     btnAlterar: TButton;
@@ -35,6 +34,7 @@ type
     btnPesquisar: TButton;
     btnLimpar: TButton;
     gbxPesquisa: TGroupBox;
+    srcPastaTipo: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);

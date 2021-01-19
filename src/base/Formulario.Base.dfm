@@ -2,9 +2,9 @@ object FormularioBase: TFormularioBase
   Left = 0
   Top = 0
   Caption = 'Formul'#225'rio Base'
-  ClientHeight = 411
+  ClientHeight = 410
   ClientWidth = 852
-  Color = clBtnFace
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
