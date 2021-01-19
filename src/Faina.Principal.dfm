@@ -96,7 +96,7 @@ inherited Principal: TPrincipal
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 191
+      ExplicitLeft = 206
       ExplicitTop = 3
     end
   end

@@ -23,7 +23,9 @@ uses
   Faina.Escuro in 'src\Faina.Escuro.pas',
   Configuracoes.Principal in 'src\configuracoes\Configuracoes.Principal.pas' {ConfiguracoesPrincipal},
   menu.usuario in 'src\principal\menu.usuario.pas' {MenuUsuario},
-  Formulario.DropDown.Base in 'src\base\Formulario.DropDown.Base.pas' {FormularioDropDownBase};
+  Formulario.DropDown.Base in 'src\base\Formulario.DropDown.Base.pas' {FormularioDropDownBase},
+  exibicao.lista in 'src\exibicoes\exibicao.lista.pas' {Form1},
+  Extend.DBGrids in 'src\extend\Extend.DBGrids.pas';
 
 {$R *.res}
 
@@ -32,5 +34,6 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPrincipal, Principal);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
