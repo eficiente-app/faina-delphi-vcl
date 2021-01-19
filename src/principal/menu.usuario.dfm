@@ -32,7 +32,6 @@ inherited MenuUsuario: TMenuUsuario
         '09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>'
       FixedColor = clWhite
       Align = alLeft
-      ExplicitHeight = 48
     end
     object pnlInfoUsuario: TPanel
       AlignWithMargins = True
@@ -43,8 +42,6 @@ inherited MenuUsuario: TMenuUsuario
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 238
-      ExplicitHeight = 48
       object lblApelidoUsuario: TLabel
         Left = 0
         Top = 0
@@ -60,8 +57,8 @@ inherited MenuUsuario: TMenuUsuario
         Font.Quality = fqClearType
         ParentFont = False
         Layout = tlCenter
-        ExplicitTop = -3
-        ExplicitHeight = 22
+        ExplicitWidth = 54
+        ExplicitHeight = 20
       end
       object lblNomeUsuario: TLabel
         Left = 0
@@ -78,7 +75,7 @@ inherited MenuUsuario: TMenuUsuario
         Font.Quality = fqClearType
         ParentFont = False
         Layout = tlCenter
-        ExplicitTop = 19
+        ExplicitWidth = 33
       end
       object lblFuncaoPrincipal: TLabel
         Left = 0
@@ -95,7 +92,7 @@ inherited MenuUsuario: TMenuUsuario
         Font.Quality = fqClearType
         ParentFont = False
         Layout = tlCenter
-        ExplicitTop = 32
+        ExplicitWidth = 39
       end
     end
   end
@@ -107,8 +104,6 @@ inherited MenuUsuario: TMenuUsuario
     Align = alTop
     Caption = 'Perfil'
     TabOrder = 1
-    ExplicitTop = 54
-    ExplicitWidth = 300
   end
   object cxButton2: TcxButton
     Left = 0
@@ -119,7 +114,6 @@ inherited MenuUsuario: TMenuUsuario
     Caption = 'Configura'#231#245'es'
     TabOrder = 2
     OnClick = cxButton2Click
-    ExplicitTop = 79
-    ExplicitWidth = 300
+    ExplicitTop = 91
   end
 end

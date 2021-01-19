@@ -1,0 +1,59 @@
+object FormularioPrincipalBase: TFormularioPrincipalBase
+  Left = 0
+  Top = 0
+  Caption = 'Formul'#225'rio Base'
+  ClientHeight = 411
+  ClientWidth = 852
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlClientForm: TPanel
+    AlignWithMargins = True
+    Left = 1
+    Top = 1
+    Width = 850
+    Height = 409
+    Margins.Left = 1
+    Margins.Top = 1
+    Margins.Right = 1
+    Margins.Bottom = 1
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitLeft = 6
+    ExplicitTop = 6
+    object pnlTitleBar: TPanel
+      Left = 0
+      Top = 0
+      Width = 850
+      Height = 20
+      Align = alTop
+      BevelOuter = bvNone
+      Color = 3806736
+      ParentBackground = False
+      TabOrder = 0
+      OnMouseDown = pnlTitleBarMouseDown
+    end
+    object pnlClientArea: TPanel
+      Left = 0
+      Top = 20
+      Width = 850
+      Height = 389
+      Align = alClient
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitTop = 47
+      ExplicitHeight = 368
+    end
+  end
+end

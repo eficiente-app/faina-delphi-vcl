@@ -25,7 +25,9 @@ uses
   menu.usuario in 'src\principal\menu.usuario.pas' {MenuUsuario},
   Formulario.DropDown.Base in 'src\base\Formulario.DropDown.Base.pas' {FormularioDropDownBase},
   exibicao.lista in 'src\exibicoes\exibicao.lista.pas' {Form1},
-  Extend.DBGrids in 'src\extend\Extend.DBGrids.pas';
+  Extend.DBGrids in 'src\extend\Extend.DBGrids.pas',
+  Formulario.Principal.Base in 'src\base\Formulario.Principal.Base.pas' {FormularioPrincipalBase},
+  SysButtons in 'src\componentes\TSysButtons\SysButtons.pas';
 
 {$R *.res}
 

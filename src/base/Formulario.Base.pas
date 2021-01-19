@@ -29,6 +29,7 @@ type
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
 
     class function Principal: TFormularioBase;
+    class function ClientArea: TPanel;
     class function AreaTrabalho: TPanel;
   end;
 
@@ -46,7 +47,12 @@ uses
 
 class function TFormularioBase.Principal: TFormularioBase;
 begin
-  Result := Faina.Principal.Principal;
+  Result := TFormularioBase(Faina.Principal.Principal);
+end;
+
+class function TFormularioBase.ClientArea: TPanel;
+begin
+  Result := TPrincipal(Principal).pnlClientArea;
 end;
 
 class function TFormularioBase.AreaTrabalho: TPanel;

@@ -15,13 +15,12 @@ uses
   Vcl.Graphics,
   Vcl.Menus,
   Vcl.StdCtrls,
-  Formulario.Base,
+  Formulario.Principal.Base,
   SVGIconImage;
 
 type
-  TPrincipal = class(TFormularioBase)
+  TPrincipal = class(TFormularioPrincipalBase)
     pnlTop: TPanel;
-    pnlClient: TPanel;
     pnlTitle: TPanel;
     lblTitle: TLabel;
     svgUserAvatar: TSVGIconImage;
@@ -53,7 +52,7 @@ uses
 
 procedure TPrincipal.btnConfiguracoesClick(Sender: TObject);
 begin
-  TConfiguracoesPrincipal.Create(Self).ShowModal(Self);
+  TConfiguracoesPrincipal.Create(TComponent(Self)).ShowModal(Self);
 end;
 
 procedure TPrincipal.FormShow(Sender: TObject);

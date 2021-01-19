@@ -48,6 +48,8 @@ type
 
 implementation
 
+{$R *.dfm}
+
 { TFormularioDropDownBase }
 
 constructor TFormularioDropDownBase.Create(AOwner: TComponent);
