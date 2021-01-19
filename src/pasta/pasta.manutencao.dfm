@@ -10,21 +10,15 @@ inherited PastaManutencao: TPastaManutencao
   inherited pnlClientForm: TPanel
     Width = 515
     Height = 165
-    ExplicitLeft = 0
-    ExplicitTop = 0
     ExplicitWidth = 515
     ExplicitHeight = 165
     inherited pnlTitleBar: TPanel
       Width = 515
       ExplicitWidth = 515
-      inherited lblTitleForm: TLabel
-        Height = 20
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 515
       Height = 145
-      ExplicitTop = 20
       ExplicitWidth = 515
       ExplicitHeight = 145
       object lbid: TLabel
@@ -208,8 +202,6 @@ inherited PastaManutencao: TPastaManutencao
           Caption = 'Cancelar'
           TabOrder = 1
           OnClick = btnCancelarClick
-          ExplicitLeft = 69
-          ExplicitTop = 1
         end
         object btnExcluir: TButton
           Left = 150
@@ -220,8 +212,6 @@ inherited PastaManutencao: TPastaManutencao
           Caption = 'Excluir'
           TabOrder = 2
           OnClick = btnExcluirClick
-          ExplicitLeft = 144
-          ExplicitTop = 2
         end
         object btnFechar: TButton
           Left = 225

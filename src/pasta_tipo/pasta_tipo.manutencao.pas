@@ -63,6 +63,8 @@ begin
     Anchors := [akLeft,akTop,akRight,akBottom];
     SetBounds(AParent.Left, AParent.Top, AParent.Width, AParent.Height);
 
+    CloseEsc := True;
+
     PTD := APTD;
     srcPastaTipo.DataSet := PTD.tblPastaTipo;
 

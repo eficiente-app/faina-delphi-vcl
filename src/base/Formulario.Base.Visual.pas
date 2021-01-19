@@ -21,7 +21,7 @@ type
     pnlClientArea: TPanel;
     lblTitleForm: TLabel;
     procedure FormCreate(Sender: TObject);
-    procedure pnlTitleBarMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure MouseDownMovimentarFormulario(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   private type
     TBorda   = (bLeft, bTop, bRight, bBottom, bBottomLeft, bBottomRight);
   private
@@ -65,6 +65,13 @@ begin
   FSystemButtons.Visible := False;
 end;
 
+procedure TFormularioBaseVisual.FormCreate(Sender: TObject);
+begin
+  BorderStyle := bsNone;
+  SetWindowLong(Handle ,GWL_STYLE ,WS_CLIPCHILDREN or WS_OVERLAPPEDWINDOW);
+  Self.BorderStyle := bsNone;
+end;
+
 function TFormularioBaseVisual.SetMouse(ABorda: TBorda): TCursor;
 begin
   Result := crDefault;
@@ -79,13 +86,6 @@ end;
 procedure TFormularioBaseVisual.WmNCCalcSize(var Msg: TWMNCCalcSize);
 begin
   Msg.Result := 0;
-end;
-
-procedure TFormularioBaseVisual.FormCreate(Sender: TObject);
-begin
-  BorderStyle := bsNone;
-  SetWindowLong(Handle ,GWL_STYLE ,WS_CLIPCHILDREN or WS_OVERLAPPEDWINDOW);
-  Self.BorderStyle := bsNone;
 end;
 
 procedure TFormularioBaseVisual.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -181,7 +181,7 @@ begin
   end;
 end;
 
-procedure TFormularioBaseVisual.pnlTitleBarMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TFormularioBaseVisual.MouseDownMovimentarFormulario(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 const
   SC_DRAGMOVE = $F012;
 begin

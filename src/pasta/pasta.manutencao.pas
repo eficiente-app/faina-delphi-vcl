@@ -76,6 +76,8 @@ begin
     PD := ADM;
     srcPasta.DataSet := PD.tblPasta;
 
+    CloseEsc := True;
+
     case Tipo of
       Incluir: PD.tblPasta.Append;
       Alterar: PD.tblPasta.Edit;

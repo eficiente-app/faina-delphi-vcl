@@ -22,8 +22,13 @@ type
   private
     { Private declarations }
     FEscuro: TEscuro;
+  protected
+    function FecharEsc(IsEsc: Boolean): Boolean;
+    procedure KeyDown(var Key: Word; Shift: TShiftState); override;
   public
     { Public declarations }
+    CloseEsc: Boolean;
+    constructor Create(AOwner: TComponent); reintroduce; override;
     destructor Destroy; override;
     procedure ShowModal(AParent: TForm); reintroduce; overload;
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
@@ -57,6 +62,13 @@ begin
   Result := TPrincipal(Principal).AreaDeTrabalho;
 end;
 
+constructor TFormularioBase.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  KeyPreview := True;
+  CloseEsc   := False;
+end;
+
 destructor TFormularioBase.Destroy;
 begin
   if Assigned(FEscuro) then
@@ -79,6 +91,21 @@ procedure TFormularioBase.ShowModal(AParent: TForm);
 begin
   if not Assigned(FEscuro) then
     FEscuro := TEscuro.Create(Self, AParent);
+end;
+
+procedure TFormularioBase.KeyDown(var Key: Word; Shift: TShiftState);
+begin
+  if FecharEsc(Key = VK_ESCAPE) then
+    Key := 0;
+
+  inherited;
+end;
+
+function TFormularioBase.FecharEsc(IsEsc: Boolean): Boolean;
+begin
+  Result := CloseEsc and IsEsc;
+  if Result then
+    Close;
 end;
 
 end.

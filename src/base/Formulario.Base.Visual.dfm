@@ -37,6 +37,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
       Color = 3806736
       ParentBackground = False
       TabOrder = 0
+      OnMouseDown = MouseDownMovimentarFormulario
       object lblTitleForm: TLabel
         AlignWithMargins = True
         Left = 8
@@ -56,6 +57,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
         Font.Style = []
         ParentFont = False
         Layout = tlCenter
+        OnMouseDown = MouseDownMovimentarFormulario
         ExplicitHeight = 13
       end
     end
