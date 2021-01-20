@@ -31,7 +31,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
       Left = 0
       Top = 0
       Width = 852
-      Height = 20
+      Height = 30
       Align = alTop
       BevelOuter = bvNone
       Color = 3806736
@@ -42,8 +42,8 @@ object FormularioBaseVisual: TFormularioBaseVisual
         AlignWithMargins = True
         Left = 8
         Top = 0
-        Width = 109
-        Height = 20
+        Width = 132
+        Height = 30
         Margins.Left = 8
         Margins.Top = 0
         Margins.Right = 0
@@ -52,20 +52,20 @@ object FormularioBaseVisual: TFormularioBaseVisual
         Caption = 'Formul'#225'rio Base - Visual'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
-        Font.Height = -11
+        Font.Height = -13
         Font.Name = 'Segoe UI Light'
         Font.Style = []
         ParentFont = False
         Layout = tlCenter
         OnMouseDown = MouseDownMovimentarFormulario
-        ExplicitHeight = 13
+        ExplicitHeight = 17
       end
     end
     object pnlClientArea: TPanel
       Left = 0
-      Top = 20
+      Top = 30
       Width = 852
-      Height = 391
+      Height = 381
       Align = alClient
       BevelOuter = bvNone
       Color = clWhite

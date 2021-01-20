@@ -13,26 +13,22 @@ inherited TarefaTipoListagem: TTarefaTipoListagem
   inherited pnlClientForm: TPanel
     Width = 583
     Height = 605
-    ExplicitTop = 145
     ExplicitWidth = 583
-    ExplicitHeight = 460
+    ExplicitHeight = 605
     inherited pnlTitleBar: TPanel
       Width = 583
       ExplicitWidth = 583
-      inherited lblTitleForm: TLabel
-        Height = 20
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 583
-      Height = 585
+      Height = 575
       ExplicitWidth = 583
-      ExplicitHeight = 440
+      ExplicitHeight = 575
       object dbgridPasta: TDBGrid
         Left = 0
         Top = 145
         Width = 583
-        Height = 440
+        Height = 430
         Align = alClient
         DataSource = srcTarefaTipo
         TabOrder = 0

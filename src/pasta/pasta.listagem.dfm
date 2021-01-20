@@ -2,7 +2,6 @@ inherited PastaListagem: TPastaListagem
   Caption = 'Pasta'
   ClientHeight = 452
   ClientWidth = 727
-  Color = clWindow
   OldCreateOrder = True
   Position = poOwnerFormCenter
   OnCreate = FormCreate
@@ -19,20 +18,17 @@ inherited PastaListagem: TPastaListagem
       Width = 727
       Visible = False
       ExplicitWidth = 727
-      inherited lblTitleForm: TLabel
-        Height = 20
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 727
-      Height = 432
+      Height = 422
       ExplicitWidth = 727
-      ExplicitHeight = 432
+      ExplicitHeight = 422
       object dbgridPasta: TDBGrid
         Left = 0
         Top = 145
         Width = 727
-        Height = 287
+        Height = 277
         Align = alClient
         DataSource = srcPasta
         TabOrder = 0

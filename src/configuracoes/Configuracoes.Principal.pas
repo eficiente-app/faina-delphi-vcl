@@ -14,30 +14,28 @@ uses
   Vcl.ExtCtrls,
   Vcl.Forms,
   Vcl.Graphics,
-  Formulario.Base, cxGraphics, cxControls, cxLookAndFeels,
+  Formulario.Base.Visual, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters, dxNavBarCollns,
   cxClasses, dxNavBarBase, dxNavBar, Vcl.StdCtrls;
 
 type
-  TConfiguracoesPrincipal = class(TFormularioBase)
-    pnlTopTitle: TPanel;
+  TConfiguracoesPrincipal = class(TFormularioBaseVisual)
     pnlLateralEsquerda: TPanel;
-    pnlAreaTrabalho: TPanel;
     nbMenu: TdxNavBar;
     nbgCadastros: TdxNavBarGroup;
     nbgSitema: TdxNavBarGroup;
     nbiPastas: TdxNavBarItem;
-    lblTitle: TLabel;
     nbiTipoPasta: TdxNavBarItem;
-    lblSubTitle: TLabel;
     nbiTipoTarefa: TdxNavBarItem;
+    pnlAreaTrabalho: TPanel;
+    lblSubTitle: TLabel;
     procedure nbiPastasClick(Sender: TObject);
     procedure nbiTipoPastaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure nbiTipoTarefaClick(Sender: TObject);
   private
     { Private declarations }
-    FTelaAtiva: TFormularioBase;
+    FTelaAtiva: TFormularioBaseVisual;
     procedure AbrirTela(FormClass: TFormClass);
     procedure FercharTela;
     procedure AtualizarSubTitulo;
@@ -67,7 +65,7 @@ end;
 procedure TConfiguracoesPrincipal.AbrirTela(FormClass: TFormClass);
 begin
   FercharTela;
-  FTelaAtiva := TFormularioBase(FormClass.Create(Self));
+  FTelaAtiva := TFormularioBaseVisual(FormClass.Create(Self));
   FTelaAtiva.ShowIn(pnlAreaTrabalho, alClient);
   AtualizarSubTitulo;
 end;

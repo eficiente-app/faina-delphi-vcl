@@ -67,7 +67,7 @@ end;
 
 procedure TMenuUsuario.cxButton2Click(Sender: TObject);
 begin
-  TConfiguracoesPrincipal.Create(Principal).ShowModal(Principal);
+  TConfiguracoesPrincipal.Create(AreaTrabalho).ShowModal(AreaTrabalho);
   Close;
 end;
 

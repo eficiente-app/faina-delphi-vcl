@@ -1678,7 +1678,6 @@ object Login: TLogin
       Color = 3806736
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 221
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -1688,7 +1687,6 @@ object Login: TLogin
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      ExplicitTop = 251
       object btnConfirmar: TButton
         Left = 24
         Top = 5

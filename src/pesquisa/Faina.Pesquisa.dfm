@@ -17,20 +17,17 @@ inherited Pesquisa: TPesquisa
     inherited pnlTitleBar: TPanel
       Width = 430
       ExplicitWidth = 430
-      inherited lblTitleForm: TLabel
-        Height = 20
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 430
-      Height = 263
+      Height = 253
       ExplicitWidth = 430
-      ExplicitHeight = 263
+      ExplicitHeight = 253
       object dbgrid: TDBGrid
         Left = 0
         Top = 88
         Width = 430
-        Height = 175
+        Height = 165
         Align = alClient
         DataSource = src
         TabOrder = 0

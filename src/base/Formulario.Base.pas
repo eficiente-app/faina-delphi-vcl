@@ -30,8 +30,8 @@ type
     CloseEsc: Boolean;
     constructor Create(AOwner: TComponent); reintroduce; override;
     destructor Destroy; override;
-    procedure ShowModal(AParent: TForm); reintroduce; overload;
-    procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
+    procedure ShowModal(AParent: TForm); reintroduce; overload; dynamic;
+    procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []); dynamic;
 
     class function Principal: TFormularioBase;
     class function AreaTrabalho: TFormularioBase;

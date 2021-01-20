@@ -2,7 +2,6 @@ inherited PastaManutencao: TPastaManutencao
   Caption = 'Pasta'
   ClientHeight = 185
   ClientWidth = 515
-  Color = clWindow
   ExplicitWidth = 531
   ExplicitHeight = 224
   PixelsPerInch = 96
@@ -11,18 +10,16 @@ inherited PastaManutencao: TPastaManutencao
     Width = 515
     Height = 185
     ExplicitWidth = 515
-    ExplicitHeight = 165
+    ExplicitHeight = 185
     inherited pnlTitleBar: TPanel
       Width = 515
-      ExplicitTop = -4
       ExplicitWidth = 515
     end
     inherited pnlClientArea: TPanel
       Width = 515
-      Height = 165
-      ExplicitTop = 23
+      Height = 155
       ExplicitWidth = 515
-      ExplicitHeight = 163
+      ExplicitHeight = 155
       object lbid: TLabel
         Left = 8
         Top = 36

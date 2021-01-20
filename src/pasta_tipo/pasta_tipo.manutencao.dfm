@@ -11,19 +11,16 @@ inherited PastaTipoManutencao: TPastaTipoManutencao
     Width = 515
     Height = 143
     ExplicitWidth = 515
-    ExplicitHeight = 136
+    ExplicitHeight = 143
     inherited pnlTitleBar: TPanel
       Width = 515
       ExplicitWidth = 515
-      inherited lblTitleForm: TLabel
-        Height = 20
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 515
-      Height = 123
+      Height = 113
       ExplicitWidth = 515
-      ExplicitHeight = 116
+      ExplicitHeight = 113
       object lbid: TLabel
         Left = 8
         Top = 36

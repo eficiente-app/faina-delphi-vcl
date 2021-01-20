@@ -17,6 +17,7 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   SVGIconImage,
+  SysButtons,
   Formulario.Base.Visual,
   area_trabalho;
 
@@ -48,8 +49,12 @@ begin
   Redimensionar := True;
   ControleForm  := True;
   Caption := 'Faina - Gerencie suas Tarefas';
-  lblTitleForm.Caption := 'Faina - Gerencie suas Tarefas';
+
+//  lblTitleForm.Caption   := 'Faina - Gerencie suas Tarefas';
+//  pnlTitleBar.Height     := 20;
+
   SystemButtons.Visible := True;
+  SystemButtons.Buttons := [bMinimize, bMaximize, bClose];
   pnlClientForm.AlignWithMargins := True;
 end;
 

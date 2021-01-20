@@ -71,7 +71,7 @@ inherited AreaTrabalho: TAreaTrabalho
         Left = 0
         Top = 55
         Width = 200
-        Height = 336
+        Height = 326
         Align = alLeft
         BevelOuter = bvNone
         Color = 10495813
@@ -82,7 +82,7 @@ inherited AreaTrabalho: TAreaTrabalho
         Left = 200
         Top = 55
         Width = 652
-        Height = 336
+        Height = 326
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 2

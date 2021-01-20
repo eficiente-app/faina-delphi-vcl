@@ -18,20 +18,17 @@ inherited PastaTipoListagem: TPastaTipoListagem
       Width = 544
       Visible = False
       ExplicitWidth = 544
-      inherited lblTitleForm: TLabel
-        Height = 20
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 544
-      Height = 568
+      Height = 558
       ExplicitWidth = 544
-      ExplicitHeight = 568
+      ExplicitHeight = 558
       object dbgridPasta: TDBGrid
         Left = 0
         Top = 145
         Width = 544
-        Height = 423
+        Height = 413
         Align = alClient
         DataSource = srcPastaTipo
         TabOrder = 0

@@ -40,6 +40,9 @@ type
     destructor Destroy; override;
     property SystemButtons: TSysButtons read FSystemButtons;
     property ControleForm: Boolean read FControleForm write FControleForm;
+
+    procedure ShowModal(AParent: TForm); reintroduce; override;
+    procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []); override;
   end;
 
 implementation
@@ -61,7 +64,8 @@ begin
 
   FSystemButtons := TSysButtons.Create(pnlTitleBar);
   FSystemButtons.Form := Self;
-  FSystemButtons.Visible := False;
+  FSystemButtons.Visible := True;
+  FSystemButtons.Buttons := [bClose];
 end;
 
 destructor TFormularioBaseVisual.Destroy;
@@ -238,6 +242,18 @@ begin
     Inc(Result.X, ClientPos.X - WindowPos.X);
     Inc(Result.Y, ClientPos.Y - WindowPos.Y);
   end;
+end;
+
+procedure TFormularioBaseVisual.ShowIn(AParent: TControl; Align: TAlign; Anchors: TAnchors);
+begin
+  inherited ShowIn(AParent, Align, Anchors);
+  pnlClientForm.AlignWithMargins := False;
+end;
+
+procedure TFormularioBaseVisual.ShowModal(AParent: TForm);
+begin
+  inherited ShowModal(AParent);
+  pnlClientForm.AlignWithMargins := True;
 end;
 
 end.
