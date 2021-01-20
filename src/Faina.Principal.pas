@@ -1,3 +1,4 @@
+// Eduardo - 07/11/2020
 unit Faina.Principal;
 
 interface
@@ -37,17 +38,17 @@ var
 implementation
 
 uses
-  Faina.Login,
-  Configuracoes.Principal,
-  pasta.listagem,
-  pasta_tipo.listagem,
-  tarefa_tipo.listagem;
+  Faina.Login;
 
 {$R *.dfm}
 
 constructor TPrincipal.Create(AOwner: TComponent);
 begin
   inherited;
+  Redimensionar := True;
+  ControleForm  := True;
+  Caption := 'Faina - Gerencie suas Tarefas';
+  lblTitleForm.Caption := 'Faina - Gerencie suas Tarefas';
   SystemButtons.Visible := True;
   pnlClientForm.AlignWithMargins := True;
 end;

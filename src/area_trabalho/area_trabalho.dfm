@@ -3,18 +3,10 @@ inherited AreaTrabalho: TAreaTrabalho
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitWidth = 852
-    ExplicitHeight = 411
     inherited pnlTitleBar: TPanel
       Visible = False
-      ExplicitWidth = 852
     end
     inherited pnlClientArea: TPanel
-      ExplicitTop = 20
-      ExplicitWidth = 852
-      ExplicitHeight = 391
       object pnlTop: TPanel
         Left = 0
         Top = 0

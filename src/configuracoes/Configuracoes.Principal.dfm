@@ -142,8 +142,6 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
       OptionsStyle.DefaultStyles.NavigationPaneHeader.Font.Name = 'Arial'
       OptionsStyle.DefaultStyles.NavigationPaneHeader.Font.Style = [fsBold]
       OptionsStyle.DefaultStyles.NavigationPaneHeader.AssignedValues = [savBackColor, savBackColor2]
-      ExplicitLeft = -6
-      ExplicitTop = 3
       object nbgCadastros: TdxNavBarGroup
         Caption = 'Cadastros'
         SelectedLinkIndex = -1

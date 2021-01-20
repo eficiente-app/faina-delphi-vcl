@@ -23,7 +23,6 @@ uses
   Faina.Escuro in 'src\Faina.Escuro.pas',
   Configuracoes.Principal in 'src\configuracoes\Configuracoes.Principal.pas' {ConfiguracoesPrincipal},
   Formulario.DropDown.Base in 'src\base\Formulario.DropDown.Base.pas' {FormularioDropDownBase},
-  exibicao.lista in 'src\exibicoes\exibicao.lista.pas' {Form1},
   Extend.DBGrids in 'src\extend\Extend.DBGrids.pas',
   Formulario.Base.Visual in 'src\base\Formulario.Base.Visual.pas' {FormularioBaseVisual},
   SysButtons in 'src\componentes\TSysButtons\SysButtons.pas',
