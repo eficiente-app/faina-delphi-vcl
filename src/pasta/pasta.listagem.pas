@@ -20,7 +20,8 @@ uses
   Vcl.StdCtrls,
   Formulario.Base.Visual,
   pasta.dados,
-  pasta.manutencao;
+  pasta.manutencao,
+  Extend.DBGrids;
 
 type
   TPastaListagem = class(TFormularioBaseVisual)
@@ -40,6 +41,7 @@ type
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
+    procedure srcPastaDataChange(Sender: TObject; Field: TField);
   private
     PD: TPastaDados;
   public
@@ -60,6 +62,12 @@ begin
   finally
     Free;
   end;
+end;
+
+procedure TPastaListagem.srcPastaDataChange(Sender: TObject; Field: TField);
+begin
+  btnAlterar.Enabled := not TDataSource(Sender).DataSet.IsEmpty;
+  btnVisualizar.Enabled := btnAlterar.Enabled;
 end;
 
 procedure TPastaListagem.FormCreate(Sender: TObject);

@@ -1,26 +1,28 @@
 inherited PastaManutencao: TPastaManutencao
   Caption = 'Pasta'
-  ClientHeight = 165
+  ClientHeight = 185
   ClientWidth = 515
   Color = clWindow
   ExplicitWidth = 531
-  ExplicitHeight = 204
+  ExplicitHeight = 224
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     Width = 515
-    Height = 165
+    Height = 185
     ExplicitWidth = 515
     ExplicitHeight = 165
     inherited pnlTitleBar: TPanel
       Width = 515
+      ExplicitTop = -4
       ExplicitWidth = 515
     end
     inherited pnlClientArea: TPanel
       Width = 515
-      Height = 145
+      Height = 165
+      ExplicitTop = 23
       ExplicitWidth = 515
-      ExplicitHeight = 145
+      ExplicitHeight = 163
       object lbid: TLabel
         Left = 8
         Top = 36
@@ -146,7 +148,6 @@ inherited PastaManutencao: TPastaManutencao
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFF0000}
-        OnClick = sbtprojeto_idClick
       end
       object lbtipo_nome: TLabel
         Left = 121
@@ -253,7 +254,7 @@ inherited PastaManutencao: TPastaManutencao
       end
       object dbedtdescricao: TDBEdit
         Left = 8
-        Top = 124
+        Top = 133
         Width = 497
         Height = 21
         DataField = 'descricao'
@@ -273,7 +274,7 @@ inherited PastaManutencao: TPastaManutencao
         TabOrder = 6
       end
       object dbedtprojeto_descricao: TDBEdit
-        Left = 352
+        Left = 350
         Top = 52
         Width = 155
         Height = 21

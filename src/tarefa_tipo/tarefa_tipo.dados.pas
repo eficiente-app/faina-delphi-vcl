@@ -36,6 +36,9 @@ type
     TarefaTipo: TRESTManager;
   end;
 
+var
+  tarefa_tipo_dados: TTarefaTipoDados;
+
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
@@ -45,6 +48,7 @@ implementation
 procedure TTarefaTipoDados.DataModuleCreate(Sender: TObject);
 begin
   TarefaTipo := TRESTManager.Create('http://18.230.153.64:3000/api/tarefa/tipo', tblTarefaTipo);
+  TarefaTipo.Table.Read;
 end;
 
 procedure TTarefaTipoDados.DataModuleDestroy(Sender: TObject);

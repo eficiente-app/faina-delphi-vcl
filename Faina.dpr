@@ -38,5 +38,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPrincipal, Principal);
   Application.CreateForm(TPastaTipoDados, pasta_tipo_dados);
+  Application.CreateForm(TTarefaTipoDados, tarefa_tipo_dados);
   Application.Run;
 end.

@@ -18,7 +18,6 @@ inherited PastaListagem: TPastaListagem
     inherited pnlTitleBar: TPanel
       Width = 727
       Visible = False
-      ExplicitTop = -4
       ExplicitWidth = 727
       inherited lblTitleForm: TLabel
         Height = 20
@@ -143,8 +142,6 @@ inherited PastaListagem: TPastaListagem
           Caption = 'Incluir'
           TabOrder = 0
           OnClick = btnIncluirClick
-          ExplicitLeft = -6
-          ExplicitTop = -1
         end
         object btnAlterar: TButton
           Left = 75
@@ -172,6 +169,7 @@ inherited PastaListagem: TPastaListagem
   object srcPasta: TDataSource
     AutoEdit = False
     DataSet = PastaDados.tblPasta
+    OnDataChange = srcPastaDataChange
     Left = 536
     Top = 1
   end

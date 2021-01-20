@@ -29,9 +29,11 @@ type
     lblTitle: TLabel;
     nbiTipoPasta: TdxNavBarItem;
     lblSubTitle: TLabel;
+    nbiTipoTarefa: TdxNavBarItem;
     procedure nbiPastasClick(Sender: TObject);
     procedure nbiTipoPastaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure nbiTipoTarefaClick(Sender: TObject);
   private
     { Private declarations }
     FTelaAtiva: TFormularioBase;
@@ -49,7 +51,8 @@ implementation
 
 uses
   pasta.listagem,
-  pasta_tipo.listagem;
+  pasta_tipo.listagem,
+  tarefa_tipo.listagem;
 
 {$R *.dfm}
 
@@ -91,6 +94,11 @@ end;
 procedure TConfiguracoesPrincipal.nbiTipoPastaClick(Sender: TObject);
 begin
   AbrirTela(TPastaTipoListagem);
+end;
+
+procedure TConfiguracoesPrincipal.nbiTipoTarefaClick(Sender: TObject);
+begin
+  AbrirTela(TTarefaTipoListagem);
 end;
 
 end.

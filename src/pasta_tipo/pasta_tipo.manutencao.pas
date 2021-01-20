@@ -22,7 +22,7 @@ uses
   Vcl.StdCtrls,
   Formulario.Base.Visual,
   pasta_tipo.dados,
-  Faina.Pesquisa, Formulario.Base;
+  Faina.Pesquisa;
 
 type
   TAcaoManutencao = (Incluir, Alterar, Visualizar);

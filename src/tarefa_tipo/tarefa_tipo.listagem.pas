@@ -19,12 +19,13 @@ uses
   Vcl.DBGrids,
   Vcl.StdCtrls,
   Vcl.Buttons,
-  Formulario.Base,
+  Formulario.Base.Visual,
   tarefa_tipo.dados,
-  tarefa_tipo.manutencao;
+  tarefa_tipo.manutencao,
+  Extend.DBGrids;
 
 type
-  TTarefaTipoListagem = class(TFormularioBase)
+  TTarefaTipoListagem = class(TFormularioBaseVisual)
     dbgridPasta: TDBGrid;
     srcTarefaTipo: TDataSource;
     pnlTopo: TPanel;
@@ -36,13 +37,12 @@ type
     btnPesquisar: TButton;
     btnLimpar: TButton;
     gbxPesquisa: TGroupBox;
-    sbtFechar: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
-    procedure sbtFecharClick(Sender: TObject);
+    procedure srcTarefaTipoDataChange(Sender: TObject; Field: TField);
   private
     TTD: TTarefaTipoDados;
   public
@@ -54,15 +54,16 @@ implementation
 
 { TPasta }
 
-procedure TTarefaTipoListagem.sbtFecharClick(Sender: TObject);
-begin
-  Close;
-end;
-
 procedure TTarefaTipoListagem.FormCreate(Sender: TObject);
 begin
   TTD := TTarefaTipoDados.Create(Self);
   srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
+end;
+
+procedure TTarefaTipoListagem.srcTarefaTipoDataChange(Sender: TObject; Field: TField);
+begin
+  btnAlterar.Enabled := not TDataSource(Sender).DataSet.IsEmpty;
+  btnVisualizar.Enabled := btnAlterar.Enabled;
 end;
 
 procedure TTarefaTipoListagem.btnAlterarClick(Sender: TObject);

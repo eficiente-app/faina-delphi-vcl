@@ -48,14 +48,14 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
       ParentFont = False
       Layout = tlCenter
       Visible = False
-      ExplicitTop = 0
+      ExplicitHeight = 28
     end
   end
   object pnlLateralEsquerda: TPanel
     Left = 0
     Top = 36
     Width = 200
-    Height = 375
+    Height = 374
     Align = alLeft
     BevelOuter = bvNone
     Color = 10495813
@@ -65,7 +65,7 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
       Left = 0
       Top = 0
       Width = 200
-      Height = 375
+      Height = 374
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -154,6 +154,9 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
           end
           item
             Item = nbiTipoPasta
+          end
+          item
+            Item = nbiTipoTarefa
           end>
       end
       object nbgSitema: TdxNavBarGroup
@@ -170,13 +173,17 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
         Caption = 'Tipos de Pastas'
         OnClick = nbiTipoPastaClick
       end
+      object nbiTipoTarefa: TdxNavBarItem
+        Caption = 'Tipo de Tarefa'
+        OnClick = nbiTipoTarefaClick
+      end
     end
   end
   object pnlAreaTrabalho: TPanel
     Left = 200
     Top = 36
     Width = 652
-    Height = 375
+    Height = 374
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2

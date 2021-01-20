@@ -1,24 +1,27 @@
 inherited PastaTipoManutencao: TPastaTipoManutencao
   Caption = 'Pasta Tipo'
-  ClientHeight = 136
+  ClientHeight = 143
   ClientWidth = 515
   Color = clWindow
   ExplicitWidth = 531
-  ExplicitHeight = 175
+  ExplicitHeight = 182
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     Width = 515
-    Height = 136
+    Height = 143
     ExplicitWidth = 515
     ExplicitHeight = 136
     inherited pnlTitleBar: TPanel
       Width = 515
       ExplicitWidth = 515
+      inherited lblTitleForm: TLabel
+        Height = 20
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 515
-      Height = 116
+      Height = 123
       ExplicitWidth = 515
       ExplicitHeight = 116
       object lbid: TLabel
@@ -114,7 +117,7 @@ inherited PastaTipoManutencao: TPastaTipoManutencao
       end
       object dbedtdescricao: TDBEdit
         Left = 8
-        Top = 83
+        Top = 93
         Width = 497
         Height = 21
         DataField = 'descricao'

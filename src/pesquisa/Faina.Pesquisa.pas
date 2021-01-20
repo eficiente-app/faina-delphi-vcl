@@ -20,11 +20,13 @@ uses
   Vcl.Grids,
   Vcl.Mask,
   Vcl.StdCtrls,
+  FireDAC.Comp.Client,
   Formulario.Base,
-  FireDAC.Comp.Client;
+  Formulario.Base.Visual,
+  Extend.DBGrids;
 
 type
-  TPesquisa = class(TFormularioBase)
+  TPesquisa = class(TFormularioBaseVisual)
     pnlPesquisa: TPanel;
     dbgrid: TDBGrid;
     src: TDataSource;
@@ -40,13 +42,12 @@ type
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnConfirmarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
-    FFiltro: String;
-    FFiltrado: Boolean;
-    FSelecao: TProc;
+    FOrigem: TField;
+    FDestino: TField;
   public
-    class function New(AParent: TForm; ATable: TFDMemTable): TPesquisa;
-    procedure Selecao(Prc: TProc);
+    class function New(AParent: TForm; Origem, Destino: TField): TPesquisa;
   end;
 
 implementation
@@ -58,32 +59,16 @@ uses
 
 { TPesquisa }
 
-class function TPesquisa.New(AParent: TForm; ATable: TFDMemTable): TPesquisa;
+class function TPesquisa.New(AParent: TForm; Origem, Destino: TField): TPesquisa;
 begin
   Result := TPesquisa.Create(AParent);
   with Result do
-  try
-    FFiltro   := ATable.Filter;
-    FFiltrado := ATable.Filtered;
-    try
-      src.DataSet := ATable;
-
-      ShowModal(AParent);
-
-//      if ShowModal <> mrOk then
-//        Abort;
-    finally
-//      ATable.Filter   := FFiltro;
-//      ATable.Filtered := FFiltrado;
-    end;
-  finally
-
+  begin
+    FOrigem := Origem;
+    FDestino := Destino;
+    src.DataSet := Origem.DataSet;
+    ShowModal(AParent);
   end;
-end;
-
-procedure TPesquisa.Selecao(Prc: TProc);
-begin
-  FSelecao := Prc;
 end;
 
 procedure TPesquisa.btnCancelarClick(Sender: TObject);
@@ -93,8 +78,7 @@ end;
 
 procedure TPesquisa.btnConfirmarClick(Sender: TObject);
 begin
-  if Assigned(FSelecao) then
-    FSelecao;
+  FDestino.Value := FOrigem.Value;
   Close;
 end;
 
@@ -108,7 +92,7 @@ begin
 
   Field := TField(cbxCampo.Items.Objects[cbxCampo.ItemIndex]);
 
-  sPesquisa := IfThen(FFiltrado and not FFiltro.IsEmpty, FFiltro +' and ') + Field.FieldName;
+  sPesquisa := Field.FieldName;
 
   if Field.InheritsFrom(TNumericField) or Field.InheritsFrom(TDateField) then
     sPesquisa := sPesquisa +' = '+ Trim(edtValor.Text)
@@ -118,6 +102,11 @@ begin
   src.DataSet.Filtered := False;
   src.DataSet.Filter   := sPesquisa;
   src.DataSet.Filtered := True;
+end;
+
+procedure TPesquisa.FormCreate(Sender: TObject);
+begin
+  CloseEsc := True;
 end;
 
 procedure TPesquisa.FormShow(Sender: TObject);

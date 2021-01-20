@@ -12,8 +12,6 @@ inherited PastaTipoListagem: TPastaTipoListagem
   inherited pnlClientForm: TPanel
     Width = 544
     Height = 588
-    ExplicitLeft = 0
-    ExplicitTop = 0
     ExplicitWidth = 544
     ExplicitHeight = 588
     inherited pnlTitleBar: TPanel
@@ -27,7 +25,6 @@ inherited PastaTipoListagem: TPastaTipoListagem
     inherited pnlClientArea: TPanel
       Width = 544
       Height = 568
-      ExplicitTop = 20
       ExplicitWidth = 544
       ExplicitHeight = 568
       object dbgridPasta: TDBGrid
@@ -161,6 +158,7 @@ inherited PastaTipoListagem: TPastaTipoListagem
   object srcPastaTipo: TDataSource
     AutoEdit = False
     DataSet = PastaTipoDados.tblPastaTipo
+    OnDataChange = srcPastaTipoDataChange
     Left = 360
     Top = 1
   end

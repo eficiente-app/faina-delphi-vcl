@@ -55,7 +55,6 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure sbttipo_idClick(Sender: TObject);
-    procedure sbtprojeto_idClick(Sender: TObject);
   private
     PD: TPastaDados;
   public
@@ -94,22 +93,11 @@ end;
 
 procedure TPastaManutencao.sbttipo_idClick(Sender: TObject);
 begin
-  // Só exemplo
-  TPesquisa.New(TForm(Self.Parent), pasta_tipo_dados.tblPastaTipo).Selecao(
-    procedure
-    begin
-      PD.tblPasta.FieldByName('tipo_id').AsString := pasta_tipo_dados.tblPastaTipo.FieldByName('id').AsString;
-      PD.tblPasta.FieldByName('tipo_nome').AsString := pasta_tipo_dados.tblPastaTipo.FieldByName('nome').AsString;
-    end
+  TPesquisa.New(
+    TForm(Self.Parent),
+    pasta_tipo_dados.tblPastaTipo.FieldByName('id'),
+    PD.tblPasta.FieldByName('tipo_id')
   );
-end;
-
-procedure TPastaManutencao.sbtprojeto_idClick(Sender: TObject);
-begin
-  // Só exemplo
-  TPesquisa.New(TForm(Self.Parent), PD.tblPasta);
-  PD.tblPasta.FieldByName('projeto_id').AsString := PD.tblPasta.FieldByName('id').AsString;
-  PD.tblPasta.FieldByName('projeto_descricao').AsString := PD.tblPasta.FieldByName('descricao').AsString;
 end;
 
 procedure TPastaManutencao.btnFecharClick(Sender: TObject);
