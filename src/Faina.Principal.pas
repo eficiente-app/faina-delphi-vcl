@@ -24,9 +24,12 @@ uses
 type
   TPrincipal = class(TFormularioBaseVisual)
     procedure FormShow(Sender: TObject);
+    procedure pnlTitleBarDblClick(Sender: TObject);
   private
     { Private declarations }
     FAreaTrabalho: TAreaTrabalho;
+  protected
+    procedure Resizing(State: TWindowState); override;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent); reintroduce; override;
@@ -63,6 +66,30 @@ begin
   FAreaTrabalho := TAreaTrabalho.Create(Self);
   FAreaTrabalho.ShowIn(pnlClientArea, alClient);
   TLogin.New(pnlClientArea);
+end;
+
+procedure TPrincipal.pnlTitleBarDblClick(Sender: TObject);
+begin
+  if WindowState = TWindowState.wsMaximized then
+    WindowState := TWindowState.wsNormal
+  else
+    WindowState := TWindowState.wsMaximized;
+end;
+
+procedure TPrincipal.Resizing(State: TWindowState);
+  procedure SetM(Mar: TMargins; I: Integer);
+  begin
+    Mar.Left   := I;
+    Mar.Top    := I;
+    Mar.Bottom := I;
+    Mar.Right  := I;
+  end;
+begin
+  if State = TWindowState.wsMaximized then
+    SetM(pnlClientForm.Margins, 8)
+  else
+    SetM(pnlClientForm.Margins, 1);
+  inherited;
 end;
 
 end.

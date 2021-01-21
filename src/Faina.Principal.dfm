@@ -19,6 +19,7 @@ inherited Principal: TPrincipal
       Height = 20
       Color = 2297098
       TabOrder = 1
+      OnDblClick = pnlTitleBarDblClick
       ExplicitWidth = 1004
       ExplicitHeight = 20
       inherited lblTitleForm: TLabel
