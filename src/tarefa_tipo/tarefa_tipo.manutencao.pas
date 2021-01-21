@@ -20,48 +20,40 @@ uses
   Vcl.ImgList,
   Vcl.Mask,
   Vcl.StdCtrls,
-  Formulario.Base,
+  Formulario.Base.Visual,
   tarefa_tipo.dados,
   Faina.Pesquisa;
 
 type
-  TAcaoManutencao = (Incluir, Alterar, Visualizar);
+  TAcaoManutencao = (Incluir, Alterar);
 
-  TTarefaTipoManutencao = class(TFormularioBase)
+  TTarefaTipoManutencao = class(TFormularioBaseVisual)
     dbedtid: TDBEdit;
     lbid: TLabel;
     pnlTop: TPanel;
-    btnGravar: TButton;
-    btnCancelar: TButton;
-    btnExcluir: TButton;
-    btnFechar: TButton;
+    btnConfirmar: TButton;
     lbdescricao: TLabel;
     srcTarefaTipo: TDataSource;
     dbedtdescricao: TDBEdit;
     lbnome: TLabel;
     dbedtnome: TDBEdit;
-    procedure btnGravarClick(Sender: TObject);
-    procedure btnCancelarClick(Sender: TObject);
-    procedure btnExcluirClick(Sender: TObject);
-    procedure btnFecharClick(Sender: TObject);
+    procedure btnConfirmarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     TTD: TTarefaTipoDados;
   public
-    class procedure New(AParent: TWinControl; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
+    class procedure New(AParent: TForm; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
   end;
 
 implementation
 
 {$R *.dfm}
 
-class procedure TTarefaTipoManutencao.New(AParent: TWinControl; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
+class procedure TTarefaTipoManutencao.New(AParent: TForm; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
 begin
   with TTarefaTipoManutencao.Create(AParent) do
   begin
-    Parent := AParent;
-    BorderStyle := bsNone;
-    Anchors := [akLeft,akTop,akRight,akBottom];
-    SetBounds(AParent.Left, AParent.Top, AParent.Width, AParent.Height);
+    CloseEsc := True;
 
     TTD := ATTD;
     srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
@@ -71,41 +63,23 @@ begin
       Alterar: TTD.tblTarefaTipo.Edit;
     end;
 
-    btnGravar.Visible   := Tipo in [Incluir, Alterar];
-    btnCancelar.Visible := Tipo in [Incluir, Alterar];
-    btnExcluir.Visible  := Tipo = Alterar;
-    btnFechar.Visible   := Tipo = Visualizar;
-
-    Show;
+    btnConfirmar.Visible := Tipo in [Incluir, Alterar];
+    ShowModal(AParent);
   end;
 end;
 
-procedure TTarefaTipoManutencao.btnFecharClick(Sender: TObject);
-begin
-  Close;
-end;
-
-procedure TTarefaTipoManutencao.btnCancelarClick(Sender: TObject);
-begin
-  TTD.tblTarefaTipo.Cancel;
-  Close;
-end;
-
-procedure TTarefaTipoManutencao.btnExcluirClick(Sender: TObject);
-begin
-  if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
-    Exit;
-  TTD.tblTarefaTipo.Delete;
-  TTD.TarefaTipo.Table.Write;
-  Close;
-end;
-
-procedure TTarefaTipoManutencao.btnGravarClick(Sender: TObject);
+procedure TTarefaTipoManutencao.btnConfirmarClick(Sender: TObject);
 begin
   if TTD.tblTarefaTipo.State in dsEditModes then
     TTD.tblTarefaTipo.Post;
   TTD.TarefaTipo.Table.Write;
   Close;
+end;
+
+procedure TTarefaTipoManutencao.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if TTD.tblTarefaTipo.State in dsEditModes then
+    TTD.tblTarefaTipo.Cancel;
 end;
 
 end.

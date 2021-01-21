@@ -17,6 +17,9 @@ inherited Pesquisa: TPesquisa
     inherited pnlTitleBar: TPanel
       Width = 430
       ExplicitWidth = 430
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 430
@@ -30,6 +33,7 @@ inherited Pesquisa: TPesquisa
         Height = 165
         Align = alClient
         DataSource = src
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -104,17 +108,6 @@ inherited Pesquisa: TPesquisa
           ModalResult = 1
           TabOrder = 0
           OnClick = btnConfirmarClick
-        end
-        object btnCancelar: TButton
-          Left = 75
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Cancelar'
-          ModalResult = 2
-          TabOrder = 1
-          OnClick = btnCancelarClick
         end
       end
     end

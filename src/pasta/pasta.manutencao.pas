@@ -25,7 +25,7 @@ uses
   Faina.Pesquisa;
 
 type
-  TAcaoManutencao = (Incluir, Alterar, Visualizar);
+  TAcaoManutencao = (Incluir, Alterar);
 
   TPastaManutencao = class(TFormularioBaseVisual)
     lbid: TLabel;
@@ -38,11 +38,6 @@ type
     lbtipo_nome: TLabel;
     lbprojeto_descricao: TLabel;
     dbedtid: TDBEdit;
-    pnlTop: TPanel;
-    btnGravar: TButton;
-    btnCancelar: TButton;
-    btnExcluir: TButton;
-    btnFechar: TButton;
     dbedttipo_id: TDBEdit;
     dbedtprojeto_id: TDBEdit;
     dbedtnome: TDBEdit;
@@ -50,11 +45,11 @@ type
     dbedttipo_nome: TDBEdit;
     dbedtprojeto_descricao: TDBEdit;
     srcPasta: TDataSource;
-    procedure btnGravarClick(Sender: TObject);
-    procedure btnCancelarClick(Sender: TObject);
-    procedure btnExcluirClick(Sender: TObject);
-    procedure btnFecharClick(Sender: TObject);
+    pnlTop: TPanel;
+    btnConfirmar: TButton;
+    procedure btnConfirmarClick(Sender: TObject);
     procedure sbttipo_idClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     PD: TPastaDados;
   public
@@ -72,21 +67,17 @@ class procedure TPastaManutencao.New(AParent: TForm; ADM: TPastaDados; Tipo: TAc
 begin
   with TPastaManutencao.Create(AParent) do
   begin
+    CloseEsc := True;
+
     PD := ADM;
     srcPasta.DataSet := PD.tblPasta;
-
-    CloseEsc := True;
 
     case Tipo of
       Incluir: PD.tblPasta.Append;
       Alterar: PD.tblPasta.Edit;
     end;
 
-    btnGravar.Visible   := Tipo in [Incluir, Alterar];
-    btnCancelar.Visible := Tipo in [Incluir, Alterar];
-    btnExcluir.Visible  := Tipo = Alterar;
-    btnFechar.Visible   := Tipo = Visualizar;
-
+    btnConfirmar.Visible := Tipo in [Incluir, Alterar];
     ShowModal(AParent);
   end;
 end;
@@ -100,32 +91,18 @@ begin
   );
 end;
 
-procedure TPastaManutencao.btnFecharClick(Sender: TObject);
-begin
-  Close;
-end;
-
-procedure TPastaManutencao.btnCancelarClick(Sender: TObject);
-begin
-  PD.tblPasta.Cancel;
-  Close;
-end;
-
-procedure TPastaManutencao.btnExcluirClick(Sender: TObject);
-begin
-  if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
-    Exit;
-  PD.tblPasta.Delete;
-  PD.Pasta.Table.Write;
-  Close;
-end;
-
-procedure TPastaManutencao.btnGravarClick(Sender: TObject);
+procedure TPastaManutencao.btnConfirmarClick(Sender: TObject);
 begin
   if PD.tblPasta.State in dsEditModes then
     PD.tblPasta.Post;
   PD.Pasta.Table.Write;
   Close;
+end;
+
+procedure TPastaManutencao.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if PD.tblPasta.State in dsEditModes then
+    PD.tblPasta.Cancel;
 end;
 
 end.
