@@ -16,6 +16,8 @@ type
     svgUserAvatar: TSVGIconImage;
     pnlLateralEsquerda: TPanel;
     pnlAreaTrabalho: TPanel;
+    svgNotificacao: TSVGIconImage;
+    svgAdicionar: TSVGIconImage;
     procedure svgUserAvatarClick(Sender: TObject);
   private
     { Private declarations }

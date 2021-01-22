@@ -2,7 +2,7 @@ inherited MenuUsuario: TMenuUsuario
   Caption = 'MenuUsuario'
   ClientHeight = 110
   ClientWidth = 200
-  Color = 10495813
+  Color = 3806736
   OnClose = FormClose
   ExplicitWidth = 216
   ExplicitHeight = 149

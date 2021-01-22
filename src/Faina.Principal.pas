@@ -7,6 +7,7 @@ uses
   Winapi.Messages,
   Winapi.Windows,
   System.Classes,
+  System.StrUtils,
   System.SysUtils,
   System.Variants,
   Vcl.Controls,
@@ -16,15 +17,18 @@ uses
   Vcl.Graphics,
   Vcl.Menus,
   Vcl.StdCtrls,
-  SVGIconImage,
   SysButtons,
   Formulario.Base.Visual,
   area_trabalho;
 
 type
   TPrincipal = class(TFormularioBaseVisual)
+    pnlAlertaConexao: TPanel;
+    lblAlertaConexao: TLabel;
+    tmrAlertaConexao: TTimer;
     procedure FormShow(Sender: TObject);
     procedure pnlTitleBarDblClick(Sender: TObject);
+    procedure tmrAlertaConexaoTimer(Sender: TObject);
   private
     { Private declarations }
     FAreaTrabalho: TAreaTrabalho;
@@ -34,6 +38,7 @@ type
     { Public declarations }
     constructor Create(AOwner: TComponent); reintroduce; override;
     property AreaDeTrabalho: TAreaTrabalho read FAreaTrabalho;
+    function SetAlertaConexao(bConectado: Boolean): TPrincipal;
   end;
 
 var
@@ -51,11 +56,6 @@ begin
   inherited;
   Redimensionar := True;
   ControleForm  := True;
-  Caption := 'Faina - Gerencie suas Tarefas';
-
-//  lblTitleForm.Caption   := 'Faina - Gerencie suas Tarefas';
-//  pnlTitleBar.Height     := 20;
-
   SystemButtons.Visible := True;
   SystemButtons.Buttons := [bMinimize, bMaximize, bClose];
   pnlClientForm.AlignWithMargins := True;
@@ -66,6 +66,7 @@ begin
   FAreaTrabalho := TAreaTrabalho.Create(Self);
   FAreaTrabalho.ShowIn(pnlClientArea, alClient);
   TLogin.New(pnlClientArea);
+  SetAlertaConexao(True);
 end;
 
 procedure TPrincipal.pnlTitleBarDblClick(Sender: TObject);
@@ -90,6 +91,21 @@ begin
   else
     SetM(pnlClientForm.Margins, 1);
   inherited;
+end;
+
+function TPrincipal.SetAlertaConexao(bConectado: Boolean): TPrincipal;
+begin
+  Result := Self;
+  lblAlertaConexao.Caption := IfThen(bConectado, 'Conectado!', 'Falha na conexão!');
+  pnlAlertaConexao.Visible := True;
+  tmrAlertaConexao.Enabled := bConectado;
+  Application.ProcessMessages;
+end;
+
+procedure TPrincipal.tmrAlertaConexaoTimer(Sender: TObject);
+begin
+  tmrAlertaConexao.Enabled := False;
+  pnlAlertaConexao.Visible := False;
 end;
 
 end.

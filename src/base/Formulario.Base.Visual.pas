@@ -27,19 +27,26 @@ type
   private
     FControleForm: Boolean;
     FRedimensionar: Boolean;
+    FAtualizarCaption: Boolean;
     function GetBorderSize: TRect;
     function GetHitTest(P: TPoint): Integer;
     function NormalizePoint(P: TPoint): TPoint;
+    procedure SetAtualizarCaption(const Value: Boolean);
+    function GetCaption: TCaption;
+    procedure SetCaption(const Value: TCaption);
   protected
     FSystemButtons: TSysButtons;
     procedure WmNCCalcSize(var Msg: TWMNCCalcSize); message WM_NCCALCSIZE;
     procedure WMNCHitTest(var Message: TWMNCHitTest); message WM_NCHITTEST;
   public
-    property Redimensionar: Boolean read FRedimensionar write FRedimensionar;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    property SystemButtons: TSysButtons read FSystemButtons;
+
+    property Caption: TCaption read GetCaption write SetCaption;
+    property Redimensionar: Boolean read FRedimensionar write FRedimensionar;
     property ControleForm: Boolean read FControleForm write FControleForm;
+    property AtualizarCaption: Boolean read FAtualizarCaption write SetAtualizarCaption;
+    property SystemButtons: TSysButtons read FSystemButtons;
 
     procedure ShowModal(AParent: TForm); reintroduce; override;
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []); override;
@@ -58,6 +65,7 @@ uses
 constructor TFormularioBaseVisual.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
+  FAtualizarCaption := True;
   FRedimensionar := False;
   FControleForm  := False;
   lblTitleForm.Caption := Self.Caption;
@@ -244,6 +252,13 @@ begin
   end;
 end;
 
+procedure TFormularioBaseVisual.SetAtualizarCaption(const Value: Boolean);
+begin
+  FAtualizarCaption := Value;
+  if Value then
+    Caption := Caption;
+end;
+
 procedure TFormularioBaseVisual.ShowIn(AParent: TControl; Align: TAlign; Anchors: TAnchors);
 begin
   inherited ShowIn(AParent, Align, Anchors);
@@ -254,6 +269,18 @@ procedure TFormularioBaseVisual.ShowModal(AParent: TForm);
 begin
   inherited ShowModal(AParent);
   pnlClientForm.AlignWithMargins := True;
+end;
+
+function TFormularioBaseVisual.GetCaption: TCaption;
+begin
+  Result := inherited Caption;
+end;
+
+procedure TFormularioBaseVisual.SetCaption(const Value: TCaption);
+begin
+  inherited Caption := Value;
+  if FAtualizarCaption then
+    lblTitleForm.Caption := Caption;
 end;
 
 end.

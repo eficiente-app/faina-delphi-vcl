@@ -43,7 +43,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
         Left = 8
         Top = 0
         Width = 132
-        Height = 30
+        Height = 17
         Margins.Left = 8
         Margins.Top = 0
         Margins.Right = 0
@@ -58,7 +58,6 @@ object FormularioBaseVisual: TFormularioBaseVisual
         ParentFont = False
         Layout = tlCenter
         OnMouseDown = MouseDownMovimentarFormulario
-        ExplicitHeight = 17
       end
     end
     object pnlClientArea: TPanel

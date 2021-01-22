@@ -11,7 +11,7 @@ inherited AreaTrabalho: TAreaTrabalho
         Left = 0
         Top = 0
         Width = 852
-        Height = 55
+        Height = 54
         Margins.Left = 0
         Margins.Top = 8
         Margins.Right = 0
@@ -21,20 +21,22 @@ inherited AreaTrabalho: TAreaTrabalho
         Color = 3806736
         ParentBackground = False
         TabOrder = 0
+        ExplicitTop = 8
         object pnlTitle: TPanel
           Left = 0
           Top = 0
           Width = 185
-          Height = 55
+          Height = 54
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitHeight = 55
           object lblTitlePrincipal: TLabel
             AlignWithMargins = True
             Left = 3
             Top = 3
             Width = 179
-            Height = 49
+            Height = 48
             Align = alClient
             Caption = 'Faina'
             Font.Charset = DEFAULT_CHARSET
@@ -53,7 +55,8 @@ inherited AreaTrabalho: TAreaTrabalho
           Left = 799
           Top = 3
           Width = 50
-          Height = 49
+          Height = 48
+          Cursor = crHandPoint
           AutoSize = True
           SVGText = 
             '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0' +
@@ -65,27 +68,73 @@ inherited AreaTrabalho: TAreaTrabalho
           FixedColor = clWhite
           Align = alRight
           OnClick = svgUserAvatarClick
+          ExplicitTop = 0
+        end
+        object svgNotificacao: TSVGIconImage
+          AlignWithMargins = True
+          Left = 769
+          Top = 15
+          Width = 24
+          Height = 24
+          Cursor = crHandPoint
+          Margins.Top = 15
+          Margins.Bottom = 15
+          AutoSize = False
+          Stretch = False
+          SVGText = 
+            '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0' +
+            ' 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d=' +
+            '"M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64' +
+            '-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 ' +
+            '6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5' +
+            's4 2.02 4 4.5v6z"/></svg>'
+          FixedColor = clWhite
+          Align = alRight
+          ExplicitTop = 18
+        end
+        object svgAdicionar: TSVGIconImage
+          AlignWithMargins = True
+          Left = 739
+          Top = 15
+          Width = 24
+          Height = 24
+          Cursor = crHandPoint
+          Margins.Top = 15
+          Margins.Bottom = 15
+          AutoSize = False
+          Stretch = False
+          SVGText = 
+            '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0' +
+            ' 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d=' +
+            '"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>'
+          FixedColor = clWhite
+          Align = alRight
+          ExplicitTop = 18
         end
       end
       object pnlLateralEsquerda: TPanel
         Left = 0
-        Top = 55
+        Top = 54
         Width = 200
-        Height = 326
+        Height = 327
         Align = alLeft
         BevelOuter = bvNone
         Color = 10495813
         ParentBackground = False
         TabOrder = 1
+        ExplicitTop = 55
+        ExplicitHeight = 326
       end
       object pnlAreaTrabalho: TPanel
         Left = 200
-        Top = 55
+        Top = 54
         Width = 652
-        Height = 326
+        Height = 327
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 2
+        ExplicitLeft = 206
+        ExplicitTop = 57
       end
     end
   end

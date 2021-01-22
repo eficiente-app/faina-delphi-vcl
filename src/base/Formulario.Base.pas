@@ -83,7 +83,10 @@ begin
   Self.Anchors := Anchors;
   BorderStyle  := bsNone;
   Position     := poDesigned;
-  SetBounds((AParent.Width div 2) - (Width div 2), (AParent.Height div 2) - (Height div 2), Width, Height);
+
+  if Align = TAlign.alNone then
+    SetBounds((AParent.Width div 2) - (Width div 2), (AParent.Height div 2) - (Height div 2), Width, Height);
+
   Show;
 end;
 
