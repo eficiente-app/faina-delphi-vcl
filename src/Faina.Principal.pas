@@ -18,6 +18,7 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   SysButtons,
+  Faina.Configuracoes,
   Formulario.Base.Visual,
   area_trabalho;
 
@@ -59,6 +60,9 @@ begin
   SystemButtons.Visible := True;
   SystemButtons.Buttons := [bMinimize, bMaximize, bClose];
   pnlClientForm.AlignWithMargins := True;
+
+  if not TConfiguracoes.Existe('url') then
+    TConfiguracoes.Escrever<String>('url', 'http://18.230.153.64:3000');
 end;
 
 procedure TPrincipal.FormShow(Sender: TObject);

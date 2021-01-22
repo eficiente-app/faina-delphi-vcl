@@ -34,7 +34,7 @@ inherited Principal: TPrincipal
       Width = 1004
       Height = 641
       TabOrder = 0
-      ExplicitTop = 40
+      ExplicitTop = 43
       ExplicitWidth = 1004
       ExplicitHeight = 641
     end

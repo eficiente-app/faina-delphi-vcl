@@ -47,18 +47,20 @@ inherited PastaTipoListagem: TPastaTipoListagem
           item
             Expanded = False
             FieldName = 'id'
+            Title.Alignment = taRightJustify
+            Width = 50
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'nome'
-            Width = 150
+            Width = 250
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'descricao'
-            Width = 294
+            Width = 300
             Visible = True
           end>
       end
@@ -80,8 +82,6 @@ inherited PastaTipoListagem: TPastaTipoListagem
           Caption = 'Adicionar'
           TabOrder = 0
           OnClick = btnAdicionarClick
-          ExplicitLeft = 1
-          ExplicitTop = -1
         end
       end
       object pnlPesquisa: TPanel

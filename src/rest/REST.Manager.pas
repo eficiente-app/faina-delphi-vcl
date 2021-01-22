@@ -7,7 +7,8 @@ uses
   FireDAC.Comp.Client,
   REST.Connection,
   REST.Table,
-  REST.Query;
+  REST.Query,
+  Faina.Configuracoes;
 
 type
   TRESTManager = class
@@ -29,13 +30,16 @@ implementation
 uses
   System.SysUtils,
   System.JSON,
-  System.Net.HttpClient;
+  System.Net.HttpClient,
+  System.StrUtils;
 
 { TRESTManager }
 
 constructor TRESTManager.Create(URL: String; ATable: TFDMemTable);
 begin
-  FURL := URL;
+  FURL := TConfiguracoes.Ler<String>('url');
+  FURL := Concat(FURL, IfThen(not FURL.EndsWith('/') and not URL.StartsWith('/'), '/'), URL);
+
   FConnection := TRESTConnection.Create;
   FTable := TRESTTable.Create(ATable);
   FQuery := TRESTQuery.Create;

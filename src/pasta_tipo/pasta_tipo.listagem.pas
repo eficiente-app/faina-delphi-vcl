@@ -53,7 +53,7 @@ implementation
 
 procedure TPastaTipoListagem.FormCreate(Sender: TObject);
 begin
-  PTD := TPastaTipoDados.Create(Self);
+  PTD := pasta_tipo_dados;
   srcPastaTipo.DataSet := PTD.tblPastaTipo;
 end;
 

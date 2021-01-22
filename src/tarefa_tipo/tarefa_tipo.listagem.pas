@@ -55,7 +55,7 @@ implementation
 
 procedure TTarefaTipoListagem.FormCreate(Sender: TObject);
 begin
-  TTD := TTarefaTipoDados.Create(Self);
+  TTD := tarefa_tipo_dados;
   srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
 end;
 

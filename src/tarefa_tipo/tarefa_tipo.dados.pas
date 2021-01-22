@@ -47,7 +47,7 @@ implementation
 
 procedure TTarefaTipoDados.DataModuleCreate(Sender: TObject);
 begin
-  TarefaTipo := TRESTManager.Create('http://18.230.153.64:3000/api/tarefa/tipo', tblTarefaTipo);
+  TarefaTipo := TRESTManager.Create('api/tarefa/tipo', tblTarefaTipo);
   TarefaTipo.Table.Read;
 end;
 

@@ -47,16 +47,22 @@ inherited PastaListagem: TPastaListagem
           item
             Expanded = False
             FieldName = 'id'
+            Title.Alignment = taRightJustify
+            Width = 50
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'tipo_id'
+            Title.Alignment = taRightJustify
+            Width = 50
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'projeto_id'
+            Title.Alignment = taRightJustify
+            Width = 50
             Visible = True
           end
           item
@@ -68,7 +74,7 @@ inherited PastaListagem: TPastaListagem
           item
             Expanded = False
             FieldName = 'descricao'
-            Width = 250
+            Width = 300
             Visible = True
           end>
       end

@@ -43,6 +43,26 @@ inherited TarefaTipoListagem: TTarefaTipoListagem
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
         OnCellClick = dbgridPastaCellClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'id'
+            Title.Alignment = taRightJustify
+            Width = 50
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome'
+            Width = 250
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'descricao'
+            Width = 500
+            Visible = True
+          end>
       end
       object pnlPesquisa: TPanel
         Left = 0

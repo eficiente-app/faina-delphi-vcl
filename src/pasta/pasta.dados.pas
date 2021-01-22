@@ -51,7 +51,7 @@ uses
 
 procedure TPastaDados.DataModuleCreate(Sender: TObject);
 begin
-  Pasta := TRESTManager.Create('http://18.230.153.64:3000/api/pasta', tblPasta);
+  Pasta := TRESTManager.Create('api/pasta', tblPasta);
 end;
 
 procedure TPastaDados.DataModuleDestroy(Sender: TObject);

@@ -48,7 +48,7 @@ implementation
 
 procedure TPastaTipoDados.DataModuleCreate(Sender: TObject);
 begin
-  PastaTipo := TRESTManager.Create('http://18.230.153.64:3000/api/pasta/tipo', tblPastaTipo);
+  PastaTipo := TRESTManager.Create('api/pasta/tipo', tblPastaTipo);
   PastaTipo.Table.Read;
 end;
 
