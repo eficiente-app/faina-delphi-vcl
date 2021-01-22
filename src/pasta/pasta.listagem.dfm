@@ -1,42 +1,49 @@
 inherited PastaListagem: TPastaListagem
   Caption = 'Pasta'
   ClientHeight = 452
-  ClientWidth = 727
+  ClientWidth = 690
+  Color = clWindow
   OldCreateOrder = True
   Position = poOwnerFormCenter
   OnCreate = FormCreate
-  ExplicitWidth = 743
+  ExplicitWidth = 706
   ExplicitHeight = 491
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
-    Width = 727
+    Width = 690
     Height = 452
-    ExplicitWidth = 727
+    ExplicitWidth = 690
     ExplicitHeight = 452
     inherited pnlTitleBar: TPanel
-      Width = 727
+      Width = 690
       Visible = False
-      ExplicitWidth = 727
+      ExplicitWidth = 690
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
-      Width = 727
+      Width = 690
       Height = 422
-      ExplicitWidth = 727
+      ExplicitWidth = 690
       ExplicitHeight = 422
       object dbgridPasta: TDBGrid
         Left = 0
         Top = 145
-        Width = 727
+        Width = 690
         Height = 277
         Align = alClient
         DataSource = srcPasta
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        PopupMenu = popAcoes
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnCellClick = dbgridPastaCellClick
         Columns = <
           item
             Expanded = False
@@ -69,7 +76,7 @@ inherited PastaListagem: TPastaListagem
       object pnlPesquisa: TPanel
         Left = 0
         Top = 30
-        Width = 727
+        Width = 690
         Height = 115
         Align = alTop
         BevelOuter = bvNone
@@ -123,41 +130,23 @@ inherited PastaListagem: TPastaListagem
       object pnlTopo: TPanel
         Left = 0
         Top = 0
-        Width = 727
+        Width = 690
         Height = 30
         Align = alTop
         BevelKind = bkTile
         BevelOuter = bvNone
         TabOrder = 2
-        object btnIncluir: TButton
+        object btnAdicionar: TButton
           Left = 0
           Top = 0
           Width = 75
           Height = 26
           Align = alLeft
-          Caption = 'Incluir'
+          Caption = 'Adicionar'
           TabOrder = 0
-          OnClick = btnIncluirClick
-        end
-        object btnAlterar: TButton
-          Left = 75
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Alterar'
-          TabOrder = 1
-          OnClick = btnAlterarClick
-        end
-        object btnVisualizar: TButton
-          Left = 150
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Visualizar'
-          TabOrder = 2
-          OnClick = btnVisualizarClick
+          OnClick = btnAdicionarClick
+          ExplicitLeft = -2
+          ExplicitTop = -1
         end
       end
     end
@@ -165,8 +154,14 @@ inherited PastaListagem: TPastaListagem
   object srcPasta: TDataSource
     AutoEdit = False
     DataSet = PastaDados.tblPasta
-    OnDataChange = srcPastaDataChange
-    Left = 536
+    Left = 360
     Top = 1
+  end
+  object popAcoes: TPopupMenu
+    Left = 432
+    object btnRemover: TMenuItem
+      Caption = 'Remover'
+      OnClick = btnRemoverClick
+    end
   end
 end

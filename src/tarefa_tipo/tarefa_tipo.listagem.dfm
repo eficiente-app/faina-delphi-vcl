@@ -1,42 +1,49 @@
 inherited TarefaTipoListagem: TTarefaTipoListagem
   Caption = 'Tipo de Tarefa'
-  ClientHeight = 605
+  ClientHeight = 397
   ClientWidth = 583
   Color = clWindow
   KeyPreview = True
   Position = poOwnerFormCenter
   OnCreate = FormCreate
   ExplicitWidth = 599
-  ExplicitHeight = 644
+  ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     Width = 583
-    Height = 605
+    Height = 397
     ExplicitWidth = 583
-    ExplicitHeight = 605
+    ExplicitHeight = 397
     inherited pnlTitleBar: TPanel
       Width = 583
+      Visible = False
       ExplicitWidth = 583
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 583
-      Height = 575
+      Height = 367
       ExplicitWidth = 583
-      ExplicitHeight = 575
+      ExplicitHeight = 367
       object dbgridPasta: TDBGrid
         Left = 0
         Top = 145
         Width = 583
-        Height = 430
+        Height = 222
         Align = alClient
         DataSource = srcTarefaTipo
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        PopupMenu = popAcoes
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnCellClick = dbgridPastaCellClick
       end
       object pnlPesquisa: TPanel
         Left = 0
@@ -107,29 +114,11 @@ inherited TarefaTipoListagem: TTarefaTipoListagem
           Width = 75
           Height = 26
           Align = alLeft
-          Caption = 'Incluir'
+          Caption = 'Adicionar'
           TabOrder = 0
           OnClick = btnIncluirClick
-        end
-        object btnAlterar: TButton
-          Left = 75
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Alterar'
-          TabOrder = 1
-          OnClick = btnAlterarClick
-        end
-        object btnVisualizar: TButton
-          Left = 150
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Visualizar'
-          TabOrder = 2
-          OnClick = btnVisualizarClick
+          ExplicitLeft = 1
+          ExplicitTop = 1
         end
       end
     end
@@ -137,8 +126,14 @@ inherited TarefaTipoListagem: TTarefaTipoListagem
   object srcTarefaTipo: TDataSource
     AutoEdit = False
     DataSet = TarefaTipoDados.tblTarefaTipo
-    OnDataChange = srcTarefaTipoDataChange
     Left = 360
     Top = 1
+  end
+  object popAcoes: TPopupMenu
+    Left = 440
+    object btnRemover: TMenuItem
+      Caption = 'Remover'
+      OnClick = btnRemoverClick
+    end
   end
 end

@@ -1,25 +1,31 @@
 inherited PastaManutencao: TPastaManutencao
   Caption = 'Pasta'
-  ClientHeight = 185
+  ClientHeight = 195
   ClientWidth = 515
+  Color = clWindow
+  OnClose = FormClose
   ExplicitWidth = 531
-  ExplicitHeight = 224
+  ExplicitHeight = 234
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     Width = 515
-    Height = 185
+    Height = 195
     ExplicitWidth = 515
-    ExplicitHeight = 185
+    ExplicitHeight = 195
     inherited pnlTitleBar: TPanel
       Width = 515
+      ExplicitTop = -4
       ExplicitWidth = 515
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 515
-      Height = 155
+      Height = 165
       ExplicitWidth = 515
-      ExplicitHeight = 155
+      ExplicitHeight = 165
       object lbid: TLabel
         Left = 8
         Top = 36
@@ -172,56 +178,6 @@ inherited PastaManutencao: TPastaManutencao
         ReadOnly = True
         TabOrder = 0
       end
-      object pnlTop: TPanel
-        Left = 0
-        Top = 0
-        Width = 515
-        Height = 30
-        Align = alTop
-        BevelKind = bkTile
-        BevelOuter = bvNone
-        TabOrder = 1
-        object btnGravar: TButton
-          Left = 0
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Gravar'
-          TabOrder = 0
-          OnClick = btnGravarClick
-        end
-        object btnCancelar: TButton
-          Left = 75
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Cancelar'
-          TabOrder = 1
-          OnClick = btnCancelarClick
-        end
-        object btnExcluir: TButton
-          Left = 150
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Excluir'
-          TabOrder = 2
-          OnClick = btnExcluirClick
-        end
-        object btnFechar: TButton
-          Left = 225
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Fechar'
-          TabOrder = 3
-          OnClick = btnFecharClick
-        end
-      end
       object dbedttipo_id: TDBEdit
         Left = 54
         Top = 52
@@ -229,7 +185,7 @@ inherited PastaManutencao: TPastaManutencao
         Height = 21
         DataField = 'tipo_id'
         DataSource = srcPasta
-        TabOrder = 2
+        TabOrder = 1
       end
       object dbedtprojeto_id: TDBEdit
         Left = 283
@@ -238,7 +194,7 @@ inherited PastaManutencao: TPastaManutencao
         Height = 21
         DataField = 'projeto_id'
         DataSource = srcPasta
-        TabOrder = 3
+        TabOrder = 2
       end
       object dbedtnome: TDBEdit
         Left = 8
@@ -247,7 +203,7 @@ inherited PastaManutencao: TPastaManutencao
         Height = 21
         DataField = 'nome'
         DataSource = srcPasta
-        TabOrder = 4
+        TabOrder = 3
       end
       object dbedtdescricao: TDBEdit
         Left = 8
@@ -256,7 +212,7 @@ inherited PastaManutencao: TPastaManutencao
         Height = 21
         DataField = 'descricao'
         DataSource = srcPasta
-        TabOrder = 5
+        TabOrder = 4
       end
       object dbedttipo_nome: TDBEdit
         Left = 121
@@ -268,7 +224,7 @@ inherited PastaManutencao: TPastaManutencao
         DataField = 'tipo_nome'
         DataSource = srcPasta
         ReadOnly = True
-        TabOrder = 6
+        TabOrder = 5
       end
       object dbedtprojeto_descricao: TDBEdit
         Left = 350
@@ -278,7 +234,27 @@ inherited PastaManutencao: TPastaManutencao
         TabStop = False
         Color = clCream
         ReadOnly = True
+        TabOrder = 6
+      end
+      object pnlTop: TPanel
+        Left = 0
+        Top = 0
+        Width = 515
+        Height = 30
+        Align = alTop
+        BevelKind = bkTile
+        BevelOuter = bvNone
         TabOrder = 7
+        object btnConfirmar: TButton
+          Left = 0
+          Top = 0
+          Width = 75
+          Height = 26
+          Align = alLeft
+          Caption = 'Confirmar'
+          TabOrder = 0
+          OnClick = btnConfirmarClick
+        end
       end
     end
   end

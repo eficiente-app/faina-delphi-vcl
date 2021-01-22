@@ -37,11 +37,9 @@ type
     edtValor: TEdit;
     lbValor: TLabel;
     btnConfirmar: TButton;
-    btnCancelar: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnConfirmarClick(Sender: TObject);
-    procedure btnCancelarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     FOrigem: TField;
@@ -69,11 +67,6 @@ begin
     src.DataSet := Origem.DataSet;
     ShowModal(AParent);
   end;
-end;
-
-procedure TPesquisa.btnCancelarClick(Sender: TObject);
-begin
-  Close;
 end;
 
 procedure TPesquisa.btnConfirmarClick(Sender: TObject);

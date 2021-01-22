@@ -1,26 +1,30 @@
 inherited PastaTipoManutencao: TPastaTipoManutencao
   Caption = 'Pasta Tipo'
-  ClientHeight = 143
+  ClientHeight = 156
   ClientWidth = 515
   Color = clWindow
+  OnClose = FormClose
   ExplicitWidth = 531
-  ExplicitHeight = 182
+  ExplicitHeight = 195
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     Width = 515
-    Height = 143
+    Height = 156
     ExplicitWidth = 515
-    ExplicitHeight = 143
+    ExplicitHeight = 156
     inherited pnlTitleBar: TPanel
       Width = 515
       ExplicitWidth = 515
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 515
-      Height = 113
+      Height = 126
       ExplicitWidth = 515
-      ExplicitHeight = 113
+      ExplicitHeight = 126
       object lbid: TLabel
         Left = 8
         Top = 36
@@ -71,45 +75,15 @@ inherited PastaTipoManutencao: TPastaTipoManutencao
         BevelKind = bkTile
         BevelOuter = bvNone
         TabOrder = 1
-        object btnGravar: TButton
+        object btnConfirmar: TButton
           Left = 0
           Top = 0
           Width = 75
           Height = 26
           Align = alLeft
-          Caption = 'Gravar'
+          Caption = 'Confirmar'
           TabOrder = 0
-          OnClick = btnGravarClick
-        end
-        object btnCancelar: TButton
-          Left = 75
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Cancelar'
-          TabOrder = 1
-          OnClick = btnCancelarClick
-        end
-        object btnExcluir: TButton
-          Left = 150
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Excluir'
-          TabOrder = 2
-          OnClick = btnExcluirClick
-        end
-        object btnFechar: TButton
-          Left = 225
-          Top = 0
-          Width = 75
-          Height = 26
-          Align = alLeft
-          Caption = 'Fechar'
-          TabOrder = 3
-          OnClick = btnFecharClick
+          OnClick = btnConfirmarClick
         end
       end
       object dbedtdescricao: TDBEdit

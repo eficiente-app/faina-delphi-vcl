@@ -19,6 +19,7 @@ uses
   Vcl.DBGrids,
   Vcl.StdCtrls,
   Vcl.Buttons,
+  Vcl.Menus,
   Formulario.Base.Visual,
   tarefa_tipo.dados,
   tarefa_tipo.manutencao,
@@ -30,22 +31,20 @@ type
     srcTarefaTipo: TDataSource;
     pnlTopo: TPanel;
     btnIncluir: TButton;
-    btnAlterar: TButton;
-    btnVisualizar: TButton;
     pnlPesquisa: TPanel;
     pnlPesquisar: TPanel;
     btnPesquisar: TButton;
     btnLimpar: TButton;
     gbxPesquisa: TGroupBox;
+    popAcoes: TPopupMenu;
+    btnRemover: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
-    procedure btnAlterarClick(Sender: TObject);
-    procedure btnVisualizarClick(Sender: TObject);
-    procedure srcTarefaTipoDataChange(Sender: TObject; Field: TField);
+    procedure dbgridPastaCellClick(Column: TColumn);
+    procedure btnRemoverClick(Sender: TObject);
   private
     TTD: TTarefaTipoDados;
-  public
   end;
 
 implementation
@@ -60,15 +59,12 @@ begin
   srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
 end;
 
-procedure TTarefaTipoListagem.srcTarefaTipoDataChange(Sender: TObject; Field: TField);
+procedure TTarefaTipoListagem.btnRemoverClick(Sender: TObject);
 begin
-  btnAlterar.Enabled := not TDataSource(Sender).DataSet.IsEmpty;
-  btnVisualizar.Enabled := btnAlterar.Enabled;
-end;
-
-procedure TTarefaTipoListagem.btnAlterarClick(Sender: TObject);
-begin
-  TTarefaTipoManutencao.New(Self, TTD, Alterar);
+  if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
+    Exit;
+  TTD.tblTarefaTipo.Delete;
+  TTD.TarefaTipo.Table.Write;
 end;
 
 procedure TTarefaTipoListagem.btnIncluirClick(Sender: TObject);
@@ -76,9 +72,10 @@ begin
   TTarefaTipoManutencao.New(Self, TTD, Incluir);
 end;
 
-procedure TTarefaTipoListagem.btnVisualizarClick(Sender: TObject);
+procedure TTarefaTipoListagem.dbgridPastaCellClick(Column: TColumn);
 begin
-  TTarefaTipoManutencao.New(Self, TTD, Visualizar);
+  if not Column.Field.DataSet.IsEmpty then
+    TTarefaTipoManutencao.New(Self, TTD, Alterar);
 end;
 
 procedure TTarefaTipoListagem.btnPesquisarClick(Sender: TObject);

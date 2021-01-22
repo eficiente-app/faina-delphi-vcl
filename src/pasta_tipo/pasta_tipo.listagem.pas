@@ -21,31 +21,28 @@ uses
   Formulario.Base.Visual,
   pasta_tipo.dados,
   pasta_tipo.manutencao,
-  Extend.DBGrids;
+  Extend.DBGrids, Vcl.Menus;
 
 type
   TPastaTipoListagem = class(TFormularioBaseVisual)
     dbgridPasta: TDBGrid;
     pnlTopo: TPanel;
-    btnIncluir: TButton;
-    btnAlterar: TButton;
-    btnVisualizar: TButton;
+    btnAdicionar: TButton;
     pnlPesquisa: TPanel;
     pnlPesquisar: TPanel;
     btnPesquisar: TButton;
     btnLimpar: TButton;
     gbxPesquisa: TGroupBox;
     srcPastaTipo: TDataSource;
+    popAcoes: TPopupMenu;
+    btnRemover: TMenuItem;
     procedure FormCreate(Sender: TObject);
-    procedure btnIncluirClick(Sender: TObject);
+    procedure btnAdicionarClick(Sender: TObject);
     procedure btnPesquisarClick(Sender: TObject);
-    procedure btnAlterarClick(Sender: TObject);
-    procedure btnVisualizarClick(Sender: TObject);
-    procedure srcPastaTipoDataChange(Sender: TObject; Field: TField);
+    procedure dbgridPastaCellClick(Column: TColumn);
+    procedure btnRemoverClick(Sender: TObject);
   private
     PTD: TPastaTipoDados;
-  public
-    class procedure New;
   end;
 
 implementation
@@ -54,41 +51,29 @@ implementation
 
 { TPasta }
 
-class procedure TPastaTipoListagem.New;
-begin
-  with TPastaTipoListagem.Create(nil) do
-  try
-    ShowModal;
-  finally
-    Free;
-  end;
-end;
-
-procedure TPastaTipoListagem.srcPastaTipoDataChange(Sender: TObject; Field: TField);
-begin
-  btnAlterar.Enabled := not TDataSource(Sender).DataSet.IsEmpty;
-  btnVisualizar.Enabled := btnAlterar.Enabled;
-end;
-
 procedure TPastaTipoListagem.FormCreate(Sender: TObject);
 begin
   PTD := TPastaTipoDados.Create(Self);
   srcPastaTipo.DataSet := PTD.tblPastaTipo;
 end;
 
-procedure TPastaTipoListagem.btnAlterarClick(Sender: TObject);
+procedure TPastaTipoListagem.btnRemoverClick(Sender: TObject);
 begin
-  TPastaTipoManutencao.New(Self, PTD, Alterar);
+  if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
+    Exit;
+  PTD.tblPastaTipo.Delete;
+  PTD.PastaTipo.Table.Write;
 end;
 
-procedure TPastaTipoListagem.btnIncluirClick(Sender: TObject);
+procedure TPastaTipoListagem.btnAdicionarClick(Sender: TObject);
 begin
   TPastaTipoManutencao.New(Self, PTD, Incluir);
 end;
 
-procedure TPastaTipoListagem.btnVisualizarClick(Sender: TObject);
+procedure TPastaTipoListagem.dbgridPastaCellClick(Column: TColumn);
 begin
-  TPastaTipoManutencao.New(Self, PTD, Visualizar);
+  if not Column.Field.DataSet.IsEmpty then
+    TPastaTipoManutencao.New(Self, PTD, Alterar);
 end;
 
 procedure TPastaTipoListagem.btnPesquisarClick(Sender: TObject);
