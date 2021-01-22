@@ -2,7 +2,6 @@ inherited PastaManutencao: TPastaManutencao
   Caption = 'Pasta'
   ClientHeight = 195
   ClientWidth = 515
-  Color = clWindow
   OnClose = FormClose
   ExplicitWidth = 531
   ExplicitHeight = 234
@@ -15,7 +14,6 @@ inherited PastaManutencao: TPastaManutencao
     ExplicitHeight = 195
     inherited pnlTitleBar: TPanel
       Width = 515
-      ExplicitTop = -4
       ExplicitWidth = 515
       inherited lblTitleForm: TLabel
         Height = 30

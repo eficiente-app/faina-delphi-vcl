@@ -2,7 +2,6 @@ inherited PastaListagem: TPastaListagem
   Caption = 'Pasta'
   ClientHeight = 452
   ClientWidth = 690
-  Color = clWindow
   OldCreateOrder = True
   Position = poOwnerFormCenter
   OnCreate = FormCreate
@@ -145,8 +144,6 @@ inherited PastaListagem: TPastaListagem
           Caption = 'Adicionar'
           TabOrder = 0
           OnClick = btnAdicionarClick
-          ExplicitLeft = -2
-          ExplicitTop = -1
         end
       end
     end

@@ -2,7 +2,6 @@ inherited TarefaTipoListagem: TTarefaTipoListagem
   Caption = 'Tipo de Tarefa'
   ClientHeight = 397
   ClientWidth = 583
-  Color = clWindow
   KeyPreview = True
   Position = poOwnerFormCenter
   OnCreate = FormCreate
@@ -117,8 +116,6 @@ inherited TarefaTipoListagem: TTarefaTipoListagem
           Caption = 'Adicionar'
           TabOrder = 0
           OnClick = btnIncluirClick
-          ExplicitLeft = 1
-          ExplicitTop = 1
         end
       end
     end

@@ -2,7 +2,6 @@ inherited TarefaTipoManutencao: TTarefaTipoManutencao
   Caption = 'Tarefa Tipo'
   ClientHeight = 155
   ClientWidth = 516
-  Color = clWindow
   OnClose = FormClose
   ExplicitWidth = 532
   ExplicitHeight = 194
