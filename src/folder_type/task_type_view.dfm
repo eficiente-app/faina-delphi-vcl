@@ -15,9 +15,6 @@ inherited TaskTypeView: TTaskTypeView
     inherited pnlTitleBar: TPanel
       Width = 516
       ExplicitWidth = 516
-      inherited lblTitleForm: TLabel
-        Height = 30
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 516

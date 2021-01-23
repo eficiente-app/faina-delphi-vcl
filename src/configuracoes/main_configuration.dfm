@@ -1,10 +1,13 @@
-inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
+inherited MainConfiguration: TMainConfiguration
   Caption = 'Configura'#231#245'es'
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     inherited pnlTitleBar: TPanel
+      inherited lblTitleForm: TLabel
+        Height = 17
+      end
       object lblSubTitle: TLabel
         AlignWithMargins = True
         Left = 148

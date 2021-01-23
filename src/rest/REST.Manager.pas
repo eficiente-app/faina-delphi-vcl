@@ -8,7 +8,7 @@ uses
   REST.Connection,
   REST.Table,
   REST.Query,
-  Faina.Configuracoes;
+  Faina.Configuration;
 
 type
   TRESTManager = class
@@ -37,7 +37,7 @@ uses
 
 constructor TRESTManager.Create(URL: String; ATable: TFDMemTable);
 begin
-  FURL := TConfiguracoes.Ler<String>('url');
+  FURL := TConfiguration.Ler<String>('url');
   FURL := Concat(FURL, IfThen(not FURL.EndsWith('/') and not URL.StartsWith('/'), '/'), URL);
 
   FConnection := TRESTConnection.Create;

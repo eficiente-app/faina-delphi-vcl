@@ -1,5 +1,5 @@
 ﻿// Eduardo - 08/11/2020
-unit Faina.Configuracoes;
+unit Faina.Configuration;
 
 interface
 
@@ -11,9 +11,9 @@ uses
   System.RTTI;
 
 type
-  TConfiguracoes = class
+  TConfiguration = class
   protected
-    class var Instancia: TConfiguracoes;
+    class var Instancia: TConfiguration;
   private
     JSON: TJSONObject;
     procedure Abrir;
@@ -29,7 +29,7 @@ implementation
 
 { TConfiguracoes }
 
-procedure TConfiguracoes.Abrir;
+procedure TConfiguration.Abrir;
 var
   ss: TStringStream;
 begin
@@ -49,7 +49,7 @@ begin
   end;
 end;
 
-procedure TConfiguracoes.Salvar;
+procedure TConfiguration.Salvar;
 var
   ss: TStringStream;
 begin
@@ -61,28 +61,28 @@ begin
   end;
 end;
 
-class function TConfiguracoes.Existe(ID: String): Boolean;
+class function TConfiguration.Existe(ID: String): Boolean;
 begin
-  if not Assigned(TConfiguracoes.Instancia) then
+  if not Assigned(TConfiguration.Instancia) then
   begin
-    TConfiguracoes.Instancia := TConfiguracoes.Create;
-    TConfiguracoes.Instancia.Abrir;
+    TConfiguration.Instancia := TConfiguration.Create;
+    TConfiguration.Instancia.Abrir;
   end;
 
-  Result := Assigned(TConfiguracoes.Instancia.JSON.FindValue(ID));
+  Result := Assigned(TConfiguration.Instancia.JSON.FindValue(ID));
 end;
 
-class function TConfiguracoes.Ler<T>(ID: String): T;
+class function TConfiguration.Ler<T>(ID: String): T;
 var
   jv: TJSONValue;
 begin
-  if not Assigned(TConfiguracoes.Instancia) then
+  if not Assigned(TConfiguration.Instancia) then
   begin
-    TConfiguracoes.Instancia := TConfiguracoes.Create;
-    TConfiguracoes.Instancia.Abrir;
+    TConfiguration.Instancia := TConfiguration.Create;
+    TConfiguration.Instancia.Abrir;
   end;
 
-  jv := TConfiguracoes.Instancia.JSON.FindValue(ID);
+  jv := TConfiguration.Instancia.JSON.FindValue(ID);
 
   if not Assigned(jv) then
     raise Exception.Create('Parâmetro: "'+ ID +'" não configurado!');
@@ -90,19 +90,19 @@ begin
   Result := jv.AsType<T>;
 end;
 
-class procedure TConfiguracoes.Escrever<T>(ID: String; Valor: T);
+class procedure TConfiguration.Escrever<T>(ID: String; Valor: T);
 var
   jv: TJSONPair;
   LTypeInfo: PTypeInfo;
   LValue: TValue;
 begin
-  if not Assigned(TConfiguracoes.Instancia) then
+  if not Assigned(TConfiguration.Instancia) then
   begin
-    TConfiguracoes.Instancia := TConfiguracoes.Create;
-    TConfiguracoes.Instancia.Abrir;
+    TConfiguration.Instancia := TConfiguration.Create;
+    TConfiguration.Instancia.Abrir;
   end;
 
-  jv := TConfiguracoes.Instancia.JSON.RemovePair(ID);
+  jv := TConfiguration.Instancia.JSON.RemovePair(ID);
   if Assigned(jv) then
     jv.Free;
 
@@ -113,14 +113,14 @@ begin
   case LTypeInfo.Kind of
     tkEnumeration:
     begin
-      TConfiguracoes.Instancia.JSON.AddPair(ID, TJSONBool.Create(LValue.AsBoolean));
+      TConfiguration.Instancia.JSON.AddPair(ID, TJSONBool.Create(LValue.AsBoolean));
     end;
 
     tkInteger,
     tkInt64,
     tkFloat:
     begin
-      TConfiguracoes.Instancia.JSON.AddPair(ID, TJSONNumber.Create(LValue.AsExtended));
+      TConfiguration.Instancia.JSON.AddPair(ID, TJSONNumber.Create(LValue.AsExtended));
     end;
 
     tkChar,
@@ -130,14 +130,14 @@ begin
     tkWString,
     tkUString:
     begin
-      TConfiguracoes.Instancia.JSON.AddPair(ID, TJSONString.Create(LValue.AsString));
+      TConfiguration.Instancia.JSON.AddPair(ID, TJSONString.Create(LValue.AsString));
     end;
   end;
 
-  TConfiguracoes.Instancia.Salvar;
+  TConfiguration.Instancia.Salvar;
 end;
 
-destructor TConfiguracoes.Destroy;
+destructor TConfiguration.Destroy;
 begin
   FreeAndNil(JSON);
   inherited;
@@ -146,7 +146,7 @@ end;
 initialization
 
 finalization
-  if Assigned(TConfiguracoes.Instancia) then
-    FreeAndNil(TConfiguracoes.Instancia);
+  if Assigned(TConfiguration.Instancia) then
+    FreeAndNil(TConfiguration.Instancia);
 
 end.

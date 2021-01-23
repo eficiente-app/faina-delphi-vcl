@@ -1,4 +1,4 @@
-object FormularioBase: TFormularioBase
+object BaseForm: TBaseForm
   Left = 0
   Top = 0
   Caption = 'Formul'#225'rio Base'

@@ -20,13 +20,13 @@ uses
   Vcl.StdCtrls,
   Vcl.Buttons,
   Vcl.Menus,
-  Formulario.Base.Visual,
+  base_form_view,
   task_type_controller,
   task_type_view,
   Extend.DBGrids;
 
 type
-  TTaskTypeList = class(TFormularioBaseVisual)
+  TTaskTypeList = class(TBaseFormView)
     dbgridPasta: TDBGrid;
     srcTarefaTipo: TDataSource;
     pnlTopo: TPanel;
@@ -55,7 +55,7 @@ implementation
 
 procedure TTaskTypeList.FormCreate(Sender: TObject);
 begin
-  TTD := tarefa_tipo_dados;
+  TTD := TaskTypeController;
   srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
 end;
 

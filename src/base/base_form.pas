@@ -1,5 +1,5 @@
 // Daniel Araujo - 15/01/2021
-unit Formulario.Base;
+unit base_form;
 
 interface
 
@@ -14,14 +14,13 @@ uses
   Vcl.ExtCtrls,
   Vcl.Forms,
   Vcl.Graphics,
-
-  Faina.Escuro;
+  Faina.Shadow;
 
 type
-  TFormularioBase = class(TForm)
+  TBaseForm = class(TForm)
   private
     { Private declarations }
-    FEscuro: TEscuro;
+    FEscuro: TShadow;
   protected
     function FecharEsc(IsEsc: Boolean): Boolean;
     procedure KeyDown(var Key: Word; Shift: TShiftState); override;
@@ -33,50 +32,50 @@ type
     procedure ShowModal(AParent: TForm); reintroduce; overload; dynamic;
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []); dynamic;
 
-    class function Principal: TFormularioBase;
-    class function AreaTrabalho: TFormularioBase;
+    class function Principal: TBaseForm;
+    class function AreaTrabalho: TBaseForm;
     class function ClientArea: TPanel;
   end;
 
 implementation
 
 uses
-  Faina.Principal;
+  Faina.Main;
 
 {$R *.dfm}
 
 { TFormularioBase }
 
-class function TFormularioBase.Principal: TFormularioBase;
+class function TBaseForm.Principal: TBaseForm;
 begin
-  Result := TFormularioBase(Faina.Principal.Principal);
+  Result := TBaseForm(Main);
 end;
 
-class function TFormularioBase.ClientArea: TPanel;
+class function TBaseForm.ClientArea: TPanel;
 begin
-  Result := TPrincipal(Principal).pnlClientArea;
+  Result := TMain(Principal).pnlClientArea;
 end;
 
-class function TFormularioBase.AreaTrabalho: TFormularioBase;
+class function TBaseForm.AreaTrabalho: TBaseForm;
 begin
-  Result := TPrincipal(Principal).AreaDeTrabalho;
+  Result := TMain(Principal).WorkArea;
 end;
 
-constructor TFormularioBase.Create(AOwner: TComponent);
+constructor TBaseForm.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   KeyPreview := True;
   CloseEsc   := False;
 end;
 
-destructor TFormularioBase.Destroy;
+destructor TBaseForm.Destroy;
 begin
   if Assigned(FEscuro) then
     FreeAndNil(FEscuro);
   inherited;
 end;
 
-procedure TFormularioBase.ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
+procedure TBaseForm.ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []);
 begin
   Parent       := TWinControl(AParent);
   Self.Align   := Align;
@@ -90,13 +89,13 @@ begin
   Show;
 end;
 
-procedure TFormularioBase.ShowModal(AParent: TForm);
+procedure TBaseForm.ShowModal(AParent: TForm);
 begin
   if not Assigned(FEscuro) then
-    FEscuro := TEscuro.Create(Self, AParent);
+    FEscuro := TShadow.Create(Self, AParent);
 end;
 
-procedure TFormularioBase.KeyDown(var Key: Word; Shift: TShiftState);
+procedure TBaseForm.KeyDown(var Key: Word; Shift: TShiftState);
 begin
   if FecharEsc(Key = VK_ESCAPE) then
     Key := 0;
@@ -104,7 +103,7 @@ begin
   inherited;
 end;
 
-function TFormularioBase.FecharEsc(IsEsc: Boolean): Boolean;
+function TBaseForm.FecharEsc(IsEsc: Boolean): Boolean;
 begin
   Result := CloseEsc and IsEsc;
   if Result then

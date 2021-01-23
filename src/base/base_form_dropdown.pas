@@ -1,5 +1,5 @@
 // Daniel Araujo - 18/01/2021
-unit Formulario.DropDown.Base;
+unit base_form_dropdown;
 
 interface
 
@@ -14,14 +14,14 @@ uses
   Vcl.ExtCtrls,
   Vcl.Forms,
   Vcl.Graphics,
-  Formulario.Base,
-  Faina.Escuro;
+  base_form,
+  Faina.Shadow;
 
 const
   WM_PopupFormCloseUp = WM_USER + 89;
 
 type
-  TFormularioDropDownBase = class(TFormularioBase)
+  TBaseFormDropDown = class(TBaseForm)
   private
     FOnCloseUp: TNotifyEvent;
     FPopupParent: TCustomForm;
@@ -52,7 +52,7 @@ implementation
 
 { TFormularioDropDownBase }
 
-constructor TFormularioDropDownBase.Create(AOwner: TComponent);
+constructor TBaseFormDropDown.Create(AOwner: TComponent);
 begin
   inherited;
 
@@ -60,7 +60,7 @@ begin
   FResizable := True;
 end;
 
-procedure TFormularioDropDownBase.CreateParams(var Params: TCreateParams);
+procedure TBaseFormDropDown.CreateParams(var Params: TCreateParams);
 const
   SPI_GETDROPSHADOW = $1024;
   CS_DROPSHADOW = $00020000;
@@ -85,23 +85,23 @@ begin
     Params.WndParent := FPopupParent.Handle;
 end;
 
-procedure TFormularioDropDownBase.DoCloseup;
+procedure TBaseFormDropDown.DoCloseup;
 begin
   if Assigned(FOnCloseUp) then
     FOnCloseUp(Self);
 end;
 
-function TFormularioDropDownBase.GetDroppedDown: Boolean;
+function TBaseFormDropDown.GetDroppedDown: Boolean;
 begin
   Result := (Self.Visible);
 end;
 
-procedure TFormularioDropDownBase.SetPopupParent(const Value: TCustomForm);
+procedure TBaseFormDropDown.SetPopupParent(const Value: TCustomForm);
 begin
   FPopupParent := Value;
 end;
 
-procedure TFormularioDropDownBase.ShowDropdown(OwnerForm: TCustomForm; PopupPosition: TPoint);
+procedure TBaseFormDropDown.ShowDropdown(OwnerForm: TCustomForm; PopupPosition: TPoint);
 var
   comboBoxAnimation: BOOL;
   i: Integer;
@@ -140,7 +140,7 @@ begin
     inherited Show;
 end;
 
-procedure TFormularioDropDownBase.WMActivate(var Msg: TWMActivate);
+procedure TBaseFormDropDown.WMActivate(var Msg: TWMActivate);
 begin
   //If we are being activated, then give pretend activation state back to our owner
   if (Msg.Active <> WA_INACTIVE) then
@@ -163,7 +163,7 @@ begin
   end;
 end;
 
-procedure TFormularioDropDownBase.WMNCHitTest(var Message: TWMNCHitTest);
+procedure TBaseFormDropDown.WMNCHitTest(var Message: TWMNCHitTest);
 var
   deltaRect: TRect; //not really used as a rect, just a convenient structure
   cx, cy: Integer;
@@ -203,7 +203,7 @@ begin
   end;
 end;
 
-procedure TFormularioDropDownBase.WMPopupFormCloseUp(var Msg: TMessage);
+procedure TBaseFormDropDown.WMPopupFormCloseUp(var Msg: TMessage);
 begin
   // This message gets posted to us.
   // Now it's time to actually closeup.

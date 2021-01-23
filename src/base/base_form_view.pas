@@ -1,5 +1,5 @@
 // Daniel Araujo - 18/01/2021
-unit Formulario.Base.Visual;
+unit base_form_view;
 
 interface
 
@@ -7,15 +7,16 @@ uses
   Winapi.Windows,
   Winapi.Messages,
   System.Classes,
+  System.SysUtils,
   Vcl.Controls,
   Vcl.Forms,
-  Formulario.Base,
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
   SysButtons,
-  Vcl.ExtCtrls, Vcl.StdCtrls, System.SysUtils;
+  base_form;
 
 type
-
-  TFormularioBaseVisual = class(TFormularioBase)
+  TBaseFormView = class(TBaseForm)
     pnlClientForm: TPanel;
     pnlTitleBar: TPanel;
     pnlClientArea: TPanel;
@@ -23,7 +24,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure MouseDownMovimentarFormulario(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   private type
-    TBorda   = (bLeft, bTop, bRight, bBottom, bBottomLeft, bBottomRight);
+    TBorder   = (bLeft, bTop, bRight, bBottom, bBottomLeft, bBottomRight);
   private
     FControleForm: Boolean;
     FRedimensionar: Boolean;
@@ -62,7 +63,7 @@ uses
 
 { TFormularioPrincipalBase }
 
-constructor TFormularioBaseVisual.Create(AOwner: TComponent);
+constructor TBaseFormView.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   FAtualizarCaption := True;
@@ -76,24 +77,24 @@ begin
   FSystemButtons.Buttons := [bClose];
 end;
 
-destructor TFormularioBaseVisual.Destroy;
+destructor TBaseFormView.Destroy;
 begin
   inherited;
 end;
 
-procedure TFormularioBaseVisual.FormCreate(Sender: TObject);
+procedure TBaseFormView.FormCreate(Sender: TObject);
 begin
   BorderStyle := bsNone;
   SetWindowLong(Handle ,GWL_STYLE ,WS_CLIPCHILDREN or WS_OVERLAPPEDWINDOW or WS_SIZEBOX);
   Self.BorderStyle := bsNone;
 end;
 
-procedure TFormularioBaseVisual.WmNCCalcSize(var Msg: TWMNCCalcSize);
+procedure TBaseFormView.WmNCCalcSize(var Msg: TWMNCCalcSize);
 begin
   Msg.Result := 0;
 end;
 
-procedure TFormularioBaseVisual.MouseDownMovimentarFormulario(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TBaseFormView.MouseDownMovimentarFormulario(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 const
   SC_DRAGMOVE = $F012;
 begin
@@ -105,7 +106,7 @@ begin
 end;
 
 
-procedure TFormularioBaseVisual.WMNCHitTest(var Message: TWMNCHitTest);
+procedure TBaseFormView.WMNCHitTest(var Message: TWMNCHitTest);
 var
   P: TPoint;
 begin
@@ -113,7 +114,7 @@ begin
   Message.Result := GetHitTest(P);
 end;
 
-function TFormularioBaseVisual.GetBorderSize: TRect;
+function TBaseFormView.GetBorderSize: TRect;
 var
   Size: TSize;
   Details: TThemedElementDetails;
@@ -167,7 +168,7 @@ begin
   Result.Bottom := Size.cy;
 end;
 
-function TFormularioBaseVisual.GetHitTest(P: TPoint): Integer;
+function TBaseFormView.GetHitTest(P: TPoint): Integer;
 var
   FBorderSize: TRect;
   FTopLeftRect,  FTopRightRect,
@@ -223,7 +224,7 @@ begin
     Result := HTTOP;
 end;
 
-function TFormularioBaseVisual.NormalizePoint(P: TPoint): TPoint;
+function TBaseFormView.NormalizePoint(P: TPoint): TPoint;
 var
   WindowPos, ClientPos: TPoint;
   HandleParent: HWnd;
@@ -252,31 +253,31 @@ begin
   end;
 end;
 
-procedure TFormularioBaseVisual.SetAtualizarCaption(const Value: Boolean);
+procedure TBaseFormView.SetAtualizarCaption(const Value: Boolean);
 begin
   FAtualizarCaption := Value;
   if Value then
     Caption := Caption;
 end;
 
-procedure TFormularioBaseVisual.ShowIn(AParent: TControl; Align: TAlign; Anchors: TAnchors);
+procedure TBaseFormView.ShowIn(AParent: TControl; Align: TAlign; Anchors: TAnchors);
 begin
   inherited ShowIn(AParent, Align, Anchors);
   pnlClientForm.AlignWithMargins := False;
 end;
 
-procedure TFormularioBaseVisual.ShowModal(AParent: TForm);
+procedure TBaseFormView.ShowModal(AParent: TForm);
 begin
   inherited ShowModal(AParent);
   pnlClientForm.AlignWithMargins := True;
 end;
 
-function TFormularioBaseVisual.GetCaption: TCaption;
+function TBaseFormView.GetCaption: TCaption;
 begin
   Result := inherited Caption;
 end;
 
-procedure TFormularioBaseVisual.SetCaption(const Value: TCaption);
+procedure TBaseFormView.SetCaption(const Value: TCaption);
 begin
   inherited Caption := Value;
   if FAtualizarCaption then

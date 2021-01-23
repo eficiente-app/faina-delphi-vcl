@@ -37,7 +37,7 @@ type
   end;
 
 var
-  tarefa_tipo_dados: TTaskTypeController;
+  TaskTypeController: TTaskTypeController;
 
 implementation
 

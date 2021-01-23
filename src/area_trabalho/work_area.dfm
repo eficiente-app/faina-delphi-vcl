@@ -1,10 +1,11 @@
-inherited AreaTrabalho: TAreaTrabalho
-  Caption = 'AreaTrabalho'
+inherited WorkArea: TWorkArea
+  Caption = 'WorkArea'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     inherited pnlTitleBar: TPanel
       Visible = False
+      ExplicitTop = 0
     end
     inherited pnlClientArea: TPanel
       object pnlTop: TPanel
@@ -21,7 +22,6 @@ inherited AreaTrabalho: TAreaTrabalho
         Color = 3806736
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = 8
         object pnlTitle: TPanel
           Left = 0
           Top = 0
@@ -30,7 +30,6 @@ inherited AreaTrabalho: TAreaTrabalho
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitHeight = 55
           object lblTitlePrincipal: TLabel
             AlignWithMargins = True
             Left = 3
@@ -68,7 +67,6 @@ inherited AreaTrabalho: TAreaTrabalho
           FixedColor = clWhite
           Align = alRight
           OnClick = svgUserAvatarClick
-          ExplicitTop = 0
         end
         object svgNotificacao: TSVGIconImage
           AlignWithMargins = True
@@ -90,7 +88,6 @@ inherited AreaTrabalho: TAreaTrabalho
             's4 2.02 4 4.5v6z"/></svg>'
           FixedColor = clWhite
           Align = alRight
-          ExplicitTop = 18
         end
         object svgAdicionar: TSVGIconImage
           AlignWithMargins = True
@@ -109,7 +106,6 @@ inherited AreaTrabalho: TAreaTrabalho
             '"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>'
           FixedColor = clWhite
           Align = alRight
-          ExplicitTop = 18
         end
       end
       object pnlLateralEsquerda: TPanel
@@ -122,8 +118,6 @@ inherited AreaTrabalho: TAreaTrabalho
         Color = 10495813
         ParentBackground = False
         TabOrder = 1
-        ExplicitTop = 55
-        ExplicitHeight = 326
       end
       object pnlAreaTrabalho: TPanel
         Left = 200
@@ -133,8 +127,6 @@ inherited AreaTrabalho: TAreaTrabalho
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 2
-        ExplicitLeft = 206
-        ExplicitTop = 57
       end
     end
   end

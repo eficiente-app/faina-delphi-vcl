@@ -18,13 +18,13 @@ uses
   Vcl.Graphics,
   Vcl.Grids,
   Vcl.StdCtrls,
-  Formulario.Base.Visual,
+  base_form_view,
   folder_controller,
   folder_view,
   Extend.DBGrids, Vcl.Menus;
 
 type
-  TFolderList = class(TFormularioBaseVisual)
+  TFolderList = class(TBaseFormView)
     dbgridPasta: TDBGrid;
     pnlPesquisa: TPanel;
     pnlPesquisar: TPanel;

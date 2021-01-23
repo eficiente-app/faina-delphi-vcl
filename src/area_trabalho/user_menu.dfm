@@ -1,5 +1,5 @@
-inherited MenuUsuario: TMenuUsuario
-  Caption = 'MenuUsuario'
+inherited UserMenu: TUserMenu
+  Caption = 'UserMenu'
   ClientHeight = 110
   ClientWidth = 200
   Color = 3806736

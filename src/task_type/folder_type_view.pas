@@ -20,14 +20,14 @@ uses
   Vcl.ImgList,
   Vcl.Mask,
   Vcl.StdCtrls,
-  Formulario.Base.Visual,
+  base_form_view,
   folder_type_controller,
   search_view;
 
 type
   TAcaoManutencao = (Incluir, Alterar);
 
-  TPastaTipoManutencao = class(TFormularioBaseVisual)
+  TPastaTipoManutencao = class(TBaseFormView)
     lbid: TLabel;
     lbdescricao: TLabel;
     lbnome: TLabel;
@@ -72,7 +72,7 @@ procedure TPastaTipoManutencao.btnConfirmarClick(Sender: TObject);
 begin
   if PTD.tblPastaTipo.State in dsEditModes then
     PTD.tblPastaTipo.Post;
-  PTD.PastaTipo.Table.Write;
+  PTD.FolderType.Table.Write;
   Close;
 end;
 

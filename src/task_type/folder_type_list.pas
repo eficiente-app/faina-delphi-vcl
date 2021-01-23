@@ -18,13 +18,13 @@ uses
   Vcl.Graphics,
   Vcl.Grids,
   Vcl.StdCtrls,
-  Formulario.Base.Visual,
+  base_form_view,
   folder_type_controller,
   folder_type_view,
   Extend.DBGrids, Vcl.Menus;
 
 type
-  TFolderTypeList = class(TFormularioBaseVisual)
+  TFolderTypeList = class(TBaseFormView)
     dbgridPasta: TDBGrid;
     pnlTopo: TPanel;
     btnAdicionar: TButton;
@@ -53,7 +53,7 @@ implementation
 
 procedure TFolderTypeList.FormCreate(Sender: TObject);
 begin
-  PTD := pasta_tipo_dados;
+  PTD := FolderTypeController;
   srcPastaTipo.DataSet := PTD.tblPastaTipo;
 end;
 
@@ -62,7 +62,7 @@ begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
     Exit;
   PTD.tblPastaTipo.Delete;
-  PTD.PastaTipo.Table.Write;
+  PTD.FolderType.Table.Write;
 end;
 
 procedure TFolderTypeList.btnAdicionarClick(Sender: TObject);
@@ -78,8 +78,8 @@ end;
 
 procedure TFolderTypeList.btnPesquisarClick(Sender: TObject);
 begin
-  PTD.PastaTipo.Query.Add('id', 1);
-  PTD.PastaTipo.Table.Read;
+  PTD.FolderType.Query.Add('id', 1);
+  PTD.FolderType.Table.Read;
 end;
 
 end.

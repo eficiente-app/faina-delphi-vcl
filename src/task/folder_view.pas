@@ -20,14 +20,14 @@ uses
   Vcl.ImgList,
   Vcl.Mask,
   Vcl.StdCtrls,
-  Formulario.Base.Visual,
+  base_form_view,
   folder_controller,
   search_view;
 
 type
   TAcaoManutencao = (Incluir, Alterar);
 
-  TFolderView = class(TFormularioBaseVisual)
+  TFolderView = class(TBaseFormView)
     lbid: TLabel;
     lbtipo_id: TLabel;
     lbprojeto_id: TLabel;
@@ -86,7 +86,7 @@ procedure TFolderView.sbttipo_idClick(Sender: TObject);
 begin
   TSearchView.New(
     TForm(Self.Parent),
-    pasta_tipo_dados.tblPastaTipo.FieldByName('id'),
+    FolderTypeController.tblPastaTipo.FieldByName('id'),
     PD.tblPasta.FieldByName('tipo_id')
   );
 end;

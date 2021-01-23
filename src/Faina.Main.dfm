@@ -1,8 +1,7 @@
-inherited Principal: TPrincipal
+inherited Main: TMain
   Caption = 'Faina - Gerencie suas Tarefas'
   ClientHeight = 681
   ClientWidth = 1004
-  Color = 2297098
   Position = poScreenCenter
   OnShow = FormShow
   ExplicitWidth = 1020
@@ -24,7 +23,7 @@ inherited Principal: TPrincipal
       ExplicitHeight = 20
       inherited lblTitleForm: TLabel
         Width = 158
-        Height = 20
+        Height = 17
         Caption = 'Faina - Gerencie suas Tarefas'
         ExplicitWidth = 158
       end
@@ -34,7 +33,7 @@ inherited Principal: TPrincipal
       Width = 1004
       Height = 641
       TabOrder = 0
-      ExplicitTop = 43
+      ExplicitTop = 40
       ExplicitWidth = 1004
       ExplicitHeight = 641
     end
@@ -52,8 +51,8 @@ inherited Principal: TPrincipal
       object lblAlertaConexao: TLabel
         Left = 0
         Top = 0
-        Width = 1004
-        Height = 20
+        Width = 73
+        Height = 17
         Margins.Left = 8
         Margins.Top = 0
         Margins.Right = 0
@@ -70,8 +69,6 @@ inherited Principal: TPrincipal
         ParentFont = False
         Layout = tlCenter
         OnMouseDown = MouseDownMovimentarFormulario
-        ExplicitWidth = 73
-        ExplicitHeight = 17
       end
     end
   end

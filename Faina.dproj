@@ -107,41 +107,41 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\base\Formulario.Base.pas">
-            <Form>FormularioBase</Form>
+        <DCCReference Include="src\base\base_form.pas">
+            <Form>BaseForm</Form>
         </DCCReference>
         <DCCReference Include="src\Faina.Login.pas">
             <Form>Login</Form>
         </DCCReference>
-        <DCCReference Include="src\Faina.Configuracoes.pas"/>
+        <DCCReference Include="src\Faina.Configuration.pas"/>
         <DCCReference Include="src\rest\REST.Connection.pas"/>
         <DCCReference Include="src\rest\REST.Table.pas"/>
         <DCCReference Include="src\rest\REST.Manager.pas"/>
         <DCCReference Include="src\rest\REST.Query.pas"/>
-        <DCCReference Include="src\Faina.Principal.pas">
-            <Form>Principal</Form>
+        <DCCReference Include="src\Faina.Main.pas">
+            <Form>Main</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Faina.Escuro.pas"/>
-        <DCCReference Include="src\configuracoes\Configuracoes.Principal.pas">
-            <Form>ConfiguracoesPrincipal</Form>
+        <DCCReference Include="src\Faina.Shadow.pas"/>
+        <DCCReference Include="src\configuracoes\main_configuration.pas">
+            <Form>MainConfiguration</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\base\Formulario.DropDown.Base.pas">
-            <Form>FormularioDropDownBase</Form>
+        <DCCReference Include="src\base\base_form_dropdown.pas">
+            <Form>BaseFormDropDown</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\extend\Extend.DBGrids.pas"/>
-        <DCCReference Include="src\base\Formulario.Base.Visual.pas">
-            <Form>FormularioBaseVisual</Form>
+        <DCCReference Include="src\base\base_form_view.pas">
+            <Form>BaseFormView</Form>
         </DCCReference>
         <DCCReference Include="src\componentes\TSysButtons\SysButtons.pas"/>
-        <DCCReference Include="src\area_trabalho\menu.usuario.pas">
-            <Form>MenuUsuario</Form>
+        <DCCReference Include="src\area_trabalho\user_menu.pas">
+            <Form>UserMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\area_trabalho\area_trabalho.pas">
-            <Form>AreaTrabalho</Form>
+        <DCCReference Include="src\area_trabalho\work_area.pas">
+            <Form>WorkArea</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\folder_type\task_type_controller.pas">

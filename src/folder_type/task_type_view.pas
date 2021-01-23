@@ -20,14 +20,14 @@ uses
   Vcl.ImgList,
   Vcl.Mask,
   Vcl.StdCtrls,
-  Formulario.Base.Visual,
+  base_form_view,
   task_type_controller,
   search_view;
 
 type
   TAcaoManutencao = (Incluir, Alterar);
 
-  TTaskTypeView = class(TFormularioBaseVisual)
+  TTaskTypeView = class(TBaseFormView)
     dbedtid: TDBEdit;
     lbid: TLabel;
     pnlTop: TPanel;

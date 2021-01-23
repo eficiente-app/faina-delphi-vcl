@@ -18,9 +18,6 @@ inherited TaskTypeList: TTaskTypeList
       Width = 583
       Visible = False
       ExplicitWidth = 583
-      inherited lblTitleForm: TLabel
-        Height = 30
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 583

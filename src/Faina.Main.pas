@@ -1,5 +1,5 @@
 // Eduardo - 07/11/2020
-unit Faina.Principal;
+unit Faina.Main;
 
 interface
 
@@ -18,12 +18,12 @@ uses
   Vcl.Menus,
   Vcl.StdCtrls,
   SysButtons,
-  Faina.Configuracoes,
-  Formulario.Base.Visual,
-  area_trabalho;
+  Faina.Configuration,
+  base_form_view,
+  work_area;
 
 type
-  TPrincipal = class(TFormularioBaseVisual)
+  TMain = class(TBaseFormView)
     pnlAlertaConexao: TPanel;
     lblAlertaConexao: TLabel;
     tmrAlertaConexao: TTimer;
@@ -32,18 +32,18 @@ type
     procedure tmrAlertaConexaoTimer(Sender: TObject);
   private
     { Private declarations }
-    FAreaTrabalho: TAreaTrabalho;
+    FWorkArea: TWorkArea;
   protected
     procedure Resizing(State: TWindowState); override;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent); reintroduce; override;
-    property AreaDeTrabalho: TAreaTrabalho read FAreaTrabalho;
-    function SetAlertaConexao(bConectado: Boolean): TPrincipal;
+    property WorkArea: TWorkArea read FWorkArea;
+    function SetConnectionAlert(bConectado: Boolean): TMain;
   end;
 
 var
-  Principal: TPrincipal;
+  Main: TMain;
 
 implementation
 
@@ -52,7 +52,7 @@ uses
 
 {$R *.dfm}
 
-constructor TPrincipal.Create(AOwner: TComponent);
+constructor TMain.Create(AOwner: TComponent);
 begin
   inherited;
   Redimensionar := True;
@@ -61,19 +61,19 @@ begin
   SystemButtons.Buttons := [bMinimize, bMaximize, bClose];
   pnlClientForm.AlignWithMargins := True;
 
-  if not TConfiguracoes.Existe('url') then
-    TConfiguracoes.Escrever<String>('url', 'http://18.230.153.64:3000');
+  if not TConfiguration.Existe('url') then
+    TConfiguration.Escrever<String>('url', 'http://18.230.153.64:3000');
 end;
 
-procedure TPrincipal.FormShow(Sender: TObject);
+procedure TMain.FormShow(Sender: TObject);
 begin
-  FAreaTrabalho := TAreaTrabalho.Create(Self);
-  FAreaTrabalho.ShowIn(pnlClientArea, alClient);
+  FWorkArea := TWorkArea.Create(Self);
+  FWorkArea.ShowIn(pnlClientArea, alClient);
   TLogin.New(pnlClientArea);
-  SetAlertaConexao(True);
+  SetConnectionAlert(True);
 end;
 
-procedure TPrincipal.pnlTitleBarDblClick(Sender: TObject);
+procedure TMain.pnlTitleBarDblClick(Sender: TObject);
 begin
   if WindowState = TWindowState.wsMaximized then
     WindowState := TWindowState.wsNormal
@@ -81,7 +81,7 @@ begin
     WindowState := TWindowState.wsMaximized;
 end;
 
-procedure TPrincipal.Resizing(State: TWindowState);
+procedure TMain.Resizing(State: TWindowState);
   procedure SetM(Mar: TMargins; I: Integer);
   begin
     Mar.Left   := I;
@@ -97,7 +97,7 @@ begin
   inherited;
 end;
 
-function TPrincipal.SetAlertaConexao(bConectado: Boolean): TPrincipal;
+function TMain.SetConnectionAlert(bConectado: Boolean): TMain;
 begin
   Result := Self;
   lblAlertaConexao.Caption := IfThen(bConectado, 'Conectado!', 'Falha na conexão!');
@@ -106,7 +106,7 @@ begin
   Application.ProcessMessages;
 end;
 
-procedure TPrincipal.tmrAlertaConexaoTimer(Sender: TObject);
+procedure TMain.tmrAlertaConexaoTimer(Sender: TObject);
 begin
   tmrAlertaConexao.Enabled := False;
   pnlAlertaConexao.Visible := False;

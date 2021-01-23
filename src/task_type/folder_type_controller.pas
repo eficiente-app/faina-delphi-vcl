@@ -34,11 +34,11 @@ type
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   public
-    PastaTipo: TRESTManager;
+    FolderType: TRESTManager;
   end;
 
 var
-  pasta_tipo_dados: TFolderTypeController;
+  FolderTypeController: TFolderTypeController;
 
 implementation
 
@@ -48,13 +48,13 @@ implementation
 
 procedure TFolderTypeController.DataModuleCreate(Sender: TObject);
 begin
-  PastaTipo := TRESTManager.Create('api/pasta/tipo', tblPastaTipo);
-  PastaTipo.Table.Read;
+  FolderType := TRESTManager.Create('api/pasta/tipo', tblPastaTipo);
+  FolderType.Table.Read;
 end;
 
 procedure TFolderTypeController.DataModuleDestroy(Sender: TObject);
 begin
-  FreeAndNil(PastaTipo);
+  FreeAndNil(FolderType);
 end;
 
 end.

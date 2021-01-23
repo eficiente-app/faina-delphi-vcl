@@ -21,12 +21,11 @@ uses
   Vcl.Mask,
   Vcl.StdCtrls,
   FireDAC.Comp.Client,
-  Formulario.Base,
-  Formulario.Base.Visual,
+  base_form_view,
   Extend.DBGrids;
 
 type
-  TSearchView = class(TFormularioBaseVisual)
+  TSearchView = class(TBaseFormView)
     pnlPesquisa: TPanel;
     dbgrid: TDBGrid;
     src: TDataSource;

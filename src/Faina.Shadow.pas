@@ -1,5 +1,5 @@
 ﻿// Eduardo - 15/01/2021
-unit Faina.Escuro;
+unit Faina.Shadow;
 
 interface
 
@@ -15,29 +15,29 @@ uses
   Vcl.Dialogs;
 
 type
-  TEscuro = class(TForm)
+  TShadow = class(TForm)
   private
-    FInstancia: TForm;
+    FInstance: TForm;
     FOnClose: TCloseEvent;
-    procedure FechaJanela(Sender: TObject; var Action: TCloseAction);
-    procedure EscuroOnClick(Sender: TObject);
-    procedure ConfigurarCLose(AForm: TForm);
+    procedure CloseWindow(Sender: TObject; var Action: TCloseAction);
+    procedure ShadowOnClick(Sender: TObject);
+    procedure ConfigClose(AForm: TForm);
   protected
     constructor Create(AOwner: TComponent); reintroduce; overload;
   public
     constructor Create(AOwner, AParent: TForm); reintroduce; overload;
-    class procedure Novo(AFundo: TForm; AJanela: TFormClass);
+    class procedure New(AFundo: TForm; AJanela: TFormClass);
     procedure ShowIn(AParent: TForm);
   end;
 
 implementation
 
 uses
-  Formulario.Base;
+  base_form;
 
 { TEscuro }
 
-constructor TEscuro.Create(AOwner: TComponent);
+constructor TShadow.Create(AOwner: TComponent);
 begin
   inherited CreateNew(AOwner);
   AlphaBlend      := True;
@@ -47,44 +47,44 @@ begin
   OldCreateOrder  := False;
   Anchors         := [akLeft, akTop, akRight, akBottom];
   BorderStyle     := bsNone;
-  OnClick         := EscuroOnClick;
+  OnClick         := ShadowOnClick;
 end;
 
-constructor TEscuro.Create(AOwner, AParent: TForm);
+constructor TShadow.Create(AOwner, AParent: TForm);
 begin
   Create(AOwner);
   ShowIn(AParent);
-  ConfigurarCLose(AOwner);
-  TFormularioBase(AOwner).ShowIn(AParent);
+  ConfigClose(AOwner);
+  TBaseForm(AOwner).ShowIn(AParent);
 end;
 
-class procedure TEscuro.Novo(AFundo: TForm; AJanela: TFormClass);
+class procedure TShadow.New(AFundo: TForm; AJanela: TFormClass);
 begin
-  with TEscuro.Create(AFundo) do
+  with TShadow.Create(AFundo) do
   begin
     ShowIn(AFundo);
-    FInstancia := AJanela.Create(AFundo);
-    ConfigurarCLose(FInstancia);
-    TFormularioBase(FInstancia).ShowIn(AFundo);
+    FInstance := AJanela.Create(AFundo);
+    ConfigClose(FInstance);
+    TBaseForm(FInstance).ShowIn(AFundo);
   end;
 end;
 
-procedure TEscuro.ConfigurarCLose(AForm: TForm);
+procedure TShadow.ConfigClose(AForm: TForm);
 begin
   // Guarda o evento Close do formulário, e sobrescreve para poder fechar o form escuro ao fechar o formulario exibido
   if Assigned(AForm.OnClose) then
     FOnClose := AForm.OnClose;
-  AForm.OnClose := FechaJanela;
+  AForm.OnClose := CloseWindow;
 end;
 
-procedure TEscuro.ShowIn(AParent: TForm);
+procedure TShadow.ShowIn(AParent: TForm);
 begin
   Parent := AParent;
   SetBounds(0, 0, AParent.Width, AParent.Height);
   Show;
 end;
 
-procedure TEscuro.FechaJanela(Sender: TObject; var Action: TCloseAction);
+procedure TShadow.CloseWindow(Sender: TObject; var Action: TCloseAction);
 begin
   if Assigned(FOnClose) then
     FOnClose(Sender, Action);
@@ -92,7 +92,7 @@ begin
   Close;
 end;
 
-procedure TEscuro.EscuroOnClick(Sender: TObject);
+procedure TShadow.ShadowOnClick(Sender: TObject);
 begin
   TForm(Owner).Close;
 end;

@@ -1,4 +1,4 @@
-object FormularioBaseVisual: TFormularioBaseVisual
+object BaseFormView: TBaseFormView
   Left = 0
   Top = 0
   Caption = 'Formul'#225'rio Base - Visual'
@@ -38,6 +38,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
       ParentBackground = False
       TabOrder = 0
       OnMouseDown = MouseDownMovimentarFormulario
+      ExplicitTop = -6
       object lblTitleForm: TLabel
         AlignWithMargins = True
         Left = 8

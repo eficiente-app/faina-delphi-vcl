@@ -1,5 +1,5 @@
 // Daniel Araujo - 17/01/2021
-unit menu.usuario;
+unit user_menu;
 
 interface
 
@@ -13,12 +13,21 @@ uses
   Vcl.Dialogs,
   Vcl.Forms,
   Vcl.Graphics,
-  Formulario.DropDown.Base, Formulario.Base, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, Vcl.Menus, dxSkinsCore, dxSkinsDefaultPainters,
-  Vcl.StdCtrls, cxButtons, SVGIconImage, Vcl.ExtCtrls;
+  Vcl.Menus,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  base_form_dropdown,
+  base_form,
+  cxGraphics,
+  cxLookAndFeels,
+  cxLookAndFeelPainters,
+  dxSkinsCore,
+  dxSkinsDefaultPainters,
+  cxButtons,
+  SVGIconImage;
 
 type
-  TMenuUsuario = class(TFormularioDropDownBase)
+  TUserMenu = class(TBaseFormDropDown)
     pnlTopUsuario: TPanel;
     svgUserAvatar: TSVGIconImage;
     pnlInfoUsuario: TPanel;
@@ -33,29 +42,29 @@ type
     { Private declarations }
   public
     { Public declarations }
-    class function Exibir: TMenuUsuario;
-    procedure Posicionar;
+    class function Show: TUserMenu;
+    procedure Position;
   end;
 
 implementation
 
 uses
-  area_trabalho,
-  Configuracoes.Principal;
+  work_area,
+  main_configuration;
 
 {$R *.dfm}
 
-class function TMenuUsuario.Exibir: TMenuUsuario;
+class function TUserMenu.Show: TUserMenu;
 begin
-  Result := TMenuUsuario.Create(Principal);
-  Result.Posicionar;
+  Result := TUserMenu.Create(Principal);
+  Result.Position;
 end;
 
-procedure TMenuUsuario.Posicionar;
+procedure TUserMenu.Position;
 var
   pMenu: TPoint;
 begin
-  with TAreaTrabalho(AreaTrabalho).pnlTop do
+  with TWorkArea(AreaTrabalho).pnlTop do
   begin
     pMenu := ClientOrigin;
     pMenu.X := pMenu.X + Width;
@@ -65,13 +74,13 @@ begin
   ShowDropDown(Principal, pMenu);
 end;
 
-procedure TMenuUsuario.cxButton2Click(Sender: TObject);
+procedure TUserMenu.cxButton2Click(Sender: TObject);
 begin
-  TConfiguracoesPrincipal.Create(AreaTrabalho).ShowModal(AreaTrabalho);
+  TMainConfiguration.Create(AreaTrabalho).ShowModal(AreaTrabalho);
   Close;
 end;
 
-procedure TMenuUsuario.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TUserMenu.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
