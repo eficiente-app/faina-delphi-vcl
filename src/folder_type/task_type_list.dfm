@@ -1,39 +1,39 @@
-inherited PastaListagem: TPastaListagem
-  Caption = 'Pasta'
-  ClientHeight = 452
-  ClientWidth = 690
-  OldCreateOrder = True
+inherited TaskTypeList: TTaskTypeList
+  Caption = 'Tipo de Tarefa'
+  ClientHeight = 397
+  ClientWidth = 583
+  KeyPreview = True
   Position = poOwnerFormCenter
   OnCreate = FormCreate
-  ExplicitWidth = 706
-  ExplicitHeight = 491
+  ExplicitWidth = 599
+  ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
-    Width = 690
-    Height = 452
-    ExplicitWidth = 690
-    ExplicitHeight = 452
+    Width = 583
+    Height = 397
+    ExplicitWidth = 583
+    ExplicitHeight = 397
     inherited pnlTitleBar: TPanel
-      Width = 690
+      Width = 583
       Visible = False
-      ExplicitWidth = 690
+      ExplicitWidth = 583
       inherited lblTitleForm: TLabel
         Height = 30
       end
     end
     inherited pnlClientArea: TPanel
-      Width = 690
-      Height = 422
-      ExplicitWidth = 690
-      ExplicitHeight = 422
+      Width = 583
+      Height = 367
+      ExplicitWidth = 583
+      ExplicitHeight = 367
       object dbgridPasta: TDBGrid
         Left = 0
         Top = 145
-        Width = 690
-        Height = 277
+        Width = 583
+        Height = 222
         Align = alClient
-        DataSource = srcPasta
+        DataSource = srcTarefaTipo
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         PopupMenu = popAcoes
         TabOrder = 0
@@ -53,20 +53,6 @@ inherited PastaListagem: TPastaListagem
           end
           item
             Expanded = False
-            FieldName = 'tipo_id'
-            Title.Alignment = taRightJustify
-            Width = 50
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'projeto_id'
-            Title.Alignment = taRightJustify
-            Width = 50
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'nome'
             Width = 250
             Visible = True
@@ -74,14 +60,14 @@ inherited PastaListagem: TPastaListagem
           item
             Expanded = False
             FieldName = 'descricao'
-            Width = 300
+            Width = 500
             Visible = True
           end>
       end
       object pnlPesquisa: TPanel
         Left = 0
         Top = 30
-        Width = 690
+        Width = 583
         Height = 115
         Align = alTop
         BevelOuter = bvNone
@@ -135,13 +121,13 @@ inherited PastaListagem: TPastaListagem
       object pnlTopo: TPanel
         Left = 0
         Top = 0
-        Width = 690
+        Width = 583
         Height = 30
         Align = alTop
         BevelKind = bkTile
         BevelOuter = bvNone
         TabOrder = 2
-        object btnAdicionar: TButton
+        object btnIncluir: TButton
           Left = 0
           Top = 0
           Width = 75
@@ -149,19 +135,18 @@ inherited PastaListagem: TPastaListagem
           Align = alLeft
           Caption = 'Adicionar'
           TabOrder = 0
-          OnClick = btnAdicionarClick
+          OnClick = btnIncluirClick
         end
       end
     end
   end
-  object srcPasta: TDataSource
+  object srcTarefaTipo: TDataSource
     AutoEdit = False
-    DataSet = PastaDados.tblPasta
+    DataSet = TaskTypeController.tblTarefaTipo
     Left = 360
-    Top = 1
   end
   object popAcoes: TPopupMenu
-    Left = 432
+    Left = 440
     object btnRemover: TMenuItem
       Caption = 'Remover'
       OnClick = btnRemoverClick

@@ -1,5 +1,5 @@
 ﻿// Eduardo - 05/12/2020
-unit pasta.listagem;
+unit folder_list;
 
 interface
 
@@ -19,12 +19,12 @@ uses
   Vcl.Grids,
   Vcl.StdCtrls,
   Formulario.Base.Visual,
-  pasta.dados,
-  pasta.manutencao,
+  folder_controller,
+  folder_view,
   Extend.DBGrids, Vcl.Menus;
 
 type
-  TPastaListagem = class(TFormularioBaseVisual)
+  TFolderList = class(TFormularioBaseVisual)
     dbgridPasta: TDBGrid;
     pnlPesquisa: TPanel;
     pnlPesquisar: TPanel;
@@ -42,7 +42,7 @@ type
     procedure dbgridPastaCellClick(Column: TColumn);
     procedure btnRemoverClick(Sender: TObject);
   private
-    PD: TPastaDados;
+    PD: TFolderController;
   end;
 
 implementation
@@ -51,13 +51,13 @@ implementation
 
 { TPasta }
 
-procedure TPastaListagem.FormCreate(Sender: TObject);
+procedure TFolderList.FormCreate(Sender: TObject);
 begin
-  PD := TPastaDados.Create(Self);
+  PD := TFolderController.Create(Self);
   srcPasta.DataSet := PD.tblPasta;
 end;
 
-procedure TPastaListagem.btnRemoverClick(Sender: TObject);
+procedure TFolderList.btnRemoverClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
     Exit;
@@ -65,18 +65,18 @@ begin
   PD.Pasta.Table.Write;
 end;
 
-procedure TPastaListagem.btnAdicionarClick(Sender: TObject);
+procedure TFolderList.btnAdicionarClick(Sender: TObject);
 begin
-  TPastaManutencao.New(Self, PD, Incluir);
+  TFolderView.New(Self, PD, Incluir);
 end;
 
-procedure TPastaListagem.dbgridPastaCellClick(Column: TColumn);
+procedure TFolderList.dbgridPastaCellClick(Column: TColumn);
 begin
   if not Column.Field.DataSet.IsEmpty then
-    TPastaManutencao.New(Self, PD, Alterar);
+    TFolderView.New(Self, PD, Alterar);
 end;
 
-procedure TPastaListagem.btnPesquisarClick(Sender: TObject);
+procedure TFolderList.btnPesquisarClick(Sender: TObject);
 begin
   PD.Pasta.Query.Add('id', 1);
   PD.Pasta.Table.Read;

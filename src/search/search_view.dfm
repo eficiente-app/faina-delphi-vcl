@@ -1,8 +1,7 @@
-inherited Pesquisa: TPesquisa
-  Caption = 'Pesquisa'
+inherited SearchView: TSearchView
+  Caption = 'SearchView'
   ClientHeight = 283
   ClientWidth = 430
-  Color = clWindow
   OnCreate = FormCreate
   OnShow = FormShow
   ExplicitWidth = 446

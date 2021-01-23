@@ -1,4 +1,4 @@
-object PastaDados: TPastaDados
+object FolderController: TFolderController
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
@@ -25,7 +25,7 @@ object PastaDados: TPastaDados
     object tblPastatipo_nome: TStringField
       FieldKind = fkLookup
       FieldName = 'tipo_nome'
-      LookupDataSet = PastaTipoDados.tblPastaTipo
+      LookupDataSet = FolderTypeController.tblPastaTipo
       LookupKeyFields = 'id'
       LookupResultField = 'nome'
       KeyFields = 'tipo_id'

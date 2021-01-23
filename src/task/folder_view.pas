@@ -1,5 +1,5 @@
 ﻿// Eduardo - 08/12/2020
-unit pasta.manutencao;
+unit folder_view;
 
 interface
 
@@ -21,13 +21,13 @@ uses
   Vcl.Mask,
   Vcl.StdCtrls,
   Formulario.Base.Visual,
-  pasta.dados,
-  Faina.Pesquisa;
+  folder_controller,
+  search_view;
 
 type
   TAcaoManutencao = (Incluir, Alterar);
 
-  TPastaManutencao = class(TFormularioBaseVisual)
+  TFolderView = class(TFormularioBaseVisual)
     lbid: TLabel;
     lbtipo_id: TLabel;
     lbprojeto_id: TLabel;
@@ -51,9 +51,9 @@ type
     procedure sbttipo_idClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    PD: TPastaDados;
+    PD: TFolderController;
   public
-    class procedure New(AParent: TForm; ADM: TPastaDados; Tipo: TAcaoManutencao);
+    class procedure New(AParent: TForm; ADM: TFolderController; Tipo: TAcaoManutencao);
   end;
 
 implementation
@@ -61,11 +61,11 @@ implementation
 {$R *.dfm}
 
 uses
-  pasta_tipo.dados;
+  folder_type_controller;
 
-class procedure TPastaManutencao.New(AParent: TForm; ADM: TPastaDados; Tipo: TAcaoManutencao);
+class procedure TFolderView.New(AParent: TForm; ADM: TFolderController; Tipo: TAcaoManutencao);
 begin
-  with TPastaManutencao.Create(AParent) do
+  with TFolderView.Create(AParent) do
   begin
     CloseEsc := True;
 
@@ -82,16 +82,16 @@ begin
   end;
 end;
 
-procedure TPastaManutencao.sbttipo_idClick(Sender: TObject);
+procedure TFolderView.sbttipo_idClick(Sender: TObject);
 begin
-  TPesquisa.New(
+  TSearchView.New(
     TForm(Self.Parent),
     pasta_tipo_dados.tblPastaTipo.FieldByName('id'),
     PD.tblPasta.FieldByName('tipo_id')
   );
 end;
 
-procedure TPastaManutencao.btnConfirmarClick(Sender: TObject);
+procedure TFolderView.btnConfirmarClick(Sender: TObject);
 begin
   if PD.tblPasta.State in dsEditModes then
     PD.tblPasta.Post;
@@ -99,7 +99,7 @@ begin
   Close;
 end;
 
-procedure TPastaManutencao.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFolderView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if PD.tblPasta.State in dsEditModes then
     PD.tblPasta.Cancel;

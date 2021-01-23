@@ -1,5 +1,5 @@
 ﻿// Eduardo - 07/01/2021
-unit pasta_tipo.listagem;
+unit folder_type_list;
 
 interface
 
@@ -19,12 +19,12 @@ uses
   Vcl.Grids,
   Vcl.StdCtrls,
   Formulario.Base.Visual,
-  pasta_tipo.dados,
-  pasta_tipo.manutencao,
+  folder_type_controller,
+  folder_type_view,
   Extend.DBGrids, Vcl.Menus;
 
 type
-  TPastaTipoListagem = class(TFormularioBaseVisual)
+  TFolderTypeList = class(TFormularioBaseVisual)
     dbgridPasta: TDBGrid;
     pnlTopo: TPanel;
     btnAdicionar: TButton;
@@ -42,7 +42,7 @@ type
     procedure dbgridPastaCellClick(Column: TColumn);
     procedure btnRemoverClick(Sender: TObject);
   private
-    PTD: TPastaTipoDados;
+    PTD: TFolderTypeController;
   end;
 
 implementation
@@ -51,13 +51,13 @@ implementation
 
 { TPasta }
 
-procedure TPastaTipoListagem.FormCreate(Sender: TObject);
+procedure TFolderTypeList.FormCreate(Sender: TObject);
 begin
   PTD := pasta_tipo_dados;
   srcPastaTipo.DataSet := PTD.tblPastaTipo;
 end;
 
-procedure TPastaTipoListagem.btnRemoverClick(Sender: TObject);
+procedure TFolderTypeList.btnRemoverClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
     Exit;
@@ -65,18 +65,18 @@ begin
   PTD.PastaTipo.Table.Write;
 end;
 
-procedure TPastaTipoListagem.btnAdicionarClick(Sender: TObject);
+procedure TFolderTypeList.btnAdicionarClick(Sender: TObject);
 begin
   TPastaTipoManutencao.New(Self, PTD, Incluir);
 end;
 
-procedure TPastaTipoListagem.dbgridPastaCellClick(Column: TColumn);
+procedure TFolderTypeList.dbgridPastaCellClick(Column: TColumn);
 begin
   if not Column.Field.DataSet.IsEmpty then
     TPastaTipoManutencao.New(Self, PTD, Alterar);
 end;
 
-procedure TPastaTipoListagem.btnPesquisarClick(Sender: TObject);
+procedure TFolderTypeList.btnPesquisarClick(Sender: TObject);
 begin
   PTD.PastaTipo.Query.Add('id', 1);
   PTD.PastaTipo.Table.Read;

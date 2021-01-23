@@ -10,7 +10,7 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
         Left = 148
         Top = 0
         Width = 109
-        Height = 30
+        Height = 13
         Margins.Left = 8
         Margins.Top = 0
         Margins.Right = 0
@@ -26,7 +26,6 @@ inherited ConfiguracoesPrincipal: TConfiguracoesPrincipal
         Layout = tlCenter
         Visible = False
         OnMouseDown = MouseDownMovimentarFormulario
-        ExplicitHeight = 13
       end
     end
     inherited pnlClientArea: TPanel

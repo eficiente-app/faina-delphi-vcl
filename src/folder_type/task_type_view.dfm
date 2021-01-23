@@ -1,37 +1,29 @@
-inherited PastaTipoManutencao: TPastaTipoManutencao
-  Caption = 'Pasta Tipo'
-  ClientHeight = 156
-  ClientWidth = 515
-  Color = clWindow
+inherited TaskTypeView: TTaskTypeView
+  Caption = 'Tarefa Tipo'
+  ClientHeight = 155
+  ClientWidth = 516
   OnClose = FormClose
-  ExplicitWidth = 531
-  ExplicitHeight = 195
+  ExplicitWidth = 532
+  ExplicitHeight = 194
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
-    Width = 515
-    Height = 156
-    ExplicitWidth = 515
-    ExplicitHeight = 156
+    Width = 516
+    Height = 155
+    ExplicitWidth = 516
+    ExplicitHeight = 155
     inherited pnlTitleBar: TPanel
-      Width = 515
-      ExplicitWidth = 515
+      Width = 516
+      ExplicitWidth = 516
       inherited lblTitleForm: TLabel
         Height = 30
       end
     end
     inherited pnlClientArea: TPanel
-      Width = 515
-      Height = 126
-      ExplicitWidth = 515
-      ExplicitHeight = 126
-      object lbid: TLabel
-        Left = 8
-        Top = 36
-        Width = 33
-        Height = 13
-        Caption = 'C'#243'digo'
-      end
+      Width = 516
+      Height = 125
+      ExplicitWidth = 516
+      ExplicitHeight = 125
       object lbdescricao: TLabel
         Left = 8
         Top = 78
@@ -42,6 +34,13 @@ inherited PastaTipoManutencao: TPastaTipoManutencao
         Margins.Right = 2
         Margins.Bottom = 2
         Caption = 'Descri'#231#227'o'
+      end
+      object lbid: TLabel
+        Left = 8
+        Top = 36
+        Width = 33
+        Height = 13
+        Caption = 'C'#243'digo'
       end
       object lbnome: TLabel
         Left = 54
@@ -54,6 +53,15 @@ inherited PastaTipoManutencao: TPastaTipoManutencao
         Margins.Bottom = 2
         Caption = 'Nome'
       end
+      object dbedtdescricao: TDBEdit
+        Left = 8
+        Top = 93
+        Width = 497
+        Height = 21
+        DataField = 'descricao'
+        DataSource = srcTarefaTipo
+        TabOrder = 0
+      end
       object dbedtid: TDBEdit
         Left = 8
         Top = 52
@@ -62,19 +70,28 @@ inherited PastaTipoManutencao: TPastaTipoManutencao
         TabStop = False
         Color = clCream
         DataField = 'id'
-        DataSource = srcPastaTipo
+        DataSource = srcTarefaTipo
         ReadOnly = True
-        TabOrder = 0
+        TabOrder = 1
+      end
+      object dbedtnome: TDBEdit
+        Left = 54
+        Top = 52
+        Width = 451
+        Height = 21
+        DataField = 'nome'
+        DataSource = srcTarefaTipo
+        TabOrder = 2
       end
       object pnlTop: TPanel
         Left = 0
         Top = 0
-        Width = 515
+        Width = 516
         Height = 30
         Align = alTop
         BevelKind = bkTile
         BevelOuter = bvNone
-        TabOrder = 1
+        TabOrder = 3
         object btnConfirmar: TButton
           Left = 0
           Top = 0
@@ -86,30 +103,11 @@ inherited PastaTipoManutencao: TPastaTipoManutencao
           OnClick = btnConfirmarClick
         end
       end
-      object dbedtdescricao: TDBEdit
-        Left = 8
-        Top = 93
-        Width = 497
-        Height = 21
-        DataField = 'descricao'
-        DataSource = srcPastaTipo
-        TabOrder = 2
-      end
-      object dbedtnome: TDBEdit
-        Left = 54
-        Top = 52
-        Width = 451
-        Height = 21
-        DataField = 'nome'
-        DataSource = srcPastaTipo
-        TabOrder = 3
-      end
     end
   end
-  object srcPastaTipo: TDataSource
+  object srcTarefaTipo: TDataSource
     AutoEdit = False
-    DataSet = PastaTipoDados.tblPastaTipo
+    DataSet = TaskTypeController.tblTarefaTipo
     Left = 448
-    Top = 1
   end
 end

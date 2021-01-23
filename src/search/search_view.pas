@@ -1,5 +1,5 @@
 ﻿// Eduardo - 08/12/2020
-unit Faina.Pesquisa;
+unit search_view;
 
 interface
 
@@ -26,7 +26,7 @@ uses
   Extend.DBGrids;
 
 type
-  TPesquisa = class(TFormularioBaseVisual)
+  TSearchView = class(TFormularioBaseVisual)
     pnlPesquisa: TPanel;
     dbgrid: TDBGrid;
     src: TDataSource;
@@ -45,7 +45,7 @@ type
     FOrigem: TField;
     FDestino: TField;
   public
-    class function New(AParent: TForm; Origem, Destino: TField): TPesquisa;
+    class function New(AParent: TForm; Origem, Destino: TField): TSearchView;
   end;
 
 implementation
@@ -57,9 +57,9 @@ uses
 
 { TPesquisa }
 
-class function TPesquisa.New(AParent: TForm; Origem, Destino: TField): TPesquisa;
+class function TSearchView.New(AParent: TForm; Origem, Destino: TField): TSearchView;
 begin
-  Result := TPesquisa.Create(AParent);
+  Result := TSearchView.Create(AParent);
   with Result do
   begin
     FOrigem := Origem;
@@ -69,13 +69,13 @@ begin
   end;
 end;
 
-procedure TPesquisa.btnConfirmarClick(Sender: TObject);
+procedure TSearchView.btnConfirmarClick(Sender: TObject);
 begin
   FDestino.Value := FOrigem.Value;
   Close;
 end;
 
-procedure TPesquisa.btnPesquisarClick(Sender: TObject);
+procedure TSearchView.btnPesquisarClick(Sender: TObject);
 var
   sPesquisa: String;
   Field: TField;
@@ -97,12 +97,12 @@ begin
   src.DataSet.Filtered := True;
 end;
 
-procedure TPesquisa.FormCreate(Sender: TObject);
+procedure TSearchView.FormCreate(Sender: TObject);
 begin
   CloseEsc := True;
 end;
 
-procedure TPesquisa.FormShow(Sender: TObject);
+procedure TSearchView.FormShow(Sender: TObject);
 var
   I: Integer;
 begin

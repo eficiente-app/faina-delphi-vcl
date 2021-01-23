@@ -1,5 +1,5 @@
 ﻿// Eduardo - 08/01/2021
-unit tarefa_tipo.listagem;
+unit task_type_list;
 
 interface
 
@@ -21,12 +21,12 @@ uses
   Vcl.Buttons,
   Vcl.Menus,
   Formulario.Base.Visual,
-  tarefa_tipo.dados,
-  tarefa_tipo.manutencao,
+  task_type_controller,
+  task_type_view,
   Extend.DBGrids;
 
 type
-  TTarefaTipoListagem = class(TFormularioBaseVisual)
+  TTaskTypeList = class(TFormularioBaseVisual)
     dbgridPasta: TDBGrid;
     srcTarefaTipo: TDataSource;
     pnlTopo: TPanel;
@@ -44,7 +44,7 @@ type
     procedure dbgridPastaCellClick(Column: TColumn);
     procedure btnRemoverClick(Sender: TObject);
   private
-    TTD: TTarefaTipoDados;
+    TTD: TTaskTypeController;
   end;
 
 implementation
@@ -53,13 +53,13 @@ implementation
 
 { TPasta }
 
-procedure TTarefaTipoListagem.FormCreate(Sender: TObject);
+procedure TTaskTypeList.FormCreate(Sender: TObject);
 begin
   TTD := tarefa_tipo_dados;
   srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
 end;
 
-procedure TTarefaTipoListagem.btnRemoverClick(Sender: TObject);
+procedure TTaskTypeList.btnRemoverClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
     Exit;
@@ -67,18 +67,18 @@ begin
   TTD.TarefaTipo.Table.Write;
 end;
 
-procedure TTarefaTipoListagem.btnIncluirClick(Sender: TObject);
+procedure TTaskTypeList.btnIncluirClick(Sender: TObject);
 begin
-  TTarefaTipoManutencao.New(Self, TTD, Incluir);
+  TTaskTypeView.New(Self, TTD, Incluir);
 end;
 
-procedure TTarefaTipoListagem.dbgridPastaCellClick(Column: TColumn);
+procedure TTaskTypeList.dbgridPastaCellClick(Column: TColumn);
 begin
   if not Column.Field.DataSet.IsEmpty then
-    TTarefaTipoManutencao.New(Self, TTD, Alterar);
+    TTaskTypeView.New(Self, TTD, Alterar);
 end;
 
-procedure TTarefaTipoListagem.btnPesquisarClick(Sender: TObject);
+procedure TTaskTypeList.btnPesquisarClick(Sender: TObject);
 begin
   TTD.TarefaTipo.Query.Add('id', 1);
   TTD.TarefaTipo.Table.Read;

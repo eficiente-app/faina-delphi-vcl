@@ -1,5 +1,5 @@
 ﻿// Eduardo - 07/01/2021
-unit pasta_tipo.manutencao;
+unit folder_type_view;
 
 interface
 
@@ -21,8 +21,8 @@ uses
   Vcl.Mask,
   Vcl.StdCtrls,
   Formulario.Base.Visual,
-  pasta_tipo.dados,
-  Faina.Pesquisa;
+  folder_type_controller,
+  search_view;
 
 type
   TAcaoManutencao = (Incluir, Alterar);
@@ -40,16 +40,16 @@ type
     procedure btnConfirmarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    PTD: TPastaTipoDados;
+    PTD: TFolderTypeController;
   public
-    class procedure New(AParent: TForm; APTD: TPastaTipoDados; Tipo: TAcaoManutencao);
+    class procedure New(AParent: TForm; APTD: TFolderTypeController; Tipo: TAcaoManutencao);
   end;
 
 implementation
 
 {$R *.dfm}
 
-class procedure TPastaTipoManutencao.New(AParent: TForm; APTD: TPastaTipoDados; Tipo: TAcaoManutencao);
+class procedure TPastaTipoManutencao.New(AParent: TForm; APTD: TFolderTypeController; Tipo: TAcaoManutencao);
 begin
   with TPastaTipoManutencao.Create(AParent) do
   begin

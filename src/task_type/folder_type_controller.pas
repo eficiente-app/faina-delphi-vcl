@@ -1,5 +1,5 @@
 ﻿// Eduardo - 07/01/2021
-unit pasta_tipo.dados;
+unit folder_type_controller;
 
 interface
 
@@ -20,7 +20,7 @@ uses
   REST.Manager;
 
 type
-  TPastaTipoDados = class(TDataModule)
+  TFolderTypeController = class(TDataModule)
     tblPastaTipo: TFDMemTable;
     tblPastaTipoid: TIntegerField;
     tblPastaTipodescricao: TStringField;
@@ -38,7 +38,7 @@ type
   end;
 
 var
-  pasta_tipo_dados: TPastaTipoDados;
+  pasta_tipo_dados: TFolderTypeController;
 
 implementation
 
@@ -46,13 +46,13 @@ implementation
 
 {$R *.dfm}
 
-procedure TPastaTipoDados.DataModuleCreate(Sender: TObject);
+procedure TFolderTypeController.DataModuleCreate(Sender: TObject);
 begin
   PastaTipo := TRESTManager.Create('api/pasta/tipo', tblPastaTipo);
   PastaTipo.Table.Read;
 end;
 
-procedure TPastaTipoDados.DataModuleDestroy(Sender: TObject);
+procedure TFolderTypeController.DataModuleDestroy(Sender: TObject);
 begin
   FreeAndNil(PastaTipo);
 end;

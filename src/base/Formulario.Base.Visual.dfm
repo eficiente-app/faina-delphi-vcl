@@ -4,7 +4,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
   Caption = 'Formul'#225'rio Base - Visual'
   ClientHeight = 411
   ClientWidth = 852
-  Color = 3806736
+  Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -43,7 +43,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
         Left = 8
         Top = 0
         Width = 132
-        Height = 17
+        Height = 30
         Margins.Left = 8
         Margins.Top = 0
         Margins.Right = 0
@@ -58,6 +58,7 @@ object FormularioBaseVisual: TFormularioBaseVisual
         ParentFont = False
         Layout = tlCenter
         OnMouseDown = MouseDownMovimentarFormulario
+        ExplicitHeight = 17
       end
     end
     object pnlClientArea: TPanel

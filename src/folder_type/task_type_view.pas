@@ -1,5 +1,5 @@
 ﻿// Eduardo - 08/01/2021
-unit tarefa_tipo.manutencao;
+unit task_type_view;
 
 interface
 
@@ -21,13 +21,13 @@ uses
   Vcl.Mask,
   Vcl.StdCtrls,
   Formulario.Base.Visual,
-  tarefa_tipo.dados,
-  Faina.Pesquisa;
+  task_type_controller,
+  search_view;
 
 type
   TAcaoManutencao = (Incluir, Alterar);
 
-  TTarefaTipoManutencao = class(TFormularioBaseVisual)
+  TTaskTypeView = class(TFormularioBaseVisual)
     dbedtid: TDBEdit;
     lbid: TLabel;
     pnlTop: TPanel;
@@ -40,18 +40,18 @@ type
     procedure btnConfirmarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    TTD: TTarefaTipoDados;
+    TTD: TTaskTypeController;
   public
-    class procedure New(AParent: TForm; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
+    class procedure New(AParent: TForm; ATTD: TTaskTypeController; Tipo: TAcaoManutencao);
   end;
 
 implementation
 
 {$R *.dfm}
 
-class procedure TTarefaTipoManutencao.New(AParent: TForm; ATTD: TTarefaTipoDados; Tipo: TAcaoManutencao);
+class procedure TTaskTypeView.New(AParent: TForm; ATTD: TTaskTypeController; Tipo: TAcaoManutencao);
 begin
-  with TTarefaTipoManutencao.Create(AParent) do
+  with TTaskTypeView.Create(AParent) do
   begin
     CloseEsc := True;
 
@@ -68,7 +68,7 @@ begin
   end;
 end;
 
-procedure TTarefaTipoManutencao.btnConfirmarClick(Sender: TObject);
+procedure TTaskTypeView.btnConfirmarClick(Sender: TObject);
 begin
   if TTD.tblTarefaTipo.State in dsEditModes then
     TTD.tblTarefaTipo.Post;
@@ -76,7 +76,7 @@ begin
   Close;
 end;
 
-procedure TTarefaTipoManutencao.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TTaskTypeView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if TTD.tblTarefaTipo.State in dsEditModes then
     TTD.tblTarefaTipo.Cancel;

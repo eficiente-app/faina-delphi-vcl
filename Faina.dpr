@@ -5,20 +5,10 @@ uses
   Formulario.Base in 'src\base\Formulario.Base.pas' {FormularioBase},
   Faina.Login in 'src\Faina.Login.pas' {Login},
   Faina.Configuracoes in 'src\Faina.Configuracoes.pas',
-  pasta.listagem in 'src\pasta\pasta.listagem.pas' {PastaListagem},
-  pasta.dados in 'src\pasta\pasta.dados.pas' {PastaDados: TDataModule},
   REST.Connection in 'src\rest\REST.Connection.pas',
   REST.Table in 'src\rest\REST.Table.pas',
   REST.Manager in 'src\rest\REST.Manager.pas',
   REST.Query in 'src\rest\REST.Query.pas',
-  pasta.manutencao in 'src\pasta\pasta.manutencao.pas' {PastaManutencao},
-  Faina.Pesquisa in 'src\pesquisa\Faina.Pesquisa.pas' {Pesquisa},
-  pasta_tipo.dados in 'src\pasta_tipo\pasta_tipo.dados.pas' {PastaTipoDados: TDataModule},
-  pasta_tipo.manutencao in 'src\pasta_tipo\pasta_tipo.manutencao.pas' {PastaTipoManutencao},
-  pasta_tipo.listagem in 'src\pasta_tipo\pasta_tipo.listagem.pas' {PastaTipoListagem},
-  tarefa_tipo.dados in 'src\tarefa_tipo\tarefa_tipo.dados.pas' {TarefaTipoDados: TDataModule},
-  tarefa_tipo.listagem in 'src\tarefa_tipo\tarefa_tipo.listagem.pas' {TarefaTipoListagem},
-  tarefa_tipo.manutencao in 'src\tarefa_tipo\tarefa_tipo.manutencao.pas' {TarefaTipoManutencao},
   Faina.Principal in 'src\Faina.Principal.pas' {Principal},
   Faina.Escuro in 'src\Faina.Escuro.pas',
   Configuracoes.Principal in 'src\configuracoes\Configuracoes.Principal.pas' {ConfiguracoesPrincipal},
@@ -27,7 +17,17 @@ uses
   Formulario.Base.Visual in 'src\base\Formulario.Base.Visual.pas' {FormularioBaseVisual},
   SysButtons in 'src\componentes\TSysButtons\SysButtons.pas',
   menu.usuario in 'src\area_trabalho\menu.usuario.pas' {MenuUsuario},
-  area_trabalho in 'src\area_trabalho\area_trabalho.pas' {AreaTrabalho};
+  area_trabalho in 'src\area_trabalho\area_trabalho.pas' {AreaTrabalho},
+  task_type_controller in 'src\folder_type\task_type_controller.pas' {TaskTypeController: TDataModule},
+  task_type_list in 'src\folder_type\task_type_list.pas' {TaskTypeList},
+  task_type_view in 'src\folder_type\task_type_view.pas' {TaskTypeView},
+  search_view in 'src\search\search_view.pas' {SearchView},
+  folder_controller in 'src\task\folder_controller.pas' {FolderController: TDataModule},
+  folder_list in 'src\task\folder_list.pas' {FolderList},
+  folder_view in 'src\task\folder_view.pas' {FolderView},
+  folder_type_controller in 'src\task_type\folder_type_controller.pas' {FolderTypeController: TDataModule},
+  folder_type_list in 'src\task_type\folder_type_list.pas' {FolderTypeList},
+  folder_type_view in 'src\task_type\folder_type_view.pas' {PastaTipoManutencao};
 
 {$R *.res}
 
@@ -36,7 +36,7 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPrincipal, Principal);
-  Application.CreateForm(TPastaTipoDados, pasta_tipo_dados);
-  Application.CreateForm(TTarefaTipoDados, tarefa_tipo_dados);
+  //  Application.CreateForm(Tpasta_tipo_dados, pasta_tipo_dados);
+//  Application.CreateForm(Ttarefa_tipo_dados, tarefa_tipo_dados);
   Application.Run;
 end.

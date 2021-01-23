@@ -49,9 +49,9 @@ var
 implementation
 
 uses
-  pasta.listagem,
-  pasta_tipo.listagem,
-  tarefa_tipo.listagem;
+  folder_list,
+  folder_type_list,
+  task_type_list;
 
 {$R *.dfm}
 
@@ -87,17 +87,17 @@ end;
 
 procedure TConfiguracoesPrincipal.nbiPastasClick(Sender: TObject);
 begin
-  AbrirTela(TPastaListagem);
+  AbrirTela(TFolderList);
 end;
 
 procedure TConfiguracoesPrincipal.nbiTipoPastaClick(Sender: TObject);
 begin
-  AbrirTela(TPastaTipoListagem);
+  AbrirTela(TFolderTypeList);
 end;
 
 procedure TConfiguracoesPrincipal.nbiTipoTarefaClick(Sender: TObject);
 begin
-  AbrirTela(TTarefaTipoListagem);
+  AbrirTela(TTaskTypeList);
 end;
 
 end.

@@ -1,4 +1,4 @@
-inherited PastaManutencao: TPastaManutencao
+inherited FolderView: TFolderView
   Caption = 'Pasta'
   ClientHeight = 195
   ClientWidth = 515
@@ -15,9 +15,6 @@ inherited PastaManutencao: TPastaManutencao
     inherited pnlTitleBar: TPanel
       Width = 515
       ExplicitWidth = 515
-      inherited lblTitleForm: TLabel
-        Height = 30
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 515
@@ -258,7 +255,7 @@ inherited PastaManutencao: TPastaManutencao
   end
   object srcPasta: TDataSource
     AutoEdit = False
-    DataSet = PastaDados.tblPasta
+    DataSet = FolderController.tblPasta
     Left = 448
     Top = 1
   end

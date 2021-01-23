@@ -1,5 +1,5 @@
 ﻿// Eduardo - 06/12/2020
-unit pasta.dados;
+unit folder_controller;
 
 interface
 
@@ -19,7 +19,7 @@ uses
   REST.Manager;
 
 type
-  TPastaDados = class(TDataModule)
+  TFolderController = class(TDataModule)
     tblPasta: TFDMemTable;
     tblPastaid: TIntegerField;
     tblPastatipo_id: TIntegerField;
@@ -47,14 +47,14 @@ implementation
 {$R *.dfm}
 
 uses
-  pasta_tipo.dados;
+  folder_type_controller;
 
-procedure TPastaDados.DataModuleCreate(Sender: TObject);
+procedure TFolderController.DataModuleCreate(Sender: TObject);
 begin
   Pasta := TRESTManager.Create('api/pasta', tblPasta);
 end;
 
-procedure TPastaDados.DataModuleDestroy(Sender: TObject);
+procedure TFolderController.DataModuleDestroy(Sender: TObject);
 begin
   FreeAndNil(Pasta);
 end;

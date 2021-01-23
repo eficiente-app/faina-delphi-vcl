@@ -1,8 +1,7 @@
-inherited PastaTipoListagem: TPastaTipoListagem
+inherited FolderTypeList: TFolderTypeList
   Caption = 'Tipos de Pasta'
   ClientHeight = 434
   ClientWidth = 544
-  Color = clWindow
   Position = poOwnerFormCenter
   OnCreate = FormCreate
   ExplicitWidth = 560
@@ -18,9 +17,6 @@ inherited PastaTipoListagem: TPastaTipoListagem
       Width = 544
       Visible = False
       ExplicitWidth = 544
-      inherited lblTitleForm: TLabel
-        Height = 30
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 544
@@ -142,7 +138,7 @@ inherited PastaTipoListagem: TPastaTipoListagem
   end
   object srcPastaTipo: TDataSource
     AutoEdit = False
-    DataSet = PastaTipoDados.tblPastaTipo
+    DataSet = FolderTypeController.tblPastaTipo
     Left = 360
     Top = 1
   end

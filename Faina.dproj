@@ -114,43 +114,10 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>Login</Form>
         </DCCReference>
         <DCCReference Include="src\Faina.Configuracoes.pas"/>
-        <DCCReference Include="src\pasta\pasta.listagem.pas">
-            <Form>PastaListagem</Form>
-        </DCCReference>
-        <DCCReference Include="src\pasta\pasta.dados.pas">
-            <Form>PastaDados</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="src\rest\REST.Connection.pas"/>
         <DCCReference Include="src\rest\REST.Table.pas"/>
         <DCCReference Include="src\rest\REST.Manager.pas"/>
         <DCCReference Include="src\rest\REST.Query.pas"/>
-        <DCCReference Include="src\pasta\pasta.manutencao.pas">
-            <Form>PastaManutencao</Form>
-        </DCCReference>
-        <DCCReference Include="src\pesquisa\Faina.Pesquisa.pas">
-            <Form>Pesquisa</Form>
-        </DCCReference>
-        <DCCReference Include="src\pasta_tipo\pasta_tipo.dados.pas">
-            <Form>PastaTipoDados</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="src\pasta_tipo\pasta_tipo.manutencao.pas">
-            <Form>PastaTipoManutencao</Form>
-        </DCCReference>
-        <DCCReference Include="src\pasta_tipo\pasta_tipo.listagem.pas">
-            <Form>PastaTipoListagem</Form>
-        </DCCReference>
-        <DCCReference Include="src\tarefa_tipo\tarefa_tipo.dados.pas">
-            <Form>TarefaTipoDados</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="src\tarefa_tipo\tarefa_tipo.listagem.pas">
-            <Form>TarefaTipoListagem</Form>
-        </DCCReference>
-        <DCCReference Include="src\tarefa_tipo\tarefa_tipo.manutencao.pas">
-            <Form>TarefaTipoManutencao</Form>
-        </DCCReference>
         <DCCReference Include="src\Faina.Principal.pas">
             <Form>Principal</Form>
             <FormType>dfm</FormType>
@@ -175,6 +142,49 @@ $(PreBuildEvent)]]></PreBuildEvent>
         </DCCReference>
         <DCCReference Include="src\area_trabalho\area_trabalho.pas">
             <Form>AreaTrabalho</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\folder_type\task_type_controller.pas">
+            <Form>TaskTypeController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\folder_type\task_type_list.pas">
+            <Form>TaskTypeList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\folder_type\task_type_view.pas">
+            <Form>TaskTypeView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\search\search_view.pas">
+            <Form>SearchView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task\folder_controller.pas">
+            <Form>FolderController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\task\folder_list.pas">
+            <Form>FolderList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task\folder_view.pas">
+            <Form>FolderView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task_type\folder_type_controller.pas">
+            <Form>FolderTypeController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\task_type\folder_type_list.pas">
+            <Form>FolderTypeList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task_type\folder_type_view.pas">
+            <Form>PastaTipoManutencao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

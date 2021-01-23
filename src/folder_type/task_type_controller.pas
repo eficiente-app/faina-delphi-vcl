@@ -1,5 +1,5 @@
 ﻿// Eduardo - 08/01/2021
-unit tarefa_tipo.dados;
+unit task_type_controller;
 
 interface
 
@@ -19,7 +19,7 @@ uses
   REST.Manager;
 
 type
-  TTarefaTipoDados = class(TDataModule)
+  TTaskTypeController = class(TDataModule)
     tblTarefaTipo: TFDMemTable;
     tblTarefaTipoid: TIntegerField;
     tblTarefaTipodescricao: TStringField;
@@ -37,7 +37,7 @@ type
   end;
 
 var
-  tarefa_tipo_dados: TTarefaTipoDados;
+  tarefa_tipo_dados: TTaskTypeController;
 
 implementation
 
@@ -45,13 +45,13 @@ implementation
 
 {$R *.dfm}
 
-procedure TTarefaTipoDados.DataModuleCreate(Sender: TObject);
+procedure TTaskTypeController.DataModuleCreate(Sender: TObject);
 begin
   TarefaTipo := TRESTManager.Create('api/tarefa/tipo', tblTarefaTipo);
   TarefaTipo.Table.Read;
 end;
 
-procedure TTarefaTipoDados.DataModuleDestroy(Sender: TObject);
+procedure TTaskTypeController.DataModuleDestroy(Sender: TObject);
 begin
   FreeAndNil(TarefaTipo);
 end;
