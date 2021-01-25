@@ -1,11 +1,14 @@
-inherited WorkArea: TWorkArea
-  Caption = 'WorkArea'
+inherited WorkSpace: TWorkSpace
+  Caption = 'WorkSpace'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlClientForm: TPanel
     inherited pnlTitleBar: TPanel
       Visible = False
       ExplicitTop = 0
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       object pnlTop: TPanel

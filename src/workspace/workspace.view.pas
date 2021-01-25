@@ -1,5 +1,5 @@
 // Daniel Araujo - 19/01/2021
-unit work_area;
+unit workspace.view;
 
 interface
 
@@ -19,7 +19,7 @@ uses
   SVGIconImage;
 
 type
-  TWorkArea = class(TBaseFormView)
+  TWorkSpace = class(TBaseFormView)
     pnlTop: TPanel;
     pnlTitle: TPanel;
     lblTitlePrincipal: TLabel;
@@ -36,7 +36,7 @@ type
   end;
 
 var
-  WorkArea: TWorkArea;
+  WorkSpace: TWorkSpace;
 
 implementation
 
@@ -44,7 +44,7 @@ uses
   user_menu;
 {$R *.dfm}
 
-procedure TWorkArea.svgUserAvatarClick(Sender: TObject);
+procedure TWorkSpace.svgUserAvatarClick(Sender: TObject);
 begin
   TUserMenu.Show;
 end;

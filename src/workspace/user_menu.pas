@@ -49,7 +49,7 @@ type
 implementation
 
 uses
-  work_area,
+  workspace.view,
   main_configuration;
 
 {$R *.dfm}
@@ -64,7 +64,7 @@ procedure TUserMenu.Position;
 var
   pMenu: TPoint;
 begin
-  with TWorkArea(AreaTrabalho).pnlTop do
+  with TWorkSpace(AreaTrabalho).pnlTop do
   begin
     pMenu := ClientOrigin;
     pMenu.X := pMenu.X + Width;

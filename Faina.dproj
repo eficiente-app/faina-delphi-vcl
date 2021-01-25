@@ -123,10 +123,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Faina.Shadow.pas"/>
-        <DCCReference Include="src\configuracoes\main_configuration.pas">
-            <Form>MainConfiguration</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\base\base_form_dropdown.pas">
             <Form>BaseFormDropDown</Form>
             <FormType>dfm</FormType>
@@ -135,56 +131,64 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="src\base\base_form_view.pas">
             <Form>BaseFormView</Form>
         </DCCReference>
-        <DCCReference Include="src\componentes\TSysButtons\SysButtons.pas"/>
-        <DCCReference Include="src\area_trabalho\user_menu.pas">
-            <Form>UserMenu</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="src\area_trabalho\work_area.pas">
-            <Form>WorkArea</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="src\folder_type\task_type_controller.pas">
-            <Form>TaskTypeController</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="src\folder_type\task_type_list.pas">
-            <Form>TaskTypeList</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="src\folder_type\task_type_view.pas">
-            <Form>TaskTypeView</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\search\search_view.pas">
             <Form>SearchView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\task\folder_controller.pas">
+        <DCCReference Include="src\workspace\user_menu.pas">
+            <Form>UserMenu</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\workspace\workspace.view.pas">
+            <Form>WorkSpace</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\components\TSysButtons\SysButtons.pas"/>
+        <DCCReference Include="src\configuration\main_configuration.pas">
+            <Form>MainConfiguration</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\folder\folder_controller.pas">
             <Form>FolderController</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\task\folder_list.pas">
+        <DCCReference Include="src\folder\folder_list.pas">
             <Form>FolderList</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\task\folder_view.pas">
+        <DCCReference Include="src\folder\folder_view.pas">
             <Form>FolderView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\task_type\folder_type_controller.pas">
+        <DCCReference Include="src\folder\folder_type\folder_type_controller.pas">
             <Form>FolderTypeController</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\task_type\folder_type_list.pas">
+        <DCCReference Include="src\folder\folder_type\folder_type_list.pas">
             <Form>FolderTypeList</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\task_type\folder_type_view.pas">
+        <DCCReference Include="src\folder\folder_type\folder_type_view.pas">
             <Form>PastaTipoManutencao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task\task_type\task_type_controller.pas">
+            <Form>TaskTypeController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\task\task_type\task_type_list.pas">
+            <Form>TaskTypeList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task\task_type\task_type_view.pas">
+            <Form>TaskTypeView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task\task.view.pas">
+            <Form>TaskView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

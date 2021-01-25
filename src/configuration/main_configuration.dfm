@@ -5,9 +5,6 @@ inherited MainConfiguration: TMainConfiguration
   TextHeight = 13
   inherited pnlClientForm: TPanel
     inherited pnlTitleBar: TPanel
-      inherited lblTitleForm: TLabel
-        Height = 17
-      end
       object lblSubTitle: TLabel
         AlignWithMargins = True
         Left = 148

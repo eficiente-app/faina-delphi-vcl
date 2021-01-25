@@ -23,7 +23,7 @@ inherited Main: TMain
       ExplicitHeight = 20
       inherited lblTitleForm: TLabel
         Width = 158
-        Height = 17
+        Height = 20
         Caption = 'Faina - Gerencie suas Tarefas'
         ExplicitWidth = 158
       end
@@ -51,8 +51,8 @@ inherited Main: TMain
       object lblAlertaConexao: TLabel
         Left = 0
         Top = 0
-        Width = 73
-        Height = 17
+        Width = 1004
+        Height = 20
         Margins.Left = 8
         Margins.Top = 0
         Margins.Right = 0
@@ -69,6 +69,8 @@ inherited Main: TMain
         ParentFont = False
         Layout = tlCenter
         OnMouseDown = MouseDownMovimentarFormulario
+        ExplicitWidth = 73
+        ExplicitHeight = 17
       end
     end
   end

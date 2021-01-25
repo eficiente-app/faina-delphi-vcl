@@ -45,8 +45,8 @@ inherited UserMenu: TUserMenu
       object lblApelidoUsuario: TLabel
         Left = 0
         Top = 0
-        Width = 138
-        Height = 28
+        Width = 54
+        Height = 20
         Align = alClient
         Caption = 'Apelido'
         Font.Charset = DEFAULT_CHARSET
@@ -57,13 +57,11 @@ inherited UserMenu: TUserMenu
         Font.Quality = fqClearType
         ParentFont = False
         Layout = tlCenter
-        ExplicitWidth = 54
-        ExplicitHeight = 20
       end
       object lblNomeUsuario: TLabel
         Left = 0
         Top = 28
-        Width = 138
+        Width = 33
         Height = 13
         Align = alBottom
         Caption = 'Nome'
@@ -75,12 +73,11 @@ inherited UserMenu: TUserMenu
         Font.Quality = fqClearType
         ParentFont = False
         Layout = tlCenter
-        ExplicitWidth = 33
       end
       object lblFuncaoPrincipal: TLabel
         Left = 0
         Top = 41
-        Width = 138
+        Width = 39
         Height = 13
         Align = alBottom
         Caption = 'Fun'#231#227'o'
@@ -92,7 +89,6 @@ inherited UserMenu: TUserMenu
         Font.Quality = fqClearType
         ParentFont = False
         Layout = tlCenter
-        ExplicitWidth = 39
       end
     end
   end

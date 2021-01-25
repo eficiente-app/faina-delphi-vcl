@@ -20,7 +20,7 @@ uses
   SysButtons,
   Faina.Configuration,
   base_form_view,
-  work_area;
+  workspace.view;
 
 type
   TMain = class(TBaseFormView)
@@ -32,13 +32,13 @@ type
     procedure tmrAlertaConexaoTimer(Sender: TObject);
   private
     { Private declarations }
-    FWorkArea: TWorkArea;
+    FWorkArea: TWorkSpace;
   protected
     procedure Resizing(State: TWindowState); override;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent); reintroduce; override;
-    property WorkArea: TWorkArea read FWorkArea;
+    property WorkArea: TWorkSpace read FWorkArea;
     function SetConnectionAlert(bConectado: Boolean): TMain;
   end;
 
@@ -67,7 +67,7 @@ end;
 
 procedure TMain.FormShow(Sender: TObject);
 begin
-  FWorkArea := TWorkArea.Create(Self);
+  FWorkArea := TWorkSpace.Create(Self);
   FWorkArea.ShowIn(pnlClientArea, alClient);
   TLogin.New(pnlClientArea);
   SetConnectionAlert(True);

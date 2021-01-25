@@ -35,7 +35,7 @@ implementation
 uses
   base_form;
 
-{ TEscuro }
+{ TShadow }
 
 constructor TShadow.Create(AOwner: TComponent);
 begin
