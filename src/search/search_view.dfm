@@ -1,5 +1,5 @@
 inherited SearchView: TSearchView
-  Caption = 'SearchView'
+  Caption = 'Pesquisa'
   ClientHeight = 283
   ClientWidth = 430
   OnCreate = FormCreate
@@ -16,9 +16,6 @@ inherited SearchView: TSearchView
     inherited pnlTitleBar: TPanel
       Width = 430
       ExplicitWidth = 430
-      inherited lblTitleForm: TLabel
-        Height = 30
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 430
@@ -32,13 +29,14 @@ inherited SearchView: TSearchView
         Height = 165
         Align = alClient
         DataSource = src
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDblClick = dbgridDblClick
       end
       object pnlPesquisa: TPanel
         Left = 0

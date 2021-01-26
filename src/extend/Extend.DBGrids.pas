@@ -483,7 +483,11 @@ uses
   System.StrUtils,
   Vcl.Dialogs,
   Clipbrd,
-  Datasnap.DSIntf;
+  Datasnap.DSIntf,
+  FireDAC.Comp.Client,
+  FireDAC.UI.Intf,
+  FireDAC.VCLUI.Wait,
+  FireDAC.Comp.UI;
 
 { TDBGrid }
 
@@ -1926,8 +1930,8 @@ procedure TDBGrid.ResizeColumn;
 var
   iMaxSize: Integer;
   iSize   : Integer;
-  cdsDados: TClientDataSet;
-  cdsTemp : TClientDataSet;
+  cdsDados: TFDMemTable;
+  cdsTemp : TFDMemTable;
   Field   : TField;
   iStart  : Integer;
   iStop   : Integer;
@@ -1950,12 +1954,12 @@ var
 
 begin
   // Obtém o DataSet da Grid
-  cdsDados := TClientDataSet(Self.DataSource.DataSet);
+  cdsDados := TFDMemTable(Self.DataSource.DataSet);
   if not cdsDados.Active then
     Exit;
 
   // Cria o cds Temporário
-  cdsTemp := TClientDataSet.Create(nil);
+  cdsTemp := TFDMemTable.Create(nil);
   try
     // Carrega o cds Temporário com os dados do cds da Listagem
     cdsTemp.CloneCursor(cdsDados, True);
@@ -2006,8 +2010,8 @@ begin
         end;
       end;
       // Define o tamanho
-      if (iMaxSize + 10) <> GetColumnWidth(Column) then
-        SetColumnWidth(Column, iMaxSize + 10);
+      if (iMaxSize + 20) <> GetColumnWidth(Column) then
+        SetColumnWidth(Column, iMaxSize + 20);
     end;
   finally
     FResizeColumn      := False;

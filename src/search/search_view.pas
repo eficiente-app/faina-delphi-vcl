@@ -40,6 +40,7 @@ type
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnConfirmarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure dbgridDblClick(Sender: TObject);
   private
     FOrigem: TField;
     FDestino: TField;
@@ -96,6 +97,11 @@ begin
   src.DataSet.Filtered := True;
 end;
 
+procedure TSearchView.dbgridDblClick(Sender: TObject);
+begin
+  btnConfirmarClick(btnConfirmar);
+end;
+
 procedure TSearchView.FormCreate(Sender: TObject);
 begin
   CloseEsc := True;
@@ -109,12 +115,13 @@ begin
   begin
     dbgrid.Columns[I].Visible := dbgrid.Columns[I].FieldName <> dbgrid.Columns[I].Field.DisplayLabel;
     if dbgrid.Columns[I].Visible then
+    begin
+      dbgrid.Columns[I].Title.Alignment := dbgrid.Columns[I].Field.Alignment;
       cbxCampo.AddItem(dbgrid.Columns[I].Field.DisplayLabel, dbgrid.Columns[I].Field);
+    end;
   end;
-
   cbxCampo.ItemIndex := 0;
-
-  // Aplicar resize nas colunas
+  dbgrid.ResizeColumn([]);
 end;
 
 end.

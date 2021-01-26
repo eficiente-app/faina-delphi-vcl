@@ -37,6 +37,7 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMain, Main);
-  Application.CreateForm(TTaskView, TaskView);
+  Application.CreateForm(TFolderTypeController, FolderTypeController);
+  Application.CreateForm(TTaskTypeController, TaskTypeController);
   Application.Run;
 end.

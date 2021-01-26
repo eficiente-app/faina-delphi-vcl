@@ -38,7 +38,6 @@ object BaseFormView: TBaseFormView
       ParentBackground = False
       TabOrder = 0
       OnMouseDown = MouseDownMovimentarFormulario
-      ExplicitTop = -6
       object lblTitleForm: TLabel
         AlignWithMargins = True
         Left = 8
