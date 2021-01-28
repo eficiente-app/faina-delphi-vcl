@@ -6,9 +6,6 @@ inherited WorkSpace: TWorkSpace
     inherited pnlTitleBar: TPanel
       Visible = False
       ExplicitTop = 0
-      inherited lblTitleForm: TLabel
-        Height = 30
-      end
     end
     inherited pnlClientArea: TPanel
       object pnlTop: TPanel
@@ -109,6 +106,8 @@ inherited WorkSpace: TWorkSpace
             '"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>'
           FixedColor = clWhite
           Align = alRight
+          OnClick = svgAdicionarClick
+          ExplicitTop = 12
         end
       end
       object pnlLateralEsquerda: TPanel

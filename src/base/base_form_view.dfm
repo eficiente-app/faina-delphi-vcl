@@ -4,7 +4,7 @@ object BaseFormView: TBaseFormView
   Caption = 'Formul'#225'rio Base - Visual'
   ClientHeight = 411
   ClientWidth = 852
-  Color = clWindow
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

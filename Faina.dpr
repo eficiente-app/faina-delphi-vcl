@@ -28,7 +28,7 @@ uses
   task_type_controller in 'src\task\task_type\task_type_controller.pas' {TaskTypeController: TDataModule},
   task_type_list in 'src\task\task_type\task_type_list.pas' {TaskTypeList},
   task_type_view in 'src\task\task_type\task_type_view.pas' {TaskTypeView},
-  task.view in 'src\task\task.view.pas' {TaskView};
+  task_view in 'src\task\task_view.pas' {TaskView};
 
 {$R *.res}
 
@@ -37,6 +37,5 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMain, Main);
-  Application.CreateForm(TTaskView, TaskView);
   Application.Run;
 end.

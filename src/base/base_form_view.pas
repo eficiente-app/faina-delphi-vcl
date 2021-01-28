@@ -75,6 +75,8 @@ begin
   FSystemButtons.Form := Self;
   FSystemButtons.Visible := True;
   FSystemButtons.Buttons := [bClose];
+
+  Self.Color := $003A1610;
 end;
 
 destructor TBaseFormView.Destroy;

@@ -64,7 +64,7 @@ procedure TUserMenu.Position;
 var
   pMenu: TPoint;
 begin
-  with TWorkSpace(AreaTrabalho).pnlTop do
+  with TWorkSpace(WorkSpace).pnlTop do
   begin
     pMenu := ClientOrigin;
     pMenu.X := pMenu.X + Width;
@@ -76,7 +76,7 @@ end;
 
 procedure TUserMenu.cxButton2Click(Sender: TObject);
 begin
-  TMainConfiguration.Create(AreaTrabalho).ShowModal(AreaTrabalho);
+  TMainConfiguration.Create(WorkSpace).ShowModal(WorkSpace);
   Close;
 end;
 

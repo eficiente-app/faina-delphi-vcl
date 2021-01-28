@@ -33,7 +33,7 @@ type
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []); dynamic;
 
     class function Principal: TBaseForm;
-    class function AreaTrabalho: TBaseForm;
+    class function WorkSpace: TBaseForm;
     class function ClientArea: TPanel;
   end;
 
@@ -56,7 +56,7 @@ begin
   Result := TMain(Principal).pnlClientArea;
 end;
 
-class function TBaseForm.AreaTrabalho: TBaseForm;
+class function TBaseForm.WorkSpace: TBaseForm;
 begin
   Result := TMain(Principal).WorkArea;
 end;

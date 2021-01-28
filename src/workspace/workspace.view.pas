@@ -29,20 +29,24 @@ type
     svgNotificacao: TSVGIconImage;
     svgAdicionar: TSVGIconImage;
     procedure svgUserAvatarClick(Sender: TObject);
+    procedure svgAdicionarClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
 
-var
-  WorkSpace: TWorkSpace;
-
 implementation
 
 uses
-  user_menu;
+  user_menu,
+  task_view;
 {$R *.dfm}
+
+procedure TWorkSpace.svgAdicionarClick(Sender: TObject);
+begin
+  TTaskView.Create(WorkSpace).ShowModal(WorkSpace);
+end;
 
 procedure TWorkSpace.svgUserAvatarClick(Sender: TObject);
 begin
