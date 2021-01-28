@@ -57,13 +57,16 @@ implementation
 
 uses
   System.Types,
-  Vcl.Themes;
+  Vcl.Themes,
+  Vcl.Buttons;
 
 {$R *.dfm}
 
 { TFormularioPrincipalBase }
 
 constructor TBaseFormView.Create(AOwner: TComponent);
+var
+  I: Integer;
 begin
   inherited Create(AOwner);
   FAtualizarCaption := True;
@@ -77,6 +80,17 @@ begin
   FSystemButtons.Buttons := [bClose];
 
   Self.Color := $003A1610;
+
+  // Corrige tamanho dos TSpeedButton para monitores 4K
+  {$IF CompilerVersion <= 33.0}
+  if Screen.PixelsPerInch = 144 then
+    for I := 0 to Pred(Self.ComponentCount) do
+      if Self.Components[I] is TSpeedButton then
+      begin
+        TSpeedButton(Self.Components[I]).Height := TSpeedButton(Self.Components[I]).Height - 3;
+        TSpeedButton(Self.Components[I]).Left   := TSpeedButton(Self.Components[I]).Left   + 1;
+      end;
+  {$IFEND}
 end;
 
 destructor TBaseFormView.Destroy;

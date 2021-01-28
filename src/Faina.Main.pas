@@ -24,8 +24,6 @@ uses
 
 type
   TMain = class(TBaseFormView)
-    pnlAlertaConexao: TPanel;
-    lblAlertaConexao: TLabel;
     tmrAlertaConexao: TTimer;
     procedure FormShow(Sender: TObject);
     procedure pnlTitleBarDblClick(Sender: TObject);
@@ -100,16 +98,17 @@ end;
 function TMain.SetConnectionAlert(bConectado: Boolean): TMain;
 begin
   Result := Self;
-  lblAlertaConexao.Caption := IfThen(bConectado, 'Conectado!', 'Falha na conexão!');
-  pnlAlertaConexao.Visible := True;
+  pnlTitleBar.Font.Color := clWhite;
+  pnlTitleBar.Caption := IfThen(bConectado, 'Conectado!', 'Falha na conexão!');
   tmrAlertaConexao.Enabled := bConectado;
-  Application.ProcessMessages;
+  pnlTitleBar.Color := $00929907;
 end;
 
 procedure TMain.tmrAlertaConexaoTimer(Sender: TObject);
 begin
   tmrAlertaConexao.Enabled := False;
-  pnlAlertaConexao.Visible := False;
+  pnlTitleBar.Color := $00230D0A;
+  pnlTitleBar.Caption := EmptyStr;
 end;
 
 end.

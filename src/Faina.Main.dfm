@@ -19,59 +19,28 @@ inherited Main: TMain
       Color = 2297098
       TabOrder = 1
       OnDblClick = pnlTitleBarDblClick
+      ExplicitTop = -3
       ExplicitWidth = 1004
       ExplicitHeight = 20
       inherited lblTitleForm: TLabel
         Width = 158
         Height = 20
         Caption = 'Faina - Gerencie suas Tarefas'
+        ExplicitTop = -1
         ExplicitWidth = 158
+        ExplicitHeight = 20
       end
     end
     inherited pnlClientArea: TPanel
-      Top = 40
+      Top = 20
       Width = 1004
-      Height = 641
+      Height = 661
+      Font.Color = clDefault
+      ParentFont = False
       TabOrder = 0
       ExplicitTop = 40
       ExplicitWidth = 1004
       ExplicitHeight = 641
-    end
-    object pnlAlertaConexao: TPanel
-      Left = 0
-      Top = 20
-      Width = 1004
-      Height = 20
-      Align = alTop
-      BevelOuter = bvNone
-      Color = 9607431
-      ParentBackground = False
-      TabOrder = 2
-      Visible = False
-      object lblAlertaConexao: TLabel
-        Left = 0
-        Top = 0
-        Width = 1004
-        Height = 20
-        Margins.Left = 8
-        Margins.Top = 0
-        Margins.Right = 0
-        Margins.Bottom = 0
-        Align = alClient
-        Alignment = taCenter
-        Caption = 'Conectado!'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -13
-        Font.Name = 'Segoe UI Light'
-        Font.Style = [fsBold]
-        Font.Quality = fqClearType
-        ParentFont = False
-        Layout = tlCenter
-        OnMouseDown = MouseDownMovimentarFormulario
-        ExplicitWidth = 73
-        ExplicitHeight = 17
-      end
     end
   end
   object tmrAlertaConexao: TTimer
@@ -79,6 +48,5 @@ inherited Main: TMain
     Interval = 3000
     OnTimer = tmrAlertaConexaoTimer
     Left = 768
-    Top = 65532
   end
 end
