@@ -32,7 +32,7 @@ type
     procedure ShowModal(AParent: TForm); reintroduce; overload; dynamic;
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []); dynamic;
 
-    class function Main: TBaseForm;
+    class function MainForm: TBaseForm;
     class function WorkSpace: TBaseForm;
     class function ClientArea: TPanel;
   end;
@@ -46,7 +46,7 @@ uses
 
 { TFormularioBase }
 
-class function TBaseForm.Main: TBaseForm;
+class function TBaseForm.MainForm: TBaseForm;
 begin
   Result := TBaseForm(Main);
 end;

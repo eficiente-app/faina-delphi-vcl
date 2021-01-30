@@ -5,12 +5,15 @@ inherited MainConfiguration: TMainConfiguration
   TextHeight = 13
   inherited pnlClientForm: TPanel
     inherited pnlTitleBar: TPanel
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
       object lblSubTitle: TLabel
         AlignWithMargins = True
         Left = 148
         Top = 0
         Width = 109
-        Height = 13
+        Height = 30
         Margins.Left = 8
         Margins.Top = 0
         Margins.Right = 0
@@ -25,7 +28,8 @@ inherited MainConfiguration: TMainConfiguration
         ParentFont = False
         Layout = tlCenter
         Visible = False
-        OnMouseDown = MouseDownMovimentarFormulario
+        OnMouseDown = MouseDownMoveForm
+        ExplicitTop = -3
       end
     end
     inherited pnlClientArea: TPanel

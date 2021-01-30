@@ -56,7 +56,7 @@ uses
 
 class function TUserMenu.Show: TUserMenu;
 begin
-  Result := TUserMenu.Create(Main);
+  Result := TUserMenu.Create(MainForm);
   Result.Position;
 end;
 
@@ -71,7 +71,7 @@ begin
     pMenu.Y := pMenu.Y + Height;
   end;
   pMenu.X := pMenu.X - Width;
-  ShowDropDown(Main, pMenu);
+  ShowDropDown(MainForm, pMenu);
 end;
 
 procedure TUserMenu.cxButton2Click(Sender: TObject);
