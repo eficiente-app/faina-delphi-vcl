@@ -17,6 +17,9 @@ inherited FolderTypeList: TFolderTypeList
       Width = 544
       Visible = False
       ExplicitWidth = 544
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 544

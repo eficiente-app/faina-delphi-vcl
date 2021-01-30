@@ -18,6 +18,9 @@ inherited FolderList: TFolderList
       Width = 690
       Visible = False
       ExplicitWidth = 690
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 690
@@ -127,6 +130,7 @@ inherited FolderList: TFolderList
           Align = alLeft
           Caption = ' Pesquisa '
           TabOrder = 1
+          ExplicitTop = 4
         end
       end
       object pnlTopo: TPanel

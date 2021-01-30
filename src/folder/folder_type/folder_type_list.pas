@@ -59,7 +59,7 @@ end;
 
 procedure TFolderTypeList.btnRemoverClick(Sender: TObject);
 begin
-  if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação')) <> mrOk then
+  if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação'), MB_YESNO + MB_ICONQUESTION) <> mrOk then
     Exit;
   PTD.tblPastaTipo.Delete;
   PTD.FolderType.Table.Write;
