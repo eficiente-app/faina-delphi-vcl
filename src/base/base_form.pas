@@ -20,9 +20,9 @@ type
   TBaseForm = class(TForm)
   private
     { Private declarations }
-    FEscuro: TShadow;
+    FShadow: TShadow;
   protected
-    function FecharEsc(IsEsc: Boolean): Boolean;
+    function CloseWithEsc(IsEsc: Boolean): Boolean;
     procedure KeyDown(var Key: Word; Shift: TShiftState); override;
   public
     { Public declarations }
@@ -32,7 +32,7 @@ type
     procedure ShowModal(AParent: TForm); reintroduce; overload; dynamic;
     procedure ShowIn(AParent: TControl; Align: TAlign = TAlign.alNone; Anchors: TAnchors = []); dynamic;
 
-    class function Principal: TBaseForm;
+    class function Main: TBaseForm;
     class function WorkSpace: TBaseForm;
     class function ClientArea: TPanel;
   end;
@@ -46,19 +46,19 @@ uses
 
 { TFormularioBase }
 
-class function TBaseForm.Principal: TBaseForm;
+class function TBaseForm.Main: TBaseForm;
 begin
   Result := TBaseForm(Main);
 end;
 
 class function TBaseForm.ClientArea: TPanel;
 begin
-  Result := TMain(Principal).pnlClientArea;
+  Result := TMain(Main).pnlClientArea;
 end;
 
 class function TBaseForm.WorkSpace: TBaseForm;
 begin
-  Result := TMain(Principal).WorkArea;
+  Result := TMain(Main).WorkArea;
 end;
 
 constructor TBaseForm.Create(AOwner: TComponent);
@@ -70,8 +70,8 @@ end;
 
 destructor TBaseForm.Destroy;
 begin
-  if Assigned(FEscuro) then
-    FreeAndNil(FEscuro);
+  if Assigned(FShadow) then
+    FreeAndNil(FShadow);
   inherited;
 end;
 
@@ -91,19 +91,19 @@ end;
 
 procedure TBaseForm.ShowModal(AParent: TForm);
 begin
-  if not Assigned(FEscuro) then
-    FEscuro := TShadow.Create(Self, AParent);
+  if not Assigned(FShadow) then
+    FShadow := TShadow.Create(Self, AParent);
 end;
 
 procedure TBaseForm.KeyDown(var Key: Word; Shift: TShiftState);
 begin
-  if FecharEsc(Key = VK_ESCAPE) then
+  if CloseWithEsc(Key = VK_ESCAPE) then
     Key := 0;
 
   inherited;
 end;
 
-function TBaseForm.FecharEsc(IsEsc: Boolean): Boolean;
+function TBaseForm.CloseWithEsc(IsEsc: Boolean): Boolean;
 begin
   Result := CloseEsc and IsEsc;
   if Result then

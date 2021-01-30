@@ -20,7 +20,7 @@ object Login: TLogin
     412)
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlCentro: TPanel
+  object pnlCenter: TPanel
     Left = 46
     Top = 56
     Width = 226
@@ -1638,7 +1638,7 @@ object Login: TLogin
         A02745A02745A02745A02745A02745A02745A02745A02745A02745A02745A027
         45A02745A02745A02745A02745A027450000}
     end
-    object lbUsuario: TLabel
+    object lbUser: TLabel
       Left = 24
       Top = 165
       Width = 36
@@ -1653,7 +1653,7 @@ object Login: TLogin
       ParentColor = False
       ParentFont = False
     end
-    object lbSenha: TLabel
+    object lbPassword: TLabel
       Left = 24
       Top = 208
       Width = 30
@@ -1679,7 +1679,7 @@ object Login: TLogin
       ParentBackground = False
       TabOrder = 0
     end
-    object pnlBotoes: TPanel
+    object pnlButtons: TPanel
       Left = 0
       Top = 255
       Width = 222
@@ -1687,26 +1687,26 @@ object Login: TLogin
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 3
-      object btnConfirmar: TButton
+      object btnConfirm: TButton
         Left = 24
         Top = 5
         Width = 75
         Height = 25
         Caption = 'Confirmar'
         TabOrder = 0
-        OnClick = btnConfirmarClick
+        OnClick = btnConfirmClick
       end
-      object btnCancelar: TButton
+      object btnCancel: TButton
         Left = 121
         Top = 5
         Width = 75
         Height = 25
         Caption = 'Cancelar'
         TabOrder = 1
-        OnClick = btnCancelarClick
+        OnClick = btnCancelClick
       end
     end
-    object estSenha: TEdit
+    object estPassword: TEdit
       Left = 24
       Top = 224
       Width = 172
@@ -1714,7 +1714,7 @@ object Login: TLogin
       PasswordChar = '*'
       TabOrder = 2
     end
-    object edtUsuario: TEdit
+    object edtUser: TEdit
       Left = 24
       Top = 181
       Width = 172

@@ -26,7 +26,7 @@ type
     constructor Create(AOwner: TComponent); reintroduce; overload;
   public
     constructor Create(AOwner, AParent: TForm); reintroduce; overload;
-    class procedure New(AFundo: TForm; AJanela: TFormClass);
+    class procedure New(AFundo: TForm; AWindow: TFormClass);
     procedure ShowIn(AParent: TForm);
   end;
 
@@ -58,12 +58,12 @@ begin
   TBaseForm(AOwner).ShowIn(AParent);
 end;
 
-class procedure TShadow.New(AFundo: TForm; AJanela: TFormClass);
+class procedure TShadow.New(AFundo: TForm; AWindow: TFormClass);
 begin
   with TShadow.Create(AFundo) do
   begin
     ShowIn(AFundo);
-    FInstance := AJanela.Create(AFundo);
+    FInstance := AWindow.Create(AFundo);
     ConfigClose(FInstance);
     TBaseForm(FInstance).ShowIn(AFundo);
   end;

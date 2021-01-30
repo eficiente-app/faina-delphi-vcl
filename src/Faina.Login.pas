@@ -18,18 +18,18 @@ uses
 
 type
   TLogin = class(TForm)
-    pnlCentro: TPanel;
+    pnlCenter: TPanel;
     pnlTop: TPanel;
-    pnlBotoes: TPanel;
-    btnConfirmar: TButton;
-    btnCancelar: TButton;
-    estSenha: TEdit;
-    edtUsuario: TEdit;
+    pnlButtons: TPanel;
+    btnConfirm: TButton;
+    btnCancel: TButton;
+    estPassword: TEdit;
+    edtUser: TEdit;
     imgLogo: TImage;
-    lbUsuario: TLabel;
-    lbSenha: TLabel;
-    procedure btnConfirmarClick(Sender: TObject);
-    procedure btnCancelarClick(Sender: TObject);
+    lbUser: TLabel;
+    lbPassword: TLabel;
+    procedure btnConfirmClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   public
     class procedure New(AParent: TWinControl);
@@ -41,19 +41,19 @@ implementation
 
 { TLogin }
 
-procedure TLogin.btnCancelarClick(Sender: TObject);
+procedure TLogin.btnCancelClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TLogin.btnConfirmarClick(Sender: TObject);
+procedure TLogin.btnConfirmClick(Sender: TObject);
 begin
   Close;
 end;
 
 procedure TLogin.FormShow(Sender: TObject);
 begin
-  edtUsuario.SetFocus;
+  edtUser.SetFocus;
 end;
 
 class procedure TLogin.New(AParent: TWinControl);

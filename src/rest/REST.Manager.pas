@@ -37,7 +37,7 @@ uses
 
 constructor TRESTManager.Create(URL: String; ATable: TFDMemTable);
 begin
-  FURL := TConfiguration.Ler<String>('url');
+  FURL := TConfiguration.Read<String>('url');
   FURL := Concat(FURL, IfThen(not FURL.EndsWith('/') and not URL.StartsWith('/'), '/'), URL);
 
   FConnection := TRESTConnection.Create;

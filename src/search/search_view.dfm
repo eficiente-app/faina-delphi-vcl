@@ -16,6 +16,12 @@ inherited SearchView: TSearchView
     inherited pnlTitleBar: TPanel
       Width = 430
       ExplicitWidth = 430
+      inherited lblTitleForm: TLabel
+        Height = 17
+        ExplicitLeft = 8
+        ExplicitTop = 0
+        ExplicitHeight = 17
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 430
@@ -38,7 +44,7 @@ inherited SearchView: TSearchView
         TitleFont.Style = []
         OnDblClick = dbgridDblClick
       end
-      object pnlPesquisa: TPanel
+      object pnlSearch: TPanel
         Left = 0
         Top = 30
         Width = 430
@@ -47,21 +53,21 @@ inherited SearchView: TSearchView
         BevelKind = bkTile
         BevelOuter = bvNone
         TabOrder = 1
-        object lbCampo: TLabel
+        object lbField: TLabel
           Left = 8
           Top = 8
           Width = 33
           Height = 13
           Caption = 'Campo'
         end
-        object lbValor: TLabel
+        object lbValue: TLabel
           Left = 137
           Top = 8
           Width = 33
           Height = 13
           Caption = 'Campo'
         end
-        object cbxCampo: TComboBox
+        object cbxField: TComboBox
           Left = 8
           Top = 24
           Width = 121
@@ -69,16 +75,16 @@ inherited SearchView: TSearchView
           Style = csOwnerDrawFixed
           TabOrder = 0
         end
-        object btnPesquisar: TButton
+        object btnSearch: TButton
           Left = 343
           Top = 22
           Width = 75
           Height = 25
           Caption = 'Pesquisar'
           TabOrder = 1
-          OnClick = btnPesquisarClick
+          OnClick = btnSearchClick
         end
-        object edtValor: TEdit
+        object edtValue: TEdit
           Left = 137
           Top = 24
           Width = 200
@@ -95,7 +101,7 @@ inherited SearchView: TSearchView
         BevelKind = bkTile
         BevelOuter = bvNone
         TabOrder = 2
-        object btnConfirmar: TButton
+        object btnConfirm: TButton
           Left = 0
           Top = 0
           Width = 75
@@ -104,7 +110,9 @@ inherited SearchView: TSearchView
           Caption = 'Confirmar'
           ModalResult = 1
           TabOrder = 0
-          OnClick = btnConfirmarClick
+          OnClick = btnConfirmClick
+          ExplicitLeft = -2
+          ExplicitTop = 1
         end
       end
     end

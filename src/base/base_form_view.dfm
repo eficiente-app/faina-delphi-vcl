@@ -37,7 +37,8 @@ object BaseFormView: TBaseFormView
       Color = 3806736
       ParentBackground = False
       TabOrder = 0
-      OnMouseDown = MouseDownMovimentarFormulario
+      OnMouseDown = MouseDownMoveForm
+      ExplicitTop = -6
       object lblTitleForm: TLabel
         AlignWithMargins = True
         Left = 8
@@ -57,8 +58,9 @@ object BaseFormView: TBaseFormView
         Font.Style = []
         ParentFont = False
         Layout = tlCenter
-        OnMouseDown = MouseDownMovimentarFormulario
-        ExplicitHeight = 17
+        OnMouseDown = MouseDownMoveForm
+        ExplicitLeft = 0
+        ExplicitTop = -3
       end
     end
     object pnlClientArea: TPanel

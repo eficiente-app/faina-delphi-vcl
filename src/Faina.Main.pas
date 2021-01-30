@@ -24,10 +24,10 @@ uses
 
 type
   TMain = class(TBaseFormView)
-    tmrAlertaConexao: TTimer;
+    tmrConnectionAlert: TTimer;
     procedure FormShow(Sender: TObject);
     procedure pnlTitleBarDblClick(Sender: TObject);
-    procedure tmrAlertaConexaoTimer(Sender: TObject);
+    procedure tmrConnectionAlertTimer(Sender: TObject);
   private
     { Private declarations }
     FWorkArea: TWorkSpace;
@@ -37,7 +37,7 @@ type
     { Public declarations }
     constructor Create(AOwner: TComponent); reintroduce; override;
     property WorkArea: TWorkSpace read FWorkArea;
-    function SetConnectionAlert(bConectado: Boolean): TMain;
+    function SetConnectionAlert(bConnected: Boolean): TMain;
   end;
 
 var
@@ -53,14 +53,14 @@ uses
 constructor TMain.Create(AOwner: TComponent);
 begin
   inherited;
-  Redimensionar := True;
+  Resizer := True;
   ControleForm  := True;
   SystemButtons.Visible := True;
   SystemButtons.Buttons := [bMinimize, bMaximize, bClose];
   pnlClientForm.AlignWithMargins := True;
 
-  if not TConfiguration.Existe('url') then
-    TConfiguration.Escrever<String>('url', 'http://18.230.153.64:3000');
+  if not TConfiguration.Exists('url') then
+    TConfiguration.Write<String>('url', 'http://18.230.153.64:3000');
 end;
 
 procedure TMain.FormShow(Sender: TObject);
@@ -95,18 +95,18 @@ begin
   inherited;
 end;
 
-function TMain.SetConnectionAlert(bConectado: Boolean): TMain;
+function TMain.SetConnectionAlert(bConnected: Boolean): TMain;
 begin
   Result := Self;
   pnlTitleBar.Font.Color := clWhite;
-  pnlTitleBar.Caption := IfThen(bConectado, 'Conectado!', 'Falha na conexão!');
-  tmrAlertaConexao.Enabled := bConectado;
+  pnlTitleBar.Caption := IfThen(bConnected, 'Conectado!', 'Falha na conexão!');
+  tmrConnectionAlert.Enabled := bConnected;
   pnlTitleBar.Color := $00929907;
 end;
 
-procedure TMain.tmrAlertaConexaoTimer(Sender: TObject);
+procedure TMain.tmrConnectionAlertTimer(Sender: TObject);
 begin
-  tmrAlertaConexao.Enabled := False;
+  tmrConnectionAlert.Enabled := False;
   pnlTitleBar.Color := $00230D0A;
   pnlTitleBar.Caption := EmptyStr;
 end;

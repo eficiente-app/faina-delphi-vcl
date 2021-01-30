@@ -26,26 +26,26 @@ uses
 
 type
   TSearchView = class(TBaseFormView)
-    pnlPesquisa: TPanel;
+    pnlSearch: TPanel;
     dbgrid: TDBGrid;
     src: TDataSource;
-    cbxCampo: TComboBox;
-    lbCampo: TLabel;
-    btnPesquisar: TButton;
+    cbxField: TComboBox;
+    lbField: TLabel;
+    btnSearch: TButton;
     pnlTop: TPanel;
-    edtValor: TEdit;
-    lbValor: TLabel;
-    btnConfirmar: TButton;
+    edtValue: TEdit;
+    lbValue: TLabel;
+    btnConfirm: TButton;
     procedure FormShow(Sender: TObject);
-    procedure btnPesquisarClick(Sender: TObject);
-    procedure btnConfirmarClick(Sender: TObject);
+    procedure btnSearchClick(Sender: TObject);
+    procedure btnConfirmClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure dbgridDblClick(Sender: TObject);
   private
-    FOrigem: TField;
-    FDestino: TField;
+    FOrigin: TField;
+    FRecipient: TField;
   public
-    class function New(AParent: TForm; Origem, Destino: TField): TSearchView;
+    class function New(AParent: TForm; Origin, Recipient: TField): TSearchView;
   end;
 
 implementation
@@ -57,49 +57,49 @@ uses
 
 { TPesquisa }
 
-class function TSearchView.New(AParent: TForm; Origem, Destino: TField): TSearchView;
+class function TSearchView.New(AParent: TForm; Origin, Recipient: TField): TSearchView;
 begin
   Result := TSearchView.Create(AParent);
   with Result do
   begin
-    FOrigem := Origem;
-    FDestino := Destino;
-    src.DataSet := Origem.DataSet;
+    FOrigin := Origin;
+    FRecipient := Recipient;
+    src.DataSet := Origin.DataSet;
     ShowModal(AParent);
   end;
 end;
 
-procedure TSearchView.btnConfirmarClick(Sender: TObject);
+procedure TSearchView.btnConfirmClick(Sender: TObject);
 begin
-  FDestino.Value := FOrigem.Value;
+  FRecipient.Value := FOrigin.Value;
   Close;
 end;
 
-procedure TSearchView.btnPesquisarClick(Sender: TObject);
+procedure TSearchView.btnSearchClick(Sender: TObject);
 var
-  sPesquisa: String;
+  sSearch: String;
   Field: TField;
 begin
-  if Trim(edtValor.Text).IsEmpty then
+  if Trim(edtValue.Text).IsEmpty then
     Exit;
 
-  Field := TField(cbxCampo.Items.Objects[cbxCampo.ItemIndex]);
+  Field := TField(cbxField.Items.Objects[cbxField.ItemIndex]);
 
-  sPesquisa := Field.FieldName;
+  sSearch := Field.FieldName;
 
   if Field.InheritsFrom(TNumericField) or Field.InheritsFrom(TDateField) then
-    sPesquisa := sPesquisa +' = '+ Trim(edtValor.Text)
+    sSearch := sSearch +' = '+ Trim(edtValue.Text)
   else
-    sPesquisa := sPesquisa +' LIKE '+ QuotedStr('%'+ ReplaceStr(Trim(edtValor.Text), ' ', '%') +'%');
+    sSearch := sSearch +' LIKE '+ QuotedStr('%'+ ReplaceStr(Trim(edtValue.Text), ' ', '%') +'%');
 
   src.DataSet.Filtered := False;
-  src.DataSet.Filter   := sPesquisa;
+  src.DataSet.Filter   := sSearch;
   src.DataSet.Filtered := True;
 end;
 
 procedure TSearchView.dbgridDblClick(Sender: TObject);
 begin
-  btnConfirmarClick(btnConfirmar);
+  btnConfirmClick(btnConfirm);
 end;
 
 procedure TSearchView.FormCreate(Sender: TObject);
@@ -117,10 +117,10 @@ begin
     if dbgrid.Columns[I].Visible then
     begin
       dbgrid.Columns[I].Title.Alignment := dbgrid.Columns[I].Field.Alignment;
-      cbxCampo.AddItem(dbgrid.Columns[I].Field.DisplayLabel, dbgrid.Columns[I].Field);
+      cbxField.AddItem(dbgrid.Columns[I].Field.DisplayLabel, dbgrid.Columns[I].Field);
     end;
   end;
-  cbxCampo.ItemIndex := 0;
+  cbxField.ItemIndex := 0;
   dbgrid.ResizeColumn([]);
 end;
 

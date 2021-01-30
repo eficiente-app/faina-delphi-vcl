@@ -5,7 +5,9 @@ inherited WorkSpace: TWorkSpace
   inherited pnlClientForm: TPanel
     inherited pnlTitleBar: TPanel
       Visible = False
-      ExplicitTop = 0
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       object pnlTop: TPanel
@@ -30,7 +32,7 @@ inherited WorkSpace: TWorkSpace
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          object lblTitlePrincipal: TLabel
+          object lbMainTitle: TLabel
             AlignWithMargins = True
             Left = 3
             Top = 3
@@ -68,7 +70,7 @@ inherited WorkSpace: TWorkSpace
           Align = alRight
           OnClick = svgUserAvatarClick
         end
-        object svgNotificacao: TSVGIconImage
+        object svgNotification: TSVGIconImage
           AlignWithMargins = True
           Left = 769
           Top = 15
@@ -89,7 +91,7 @@ inherited WorkSpace: TWorkSpace
           FixedColor = clWhite
           Align = alRight
         end
-        object svgAdicionar: TSVGIconImage
+        object svgAdd: TSVGIconImage
           AlignWithMargins = True
           Left = 739
           Top = 15
@@ -106,11 +108,10 @@ inherited WorkSpace: TWorkSpace
             '"M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>'
           FixedColor = clWhite
           Align = alRight
-          OnClick = svgAdicionarClick
-          ExplicitTop = 12
+          OnClick = svgAddClick
         end
       end
-      object pnlLateralEsquerda: TPanel
+      object pnlLeft: TPanel
         Left = 0
         Top = 54
         Width = 200
@@ -121,7 +122,7 @@ inherited WorkSpace: TWorkSpace
         ParentBackground = False
         TabOrder = 1
       end
-      object pnlAreaTrabalho: TPanel
+      object pnWorkSpace: TPanel
         Left = 200
         Top = 54
         Width = 652

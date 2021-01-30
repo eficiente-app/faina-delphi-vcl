@@ -19,16 +19,16 @@ inherited Main: TMain
       Color = 2297098
       TabOrder = 1
       OnDblClick = pnlTitleBarDblClick
-      ExplicitTop = -3
       ExplicitWidth = 1004
       ExplicitHeight = 20
       inherited lblTitleForm: TLabel
         Width = 158
-        Height = 20
+        Height = 17
         Caption = 'Faina - Gerencie suas Tarefas'
-        ExplicitTop = -1
+        ExplicitLeft = 8
+        ExplicitTop = 0
         ExplicitWidth = 158
-        ExplicitHeight = 20
+        ExplicitHeight = 17
       end
     end
     inherited pnlClientArea: TPanel
@@ -38,15 +38,15 @@ inherited Main: TMain
       Font.Color = clDefault
       ParentFont = False
       TabOrder = 0
-      ExplicitTop = 40
+      ExplicitTop = 20
       ExplicitWidth = 1004
-      ExplicitHeight = 641
+      ExplicitHeight = 661
     end
   end
-  object tmrAlertaConexao: TTimer
+  object tmrConnectionAlert: TTimer
     Enabled = False
     Interval = 3000
-    OnTimer = tmrAlertaConexaoTimer
+    OnTimer = tmrConnectionAlertTimer
     Left = 768
   end
 end

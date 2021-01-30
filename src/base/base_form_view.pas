@@ -22,13 +22,13 @@ type
     pnlClientArea: TPanel;
     lblTitleForm: TLabel;
     procedure FormCreate(Sender: TObject);
-    procedure MouseDownMovimentarFormulario(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure MouseDownMoveForm(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
   private type
-    TBorder   = (bLeft, bTop, bRight, bBottom, bBottomLeft, bBottomRight);
+    TBorder = (bLeft, bTop, bRight, bBottom, bBottomLeft, bBottomRight);
   private
-    FControleForm: Boolean;
-    FRedimensionar: Boolean;
-    FAtualizarCaption: Boolean;
+    FControlForm: Boolean;
+    FResize: Boolean;
+    FUpdateCaption: Boolean;
     function GetBorderSize: TRect;
     function GetHitTest(P: TPoint): Integer;
     function NormalizePoint(P: TPoint): TPoint;
@@ -44,9 +44,9 @@ type
     destructor Destroy; override;
 
     property Caption: TCaption read GetCaption write SetCaption;
-    property Redimensionar: Boolean read FRedimensionar write FRedimensionar;
-    property ControleForm: Boolean read FControleForm write FControleForm;
-    property AtualizarCaption: Boolean read FAtualizarCaption write SetAtualizarCaption;
+    property Resizer: Boolean read FResize write FResize;
+    property ControleForm: Boolean read FControlForm write FControlForm;
+    property UpdateCaption: Boolean read FUpdateCaption write SetAtualizarCaption;
     property SystemButtons: TSysButtons read FSystemButtons;
 
     procedure ShowModal(AParent: TForm); reintroduce; override;
@@ -69,9 +69,9 @@ var
   I: Integer;
 begin
   inherited Create(AOwner);
-  FAtualizarCaption := True;
-  FRedimensionar := False;
-  FControleForm  := False;
+  FUpdateCaption := True;
+  FResize := False;
+  FControlForm  := False;
   lblTitleForm.Caption := Self.Caption;
 
   FSystemButtons := TSysButtons.Create(pnlTitleBar);
@@ -110,17 +110,16 @@ begin
   Msg.Result := 0;
 end;
 
-procedure TBaseFormView.MouseDownMovimentarFormulario(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+procedure TBaseFormView.MouseDownMoveForm(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 const
   SC_DRAGMOVE = $F012;
 begin
-  if (Button = mbLeft) and FControleForm then
+  if (Button = mbLeft) and FControlForm then
   begin
     ReleaseCapture;
     Perform(WM_SYSCOMMAND, SC_DRAGMOVE, 0);
   end;
 end;
-
 
 procedure TBaseFormView.WMNCHitTest(var Message: TWMNCHitTest);
 var
@@ -192,7 +191,7 @@ var
   FTopRect, FLeftRect, FRightRect, FBottomRect, FHitCaptionRect: TRect;
 begin
   Result := HTCLIENT;
-  if not FRedimensionar then
+  if not FResize then
     Exit;
 
   FBorderSize := GetBorderSize;
@@ -271,7 +270,7 @@ end;
 
 procedure TBaseFormView.SetAtualizarCaption(const Value: Boolean);
 begin
-  FAtualizarCaption := Value;
+  FUpdateCaption := Value;
   if Value then
     Caption := Caption;
 end;
@@ -296,7 +295,7 @@ end;
 procedure TBaseFormView.SetCaption(const Value: TCaption);
 begin
   inherited Caption := Value;
-  if FAtualizarCaption then
+  if FUpdateCaption then
     lblTitleForm.Caption := Caption;
 end;
 

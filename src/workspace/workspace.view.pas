@@ -22,14 +22,14 @@ type
   TWorkSpace = class(TBaseFormView)
     pnlTop: TPanel;
     pnlTitle: TPanel;
-    lblTitlePrincipal: TLabel;
+    lbMainTitle: TLabel;
     svgUserAvatar: TSVGIconImage;
-    pnlLateralEsquerda: TPanel;
-    pnlAreaTrabalho: TPanel;
-    svgNotificacao: TSVGIconImage;
-    svgAdicionar: TSVGIconImage;
+    pnlLeft: TPanel;
+    pnWorkSpace: TPanel;
+    svgNotification: TSVGIconImage;
+    svgAdd: TSVGIconImage;
     procedure svgUserAvatarClick(Sender: TObject);
-    procedure svgAdicionarClick(Sender: TObject);
+    procedure svgAddClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,7 +43,7 @@ uses
   task_view;
 {$R *.dfm}
 
-procedure TWorkSpace.svgAdicionarClick(Sender: TObject);
+procedure TWorkSpace.svgAddClick(Sender: TObject);
 begin
   TTaskView.Create(WorkSpace).ShowModal(WorkSpace);
 end;
