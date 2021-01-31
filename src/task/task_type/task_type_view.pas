@@ -39,7 +39,7 @@ type
     procedure btnConfirmClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    TTD: TTaskTypeController;
+    Controller: TTaskTypeController;
   public
     class procedure New(AParent: TForm; ATTD: TTaskTypeController; rtbAction: TRESTTableAction);
   end;
@@ -54,10 +54,10 @@ begin
   begin
     CloseEsc := True;
 
-    TTD := ATTD;
-    srcTaskType.DataSet := TTD.tblTaskType;
+    Controller := ATTD;
+    srcTaskType.DataSet := Controller.tblTaskType;
 
-    TTD.TaskType.Table.State(rtbAction);
+    Controller.TaskType.Table.State(rtbAction);
 
     ShowModal(AParent);
   end;
@@ -65,16 +65,16 @@ end;
 
 procedure TTaskTypeView.btnConfirmClick(Sender: TObject);
 begin
-  if TTD.tblTaskType.State in dsEditModes then
-    TTD.tblTaskType.Post;
-  TTD.TaskType.Table.Write;
+  if Controller.tblTaskType.State in dsEditModes then
+    Controller.tblTaskType.Post;
+  Controller.TaskType.Table.Write;
   Close;
 end;
 
 procedure TTaskTypeView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  if TTD.tblTaskType.State in dsEditModes then
-    TTD.tblTaskType.Cancel;
+  if Controller.tblTaskType.State in dsEditModes then
+    Controller.tblTaskType.Cancel;
 end;
 
 end.

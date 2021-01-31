@@ -1,5 +1,5 @@
-inherited TaskTypeList: TTaskTypeList
-  Caption = 'Tipo de Tarefa'
+inherited TaskStatusList: TTaskStatusList
+  Caption = 'Status da Tarefa'
   ClientHeight = 397
   ClientWidth = 583
   KeyPreview = True
@@ -28,13 +28,13 @@ inherited TaskTypeList: TTaskTypeList
       Height = 367
       ExplicitWidth = 583
       ExplicitHeight = 367
-      object dbgridTaskType: TDBGrid
+      object dbgridTaskStatus: TDBGrid
         Left = 0
         Top = 145
         Width = 583
         Height = 222
         Align = alClient
-        DataSource = srcTaskType
+        DataSource = srcTaskStatus
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         PopupMenu = popAction
         TabOrder = 0
@@ -43,7 +43,7 @@ inherited TaskTypeList: TTaskTypeList
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
-        OnCellClick = dbgridTaskTypeCellClick
+        OnCellClick = dbgridTaskStatusCellClick
         Columns = <
           item
             Expanded = False
@@ -141,9 +141,9 @@ inherited TaskTypeList: TTaskTypeList
       end
     end
   end
-  object srcTaskType: TDataSource
+  object srcTaskStatus: TDataSource
     AutoEdit = False
-    DataSet = TaskTypeController.tblTaskType
+    DataSet = TaskStatusController.tblTaskStatus
     Left = 360
     Top = 1
   end

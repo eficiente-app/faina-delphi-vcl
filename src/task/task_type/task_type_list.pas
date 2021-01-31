@@ -45,7 +45,7 @@ type
     procedure dbgridTaskTypeCellClick(Column: TColumn);
     procedure btnRemoveClick(Sender: TObject);
   private
-    TTD: TTaskTypeController;
+    Controller: TTaskTypeController;
   end;
 
 implementation
@@ -56,33 +56,33 @@ implementation
 
 procedure TTaskTypeList.FormCreate(Sender: TObject);
 begin
-  TTD := TaskTypeController;
-  srcTaskType.DataSet := TTD.tblTaskType;
+  Controller := TaskTypeController;
+  srcTaskType.DataSet := Controller.tblTaskType;
 end;
 
 procedure TTaskTypeList.btnRemoveClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação'), MB_YESNO + MB_ICONQUESTION) <> mrOk then
     Exit;
-  TTD.tblTaskType.Delete;
-  TTD.TaskType.Table.Write;
+  Controller.tblTaskType.Delete;
+  Controller.TaskType.Table.Write;
 end;
 
 procedure TTaskTypeList.btnIncluirClick(Sender: TObject);
 begin
-  TTaskTypeView.New(Self, TTD, rtaInsert);
+  TTaskTypeView.New(Self, Controller, rtaInsert);
 end;
 
 procedure TTaskTypeList.dbgridTaskTypeCellClick(Column: TColumn);
 begin
   if not Column.Field.DataSet.IsEmpty then
-    TTaskTypeView.New(Self, TTD, rtaEdit);
+    TTaskTypeView.New(Self, Controller, rtaEdit);
 end;
 
 procedure TTaskTypeList.btnSearchClick(Sender: TObject);
 begin
-  TTD.TaskType.Query.Add('id', 1);
-  TTD.TaskType.Table.Read;
+  Controller.TaskType.Query.Add('id', 1);
+  Controller.TaskType.Table.Read;
 end;
 
 end.

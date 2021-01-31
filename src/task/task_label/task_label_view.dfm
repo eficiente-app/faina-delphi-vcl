@@ -23,7 +23,6 @@ inherited TaskLabelView: TTaskLabelView
     inherited pnlClientArea: TPanel
       Width = 516
       Height = 125
-      ExplicitTop = 33
       ExplicitWidth = 516
       ExplicitHeight = 125
       object lbdescription: TLabel

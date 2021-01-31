@@ -1,5 +1,5 @@
 ﻿// Eduardo - 31/01/2021
-unit task_label_list;
+unit task_status_list;
 
 interface
 
@@ -21,15 +21,15 @@ uses
   Vcl.Buttons,
   Vcl.Menus,
   base_form_view,
-  task_label_controller,
-  task_label_view,
+  task_status_controller,
+  task_status_view,
   Extend.DBGrids,
   REST.Table;
 
 type
-  TTaskLabelList = class(TBaseFormView)
-    dbgridTaskLabel: TDBGrid;
-    srcTaskLabel: TDataSource;
+  TTaskStatusList = class(TBaseFormView)
+    dbgridTaskStatus: TDBGrid;
+    srcTaskStatus: TDataSource;
     pnlTop: TPanel;
     btnIncluir: TButton;
     pnlSearch: TPanel;
@@ -42,10 +42,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
     procedure btnSearchClick(Sender: TObject);
-    procedure dbgridTaskLabelCellClick(Column: TColumn);
+    procedure dbgridTaskStatusCellClick(Column: TColumn);
     procedure btnRemoveClick(Sender: TObject);
   private
-    Controller: TTaskLabelController;
+    Controller: TTaskStatusController;
   end;
 
 implementation
@@ -54,35 +54,35 @@ implementation
 
 { TPasta }
 
-procedure TTaskLabelList.FormCreate(Sender: TObject);
+procedure TTaskStatusList.FormCreate(Sender: TObject);
 begin
-  Controller := TaskLabelController;
-  srcTaskLabel.DataSet := Controller.tblTaskLabel;
+  Controller := TaskStatusController;
+  srcTaskStatus.DataSet := Controller.tblTaskStatus;
 end;
 
-procedure TTaskLabelList.btnRemoveClick(Sender: TObject);
+procedure TTaskStatusList.btnRemoveClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação'), MB_YESNO + MB_ICONQUESTION) <> mrOk then
     Exit;
-  Controller.tblTaskLabel.Delete;
-  Controller.TaskLabel.Table.Write;
+  Controller.tblTaskStatus.Delete;
+  Controller.TaskStatus.Table.Write;
 end;
 
-procedure TTaskLabelList.btnIncluirClick(Sender: TObject);
+procedure TTaskStatusList.btnIncluirClick(Sender: TObject);
 begin
-  TTaskLabelView.New(Self, Controller, rtaInsert);
+  TTaskStatusView.New(Self, Controller, rtaInsert);
 end;
 
-procedure TTaskLabelList.dbgridTaskLabelCellClick(Column: TColumn);
+procedure TTaskStatusList.dbgridTaskStatusCellClick(Column: TColumn);
 begin
   if not Column.Field.DataSet.IsEmpty then
-    TTaskLabelView.New(Self, Controller, rtaEdit);
+    TTaskStatusView.New(Self, Controller, rtaEdit);
 end;
 
-procedure TTaskLabelList.btnSearchClick(Sender: TObject);
+procedure TTaskStatusList.btnSearchClick(Sender: TObject);
 begin
-  Controller.TaskLabel.Query.Add('id', 1);
-  Controller.TaskLabel.Table.Read;
+  Controller.TaskStatus.Query.Add('id', 1);
+  Controller.TaskStatus.Table.Read;
 end;
 
 end.

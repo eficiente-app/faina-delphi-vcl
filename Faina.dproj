@@ -204,6 +204,19 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>TaskLabelView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\task\task_status\task_status_controller.pas">
+            <Form>TaskStatusController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\task\task_status\task_status_list.pas">
+            <Form>TaskStatusList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task\task_status\task_status_view.pas">
+            <Form>TaskStatusView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

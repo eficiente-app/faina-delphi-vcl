@@ -46,7 +46,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure sbttipo_idClick(Sender: TObject);
   private
-    TTD: TTaskLabelController;
+    Controller: TTaskLabelController;
   public
     class procedure New(AParent: TForm; ATTD: TTaskLabelController; rtbAction: TRESTTableAction);
   end;
@@ -61,10 +61,10 @@ begin
   begin
     CloseEsc := True;
 
-    TTD := ATTD;
-    srcTaskLabel.DataSet := TTD.tblTaskLabel;
+    Controller := ATTD;
+    srcTaskLabel.DataSet := Controller.tblTaskLabel;
 
-    TTD.TaskLabel.Table.State(rtbAction);
+    Controller.TaskLabel.Table.State(rtbAction);
 
     ShowModal(AParent);
   end;
@@ -81,16 +81,16 @@ end;
 
 procedure TTaskLabelView.btnConfirmClick(Sender: TObject);
 begin
-  if TTD.tblTaskLabel.State in dsEditModes then
-    TTD.tblTaskLabel.Post;
-  TTD.TaskLabel.Table.Write;
+  if Controller.tblTaskLabel.State in dsEditModes then
+    Controller.tblTaskLabel.Post;
+  Controller.TaskLabel.Table.Write;
   Close;
 end;
 
 procedure TTaskLabelView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  if TTD.tblTaskLabel.State in dsEditModes then
-    TTD.tblTaskLabel.Cancel;
+  if Controller.tblTaskLabel.State in dsEditModes then
+    Controller.tblTaskLabel.Cancel;
 end;
 
 end.
