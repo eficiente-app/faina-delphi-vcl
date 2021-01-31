@@ -28,7 +28,10 @@ uses
   task_type_controller in 'src\task\task_type\task_type_controller.pas' {TaskTypeController: TDataModule},
   task_type_list in 'src\task\task_type\task_type_list.pas' {TaskTypeList},
   task_type_view in 'src\task\task_type\task_type_view.pas' {TaskTypeView},
-  task_view in 'src\task\task_view.pas' {TaskView};
+  task_view in 'src\task\task_view.pas' {TaskView},
+  task_label_controller in 'src\task\task_label\task_label_controller.pas' {TaskLabelController: TDataModule},
+  task_label_list in 'src\task\task_label\task_label_list.pas' {TaskLabelList},
+  task_label_view in 'src\task\task_label\task_label_view.pas' {TaskLabelView};
 
 {$R *.res}
 
@@ -39,5 +42,6 @@ begin
   Application.CreateForm(TMain, Main);
   Application.CreateForm(TFolderTypeController, FolderTypeController);
 //  Application.CreateForm(TTaskTypeController, TaskTypeController);
+//  Application.CreateForm(TTaskLabelController, TaskLabelController);
   Application.Run;
 end.
