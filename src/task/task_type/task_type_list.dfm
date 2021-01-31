@@ -12,11 +12,13 @@ inherited TaskTypeList: TTaskTypeList
   inherited pnlClientForm: TPanel
     Width = 583
     Height = 397
+    ExplicitTop = 1
     ExplicitWidth = 583
     ExplicitHeight = 397
     inherited pnlTitleBar: TPanel
       Width = 583
       Visible = False
+      ExplicitTop = 0
       ExplicitWidth = 583
       inherited lblTitleForm: TLabel
         Height = 30
@@ -27,22 +29,22 @@ inherited TaskTypeList: TTaskTypeList
       Height = 367
       ExplicitWidth = 583
       ExplicitHeight = 367
-      object dbgridPasta: TDBGrid
+      object dbgridTaskType: TDBGrid
         Left = 0
         Top = 145
         Width = 583
         Height = 222
         Align = alClient
-        DataSource = srcTarefaTipo
+        DataSource = srcTaskType
         Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        PopupMenu = popAcoes
+        PopupMenu = popAction
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
-        OnCellClick = dbgridPastaCellClick
+        OnCellClick = dbgridTaskTypeCellClick
         Columns = <
           item
             Expanded = False
@@ -53,18 +55,18 @@ inherited TaskTypeList: TTaskTypeList
           end
           item
             Expanded = False
-            FieldName = 'nome'
+            FieldName = 'name'
             Width = 250
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'descricao'
+            FieldName = 'description'
             Width = 500
             Visible = True
           end>
       end
-      object pnlPesquisa: TPanel
+      object pnlSearch: TPanel
         Left = 0
         Top = 30
         Width = 583
@@ -72,7 +74,7 @@ inherited TaskTypeList: TTaskTypeList
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
-        object pnlPesquisar: TPanel
+        object pnlGrupSearch: TPanel
           AlignWithMargins = True
           Left = 380
           Top = 5
@@ -84,7 +86,7 @@ inherited TaskTypeList: TTaskTypeList
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          object btnPesquisar: TButton
+          object btnSearch: TButton
             AlignWithMargins = True
             Left = 3
             Top = 3
@@ -93,9 +95,9 @@ inherited TaskTypeList: TTaskTypeList
             Align = alClient
             Caption = 'Pesquisar'
             TabOrder = 0
-            OnClick = btnPesquisarClick
+            OnClick = btnSearchClick
           end
-          object btnLimpar: TButton
+          object btnClear: TButton
             AlignWithMargins = True
             Left = 3
             Top = 81
@@ -107,7 +109,7 @@ inherited TaskTypeList: TTaskTypeList
             TabOrder = 1
           end
         end
-        object gbxPesquisa: TGroupBox
+        object gbxSearch: TGroupBox
           AlignWithMargins = True
           Left = 3
           Top = 3
@@ -118,7 +120,7 @@ inherited TaskTypeList: TTaskTypeList
           TabOrder = 1
         end
       end
-      object pnlTopo: TPanel
+      object pnlTop: TPanel
         Left = 0
         Top = 0
         Width = 583
@@ -140,16 +142,18 @@ inherited TaskTypeList: TTaskTypeList
       end
     end
   end
-  object srcTarefaTipo: TDataSource
+  object srcTaskType: TDataSource
     AutoEdit = False
-    DataSet = TaskTypeController.tblTarefaTipo
+    DataSet = TaskTypeController.tblTaskType
     Left = 360
+    Top = 1
   end
-  object popAcoes: TPopupMenu
+  object popAction: TPopupMenu
     Left = 440
-    object btnRemover: TMenuItem
+    Top = 1
+    object btnRemove: TMenuItem
       Caption = 'Remover'
-      OnClick = btnRemoverClick
+      OnClick = btnRemoveClick
     end
   end
 end

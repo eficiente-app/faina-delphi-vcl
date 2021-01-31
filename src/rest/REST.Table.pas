@@ -11,6 +11,7 @@ uses
   FireDAC.Comp.DataSet;
 
 type
+  TRESTTableAction = (rtaInsert, rtaEdit);
   TRESTTable = class
   private
     FTable: TFDMemTable;
@@ -27,6 +28,7 @@ type
     procedure RESTDelete(pProc: TProc<TJSONArray>);
     procedure Read;
     procedure Write;
+    procedure State(tbAction: TRESTTableAction);
   end;
 
 implementation
@@ -259,6 +261,14 @@ begin
       FTable.CommitUpdates;
     FTable.EnableControls;
     FTable.FilterChanges := [rtInserted, rtModified, rtUnmodified];
+  end;
+end;
+
+procedure TRESTTable.State(tbAction: TRESTTableAction);
+begin
+  case tbAction of
+    rtaInsert: FTable.Append;
+    rtaEdit: FTable.Edit;
   end;
 end;
 

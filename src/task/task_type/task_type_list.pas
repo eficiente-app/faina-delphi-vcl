@@ -23,26 +23,27 @@ uses
   base_form_view,
   task_type_controller,
   task_type_view,
-  Extend.DBGrids;
+  Extend.DBGrids,
+  REST.Table;
 
 type
   TTaskTypeList = class(TBaseFormView)
-    dbgridPasta: TDBGrid;
-    srcTarefaTipo: TDataSource;
-    pnlTopo: TPanel;
+    dbgridTaskType: TDBGrid;
+    srcTaskType: TDataSource;
+    pnlTop: TPanel;
     btnIncluir: TButton;
-    pnlPesquisa: TPanel;
-    pnlPesquisar: TPanel;
-    btnPesquisar: TButton;
-    btnLimpar: TButton;
-    gbxPesquisa: TGroupBox;
-    popAcoes: TPopupMenu;
-    btnRemover: TMenuItem;
+    pnlSearch: TPanel;
+    pnlGrupSearch: TPanel;
+    btnSearch: TButton;
+    btnClear: TButton;
+    gbxSearch: TGroupBox;
+    popAction: TPopupMenu;
+    btnRemove: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
-    procedure btnPesquisarClick(Sender: TObject);
-    procedure dbgridPastaCellClick(Column: TColumn);
-    procedure btnRemoverClick(Sender: TObject);
+    procedure btnSearchClick(Sender: TObject);
+    procedure dbgridTaskTypeCellClick(Column: TColumn);
+    procedure btnRemoveClick(Sender: TObject);
   private
     TTD: TTaskTypeController;
   end;
@@ -56,32 +57,32 @@ implementation
 procedure TTaskTypeList.FormCreate(Sender: TObject);
 begin
   TTD := TaskTypeController;
-  srcTarefaTipo.DataSet := TTD.tblTarefaTipo;
+  srcTaskType.DataSet := TTD.tblTaskType;
 end;
 
-procedure TTaskTypeList.btnRemoverClick(Sender: TObject);
+procedure TTaskTypeList.btnRemoveClick(Sender: TObject);
 begin
   if Application.MessageBox(PWideChar('Confirma a exclusão do registro?'), PWideChar('Confirmação'), MB_YESNO + MB_ICONQUESTION) <> mrOk then
     Exit;
-  TTD.tblTarefaTipo.Delete;
-  TTD.TarefaTipo.Table.Write;
+  TTD.tblTaskType.Delete;
+  TTD.TaskType.Table.Write;
 end;
 
 procedure TTaskTypeList.btnIncluirClick(Sender: TObject);
 begin
-  TTaskTypeView.New(Self, TTD, Incluir);
+  TTaskTypeView.New(Self, TTD, rtaInsert);
 end;
 
-procedure TTaskTypeList.dbgridPastaCellClick(Column: TColumn);
+procedure TTaskTypeList.dbgridTaskTypeCellClick(Column: TColumn);
 begin
   if not Column.Field.DataSet.IsEmpty then
-    TTaskTypeView.New(Self, TTD, Alterar);
+    TTaskTypeView.New(Self, TTD, rtaEdit);
 end;
 
-procedure TTaskTypeList.btnPesquisarClick(Sender: TObject);
+procedure TTaskTypeList.btnSearchClick(Sender: TObject);
 begin
-  TTD.TarefaTipo.Query.Add('id', 1);
-  TTD.TarefaTipo.Table.Read;
+  TTD.TaskType.Query.Add('id', 1);
+  TTD.TaskType.Table.Read;
 end;
 
 end.

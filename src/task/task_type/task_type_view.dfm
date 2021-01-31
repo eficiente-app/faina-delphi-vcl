@@ -14,14 +14,18 @@ inherited TaskTypeView: TTaskTypeView
     ExplicitHeight = 155
     inherited pnlTitleBar: TPanel
       Width = 516
+      ExplicitTop = 0
       ExplicitWidth = 516
+      inherited lblTitleForm: TLabel
+        Height = 30
+      end
     end
     inherited pnlClientArea: TPanel
       Width = 516
       Height = 125
       ExplicitWidth = 516
       ExplicitHeight = 125
-      object lbdescricao: TLabel
+      object lbdescription: TLabel
         Left = 8
         Top = 78
         Width = 46
@@ -39,7 +43,7 @@ inherited TaskTypeView: TTaskTypeView
         Height = 13
         Caption = 'C'#243'digo'
       end
-      object lbnome: TLabel
+      object lbname: TLabel
         Left = 54
         Top = 37
         Width = 27
@@ -50,13 +54,13 @@ inherited TaskTypeView: TTaskTypeView
         Margins.Bottom = 2
         Caption = 'Nome'
       end
-      object dbedtdescricao: TDBEdit
+      object dbedtdescription: TDBEdit
         Left = 8
         Top = 93
         Width = 497
         Height = 21
-        DataField = 'descricao'
-        DataSource = srcTarefaTipo
+        DataField = 'description'
+        DataSource = srcTaskType
         TabOrder = 0
       end
       object dbedtid: TDBEdit
@@ -67,17 +71,17 @@ inherited TaskTypeView: TTaskTypeView
         TabStop = False
         Color = clCream
         DataField = 'id'
-        DataSource = srcTarefaTipo
+        DataSource = srcTaskType
         ReadOnly = True
         TabOrder = 1
       end
-      object dbedtnome: TDBEdit
+      object dbedtname: TDBEdit
         Left = 54
         Top = 52
         Width = 451
         Height = 21
-        DataField = 'nome'
-        DataSource = srcTarefaTipo
+        DataField = 'name'
+        DataSource = srcTaskType
         TabOrder = 2
       end
       object pnlTop: TPanel
@@ -89,7 +93,7 @@ inherited TaskTypeView: TTaskTypeView
         BevelKind = bkTile
         BevelOuter = bvNone
         TabOrder = 3
-        object btnConfirmar: TButton
+        object btnConfirm: TButton
           Left = 0
           Top = 0
           Width = 75
@@ -97,14 +101,15 @@ inherited TaskTypeView: TTaskTypeView
           Align = alLeft
           Caption = 'Confirmar'
           TabOrder = 0
-          OnClick = btnConfirmarClick
+          OnClick = btnConfirmClick
         end
       end
     end
   end
-  object srcTarefaTipo: TDataSource
+  object srcTaskType: TDataSource
     AutoEdit = False
-    DataSet = TaskTypeController.tblTarefaTipo
+    DataSet = TaskTypeController.tblTaskType
     Left = 448
+    Top = 1
   end
 end

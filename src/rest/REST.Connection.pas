@@ -52,7 +52,10 @@ begin
       raise Exception.Create(Result.GetValue<String>('mensagem'));
     finally
       Result.Free;
-    end;
+    end
+    else
+    if not Assigned(Result) then
+      raise Exception.Create(ssOut.DataString);
   finally
     FreeAndNil(ssIn);
     FreeAndNil(ssOut);

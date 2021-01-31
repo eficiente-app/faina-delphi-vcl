@@ -4,7 +4,7 @@ object TaskTypeController: TTaskTypeController
   OnDestroy = DataModuleDestroy
   Height = 150
   Width = 215
-  object tblTarefaTipo: TFDMemTable
+  object tblTaskType: TFDMemTable
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -14,37 +14,19 @@ object TaskTypeController: TTaskTypeController
     UpdateOptions.AutoCommitUpdates = True
     Left = 32
     Top = 16
-    object tblTarefaTipoid: TIntegerField
+    object tblTaskTypeid: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'id'
     end
-    object tblTarefaTiponome: TStringField
+    object tblTaskTypename: TStringField
       DisplayLabel = 'Nome'
-      FieldName = 'nome'
-      Size = 1000
+      FieldName = 'name'
+      Size = 100
     end
-    object tblTarefaTipodescricao: TStringField
+    object tblTaskTypedescription: TStringField
       DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'descricao'
+      FieldName = 'description'
       Size = 1000
-    end
-    object tblTarefaTipoincluido_id: TIntegerField
-      FieldName = 'incluido_id'
-    end
-    object tblTarefaTipoincluido_em: TDateTimeField
-      FieldName = 'incluido_em'
-    end
-    object tblTarefaTipoalterado_id: TIntegerField
-      FieldName = 'alterado_id'
-    end
-    object tblTarefaTipoalterado_em: TDateTimeField
-      FieldName = 'alterado_em'
-    end
-    object tblTarefaTipoexcluido_id: TIntegerField
-      FieldName = 'excluido_id'
-    end
-    object tblTarefaTipoexcluido_em: TDateTimeField
-      FieldName = 'excluido_em'
     end
   end
 end

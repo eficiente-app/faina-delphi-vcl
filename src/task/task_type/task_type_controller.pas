@@ -20,20 +20,14 @@ uses
 
 type
   TTaskTypeController = class(TDataModule)
-    tblTarefaTipo: TFDMemTable;
-    tblTarefaTipoid: TIntegerField;
-    tblTarefaTipodescricao: TStringField;
-    tblTarefaTiponome: TStringField;
-    tblTarefaTipoincluido_id: TIntegerField;
-    tblTarefaTipoincluido_em: TDateTimeField;
-    tblTarefaTipoalterado_id: TIntegerField;
-    tblTarefaTipoalterado_em: TDateTimeField;
-    tblTarefaTipoexcluido_id: TIntegerField;
-    tblTarefaTipoexcluido_em: TDateTimeField;
+    tblTaskType: TFDMemTable;
+    tblTaskTypeid: TIntegerField;
+    tblTaskTypedescription: TStringField;
+    tblTaskTypename: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   public
-    TarefaTipo: TRESTManager;
+    TaskType: TRESTManager;
   end;
 
 var
@@ -47,13 +41,13 @@ implementation
 
 procedure TTaskTypeController.DataModuleCreate(Sender: TObject);
 begin
-  TarefaTipo := TRESTManager.Create('api/tarefa/tipo', tblTarefaTipo);
-  TarefaTipo.Table.Read;
+  TaskType := TRESTManager.Create('api/task/type', tblTaskType);
+  TaskType.Table.Read;
 end;
 
 procedure TTaskTypeController.DataModuleDestroy(Sender: TObject);
 begin
-  FreeAndNil(TarefaTipo);
+  FreeAndNil(TaskType);
 end;
 
 end.
