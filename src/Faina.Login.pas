@@ -14,25 +14,25 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.ExtCtrls,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls,
+  base_form_view;
 
 type
-  TLogin = class(TForm)
+  TLogin = class(TBaseFormView)
     pnlCenter: TPanel;
+    imgLogo: TImage;
+    lbUser: TLabel;
+    lbPassword: TLabel;
     pnlTop: TPanel;
     pnlButtons: TPanel;
     btnConfirm: TButton;
     btnCancel: TButton;
     estPassword: TEdit;
     edtUser: TEdit;
-    imgLogo: TImage;
-    lbUser: TLabel;
-    lbPassword: TLabel;
     procedure btnConfirmClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   public
-    class procedure New(AParent: TWinControl);
   end;
 
 implementation
@@ -54,16 +54,6 @@ end;
 procedure TLogin.FormShow(Sender: TObject);
 begin
   edtUser.SetFocus;
-end;
-
-class procedure TLogin.New(AParent: TWinControl);
-begin
-  with TLogin.Create(AParent) do
-  begin
-    Parent := AParent;
-    SetBounds(0, 0, AParent.Width, AParent.Height);
-    Show;
-  end;
 end;
 
 end.

@@ -67,7 +67,7 @@ procedure TMain.FormShow(Sender: TObject);
 begin
   FWorkArea := TWorkSpace.Create(Self);
   FWorkArea.ShowIn(pnlClientArea, alClient);
-  TLogin.New(pnlClientArea);
+  TLogin.Create(Self).ShowIn(pnlClientArea, alClient);
   SetConnectionAlert(True);
 end;
 

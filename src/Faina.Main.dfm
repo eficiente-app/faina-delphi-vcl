@@ -23,12 +23,9 @@ inherited Main: TMain
       ExplicitHeight = 20
       inherited lblTitleForm: TLabel
         Width = 158
-        Height = 17
+        Height = 20
         Caption = 'Faina - Gerencie suas Tarefas'
-        ExplicitLeft = 8
-        ExplicitTop = 0
         ExplicitWidth = 158
-        ExplicitHeight = 17
       end
     end
     inherited pnlClientArea: TPanel

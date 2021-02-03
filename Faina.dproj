@@ -217,6 +217,19 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>TaskStatusView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\task\task_schedule\task_schedule_type\task_schedule_type_controller.pas">
+            <Form>TaskScheduleTypeController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\task\task_schedule\task_schedule_type\task_schedule_type_list.pas">
+            <Form>TaskScheduleTypeList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\task\task_schedule\task_schedule_type\task_schedule_type_view.pas">
+            <Form>TaskScheduleTypeView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
