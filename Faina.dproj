@@ -230,6 +230,11 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>TaskScheduleTypeView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\task\task_schedule\task_schedule_controller.pas">
+            <Form>TaskScheduleController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
