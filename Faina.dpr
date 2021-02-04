@@ -38,7 +38,10 @@ uses
   task_schedule_type_controller in 'src\task\task_schedule\task_schedule_type\task_schedule_type_controller.pas' {TaskScheduleTypeController: TDataModule},
   task_schedule_type_list in 'src\task\task_schedule\task_schedule_type\task_schedule_type_list.pas' {TaskScheduleTypeList},
   task_schedule_type_view in 'src\task\task_schedule\task_schedule_type\task_schedule_type_view.pas' {TaskScheduleTypeView},
-  task_schedule_controller in 'src\task\task_schedule\task_schedule_controller.pas' {TaskScheduleController: TDataModule};
+  task_schedule_controller in 'src\task\task_schedule\task_schedule_controller.pas' {TaskScheduleController: TDataModule},
+  project_type_controller in 'src\project\project_type\project_type_controller.pas' {ProjectTypeController: TDataModule},
+  project_type_list in 'src\project\project_type\project_type_list.pas' {ProjectTypeList},
+  project_type_view in 'src\project\project_type\project_type_view.pas' {ProjectTypeView};
 
 {$R *.res}
 
@@ -52,5 +55,6 @@ begin
 //  Application.CreateForm(TTaskLabelController, TaskLabelController);
 //  Application.CreateForm(TTaskStatusController, TaskStatusController);
 //  Application.CreateForm(TTaskScheduleTypeController, TaskScheduleTypeController);
+//  Application.CreateForm(TProjectTypeController, ProjectTypeController);
   Application.Run;
 end.
