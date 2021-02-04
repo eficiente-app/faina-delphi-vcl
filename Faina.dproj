@@ -248,6 +248,32 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>ProjectTypeView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\user\user_controller.pas">
+            <Form>UserController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\user\user_list.pas">
+            <Form>UserList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\user\user_view.pas">
+            <Form>UserView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\user\user_type\user_type_controller.pas">
+            <Form>UserTypeController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\user\user_type\user_type_list.pas">
+            <Form>UserTypeList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\user\user_type\user_type_view.pas">
+            <Form>UserTypeView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -6,6 +6,7 @@ inherited Login: TLogin
   ClientWidth = 320
   Color = 15592941
   Position = poDesigned
+  OnCreate = FormCreate
   OnShow = FormShow
   ExplicitWidth = 320
   ExplicitHeight = 412
@@ -21,9 +22,6 @@ inherited Login: TLogin
       Visible = False
       ExplicitTop = 0
       ExplicitWidth = 320
-      inherited lblTitleForm: TLabel
-        Height = 30
-      end
     end
     inherited pnlClientArea: TPanel
       Width = 320

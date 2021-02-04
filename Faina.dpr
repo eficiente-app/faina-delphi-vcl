@@ -41,7 +41,13 @@ uses
   task_schedule_controller in 'src\task\task_schedule\task_schedule_controller.pas' {TaskScheduleController: TDataModule},
   project_type_controller in 'src\project\project_type\project_type_controller.pas' {ProjectTypeController: TDataModule},
   project_type_list in 'src\project\project_type\project_type_list.pas' {ProjectTypeList},
-  project_type_view in 'src\project\project_type\project_type_view.pas' {ProjectTypeView};
+  project_type_view in 'src\project\project_type\project_type_view.pas' {ProjectTypeView},
+  user_controller in 'src\user\user_controller.pas' {UserController: TDataModule},
+  user_list in 'src\user\user_list.pas' {UserList},
+  user_view in 'src\user\user_view.pas' {UserView},
+  user_type_controller in 'src\user\user_type\user_type_controller.pas' {UserTypeController: TDataModule},
+  user_type_list in 'src\user\user_type\user_type_list.pas' {UserTypeList},
+  user_type_view in 'src\user\user_type\user_type_view.pas' {UserTypeView};
 
 {$R *.res}
 
@@ -50,6 +56,8 @@ begin
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMain, Main);
+//  Application.CreateForm(TUserTypeController, UserTypeController);
+//  Application.CreateForm(TUserController, UserController);
   Application.CreateForm(TFolderTypeController, FolderTypeController);
 //  Application.CreateForm(TTaskTypeController, TaskTypeController);
 //  Application.CreateForm(TTaskLabelController, TaskLabelController);

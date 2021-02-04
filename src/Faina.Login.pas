@@ -15,7 +15,9 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
-  base_form_view;
+  Data.DB,
+  base_form_view,
+  user_controller;
 
 type
   TLogin = class(TBaseFormView)
@@ -49,6 +51,18 @@ end;
 procedure TLogin.btnConfirmClick(Sender: TObject);
 begin
   Close;
+  Exit;
+
+  // Desenvolver autenticação
+  with UserController, User.Query, User.Table do
+  begin
+    Clear;
+    Add('login', edtUser.Text);
+    Add('password', estPassword.Text);
+    Read;
+    if tblUser.IsEmpty then
+      raise Exception.Create('Usuário ou senha inválidos!');
+  end;
 end;
 
 procedure TLogin.FormShow(Sender: TObject);
